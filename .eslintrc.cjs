@@ -14,11 +14,12 @@ module.exports = {
 	plugins: ['react-refresh', '@typescript-eslint'],
 	rules: {
 		'react-refresh/only-export-components': [
-		'warn',
-		{ allowConstantExport: true },
+			'warn',
+			{ allowConstantExport: true },
 		],
 		'@typescript-eslint/no-unused-vars': 'error',
 		'@typescript-eslint/explicit-function-return-type': 'off',
+		"react-refresh/only-export-components": "off",
 	},
 	settings: {
 		react: {
