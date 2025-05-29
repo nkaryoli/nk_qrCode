@@ -15,11 +15,11 @@ export function ModeToggle() {
 		<button
 			onClick={toggleTheme}
 			className={`
-				relative inline-flex items-center h-8 rounded-full w-16 p-1
+				relative inline-flex items-center justify-center h-8 rounded-full w-8
 				transition-all duration-300 ease-in-out focus:outline-none 
 				focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
 				focus-visible:ring-offset-background border border-border
-				${isDark 
+				${!isDark 
 					? 'bg-gradient-to-r from-secondary to-[#009995]' 
 					: 'bg-gradient-to-r from-secondary to-yellow-100'
 				}
@@ -28,18 +28,11 @@ export function ModeToggle() {
 			aria-checked={isDark}
 			aria-label="Toggle theme"
 		>
-			<div
-				className={`
-					flex items-center justify-center w-6 h-6 rounded-full 
-					bg-background shadow-lg transform transition-all duration-300 ease-in-out
-					border border-border
-					${isDark ? 'translate-x-8' : 'translate-x-0'}
-				`}
-			>
-				{isDark ? (
-					<Moon className="w-3 h-3 text-primary" />
+			<div className="flex items-center justify-center w-7 h-7 rounded-full bg-background shadow-lg border border-border">
+				{!isDark ? (
+					<Moon className="w-4 h-4 text-primary" />
 				) : (
-					<Sun className="w-3 h-3 text-yellow-600" />
+					<Sun className="w-4 h-4 text-yellow-600" />
 				)}
 			</div>
 		</button>
