@@ -18,7 +18,6 @@ export default {
                 sm: 'calc(var(--radius) - 4px)'
             },
             colors: {
-                // Colores de shadcn (ya integrados con tu paleta)
                 background: 'var(--background)',
                 foreground: 'var(--foreground)',
                 card: {
@@ -59,8 +58,6 @@ export default {
                     '4': 'var(--chart-4)',
                     '5': 'var(--chart-5)'
                 },
-                
-                // Tus colores originales como clases adicionales
                 'custom': {
                     'primary-100': '#009995',
                     'primary-200': '#67E8CB', 
