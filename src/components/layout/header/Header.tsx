@@ -8,7 +8,7 @@ const Header = () => {
     const isMobile = useIsMobile(888);
 
     return (
-		<header className="fixed top-0 left-0 right-0 flex justify-between items-center h-16 px-6 md:px-9">
+		<header className="fixed top-0 left-0 right-0 flex justify-between items-center h-20 px-6 md:px-11 backdrop-blur-sm bg-white/10 dark:bg-black/10 z-10">
             <NavLink
                 to="/"
                 className="flex items-center justify-center bg-gradient-to-r from-primary to-accent bg-clip-text text-3xl font-subtitle font-extrabold text-transparent"
