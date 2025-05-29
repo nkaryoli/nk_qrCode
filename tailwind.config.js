@@ -7,9 +7,9 @@ export default {
     ],
     theme: {
         fontFamily: {
-            'header': ["Comfortaa", "sans-serif"],
-            'subtitle': ["Nunito", "sans-serif"], 
-            'body': ["Quicksand", "sans-serif"],
+            'header': ["'Comfortaa'", "system-ui", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+            'subtitle': ["'Nunito'", "system-ui", "-apple-system", "BlinkMacSystemFont", "sans-serif"], 
+            'body': ["'Quicksand'", "system-ui", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
         },
         extend: {
             borderRadius: {
