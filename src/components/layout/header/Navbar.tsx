@@ -11,23 +11,32 @@ const Navbar = () => {
   }
   
   return (
-    <NavigationMenu className="flex items-center">      
-      <NavigationMenuList>
+    <NavigationMenu className="flex items-center opac">      
+      <NavigationMenuList className='space-x-6'>
         {navigationLinks.map(({ to, label }) => (
           <NavigationMenuItem key={to}>
             <NavigationMenuLink>
-                <NavLink to={to} className="pr-6" >
+                <NavLink to={to} 
+                  className={({isActive}) => 
+                    `${isActive 
+                      ? 'text-primary font-semibold' 
+                      : 'text-muted-foreground hover:text-primary transition-colors duration-200'
+                  }`}
+                > 
                   {label}
                 </NavLink>
               </NavigationMenuLink>
           </NavigationMenuItem>
         ))}
+        
         <Button 
+          variant={"sunset"}
           onClick={handleClick}
         >
           Create QR
-        </Button>
+        </Button>       
       </NavigationMenuList>
+      
     </NavigationMenu>
   )
 }

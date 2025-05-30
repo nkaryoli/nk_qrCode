@@ -6,7 +6,7 @@ import Header from './header/Header';
 const Layout = () => {
     useScrollToTop();
     return (
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
             <div className="grid-background"></div>
             <main className="min-h-screen flex flex-col items-center justify-between">
                 <Header />
