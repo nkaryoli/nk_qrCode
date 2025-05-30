@@ -7,7 +7,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-      navigate('/QrGenerator');
+      navigate('/customize-qr');
   }
   
   return (
