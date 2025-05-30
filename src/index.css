@@ -4,82 +4,93 @@
 
 @layer base {
   :root {
-    --background: #F9F1F5;
-    --foreground: #2D3748;
-    --card: #FFFFFF;
-    --card-foreground: #2D3748;
-    --popover: #FFFFFF;
-    --popover-foreground: #2D3748;
-    
-    --primary: #009995;
-    --primary-foreground: #FFFFFF;
-    
-    --secondary: #67E8CB;
-    --secondary-foreground: #2D3748;
-    
-    --muted: #E0E2E5;
-    --muted-foreground: #6B7280;
-    
-    --accent: #FF6F75;
-    --accent-foreground: #FFFFFF;
-    
-    --destructive: #FF6F75;
+    --background:          #FFF9F5;
+    --foreground:          #2A2A2A;
+
+    --card:                #FFFFFF;
+    --card-foreground:     #2A2A2A;
+
+    --popover:             #FFFFFF;
+    --popover-foreground:  #2A2A2A;
+
+    --primary:             #FF5E1F; /* naranja fuego */
+    --primary-foreground:  #FFFFFF;
+
+    --secondary:           #FFD700; /* dorado brillante */
+    --secondary-foreground: #2A2A2A;
+
+    --muted:               #FFEEDD; /* melocotón claro */
+    --muted-foreground:    #6D6D6D;
+
+    --accent:              #FF2E63; /* rosa intenso */
+    --accent-foreground:   #FFFFFF;
+
+    --destructive:         #E63946;
     --destructive-foreground: #FFFFFF;
-    
-    --border: #E0E2E5;
-    --input: #E0E2E5;
-    --ring: #009995;
-    
-    --chart-1: #009995;
-    --chart-2: #67E8CB;
-    --chart-3: #FF6F75;
-    --chart-4: #FFD7B3;
-    --chart-5: #F9F1F5;
-    
-    --radius: 0.4rem;
+
+    --border:             #FFD4B8;
+    --input:             #FFD4B8;
+    --ring:              #FF5E1F;
+
+    --chart-1: #FF5E1F;
+    --chart-2: #FFD700;
+    --chart-3: #FF2E63;
+    --chart-4: #A162FF;
+    --chart-5: #FFEEDD;
+
+    --radius: 0.6rem;
   }
-  
+
   .dark {
-    --background: #161B22;
-    --foreground: #F2F2F2;
-    --card: #1B2027;
-    --card-foreground: #F2F2F2;
-    --popover: #1B2027;
-    --popover-foreground: #F2F2F2;
-    --primary: #67E8CB;
-    --primary-foreground: #161B22;
-    --secondary: #242931;
-    --secondary-foreground: #F2F2F2;
-    --muted: #242931;
-    --muted-foreground: #B3B3B3;
-    --accent: #FF6F75;
-    --accent-foreground: #F2F2F2;
-    --destructive: #FF6F75;
-    --destructive-foreground: #F2F2F2;
-    --border: #242931;
-    --input: #242931;
-    --ring: #67E8CB;
+    --background:          #1A1A1A;
+    --foreground:          #FFF0E5;
+
+    --card:                #2A2A2A;
+    --card-foreground:     #FFF0E5;
+
+    --popover:             #2A2A2A;
+    --popover-foreground:  #FFF0E5;
+
+    --primary:             #FF7B4D;
+    --primary-foreground:  #1A1A1A;
+
+    --secondary:           #FFE066;
+    --secondary-foreground: #1A1A1A;
+
+    --muted:               #3D3D3D;
+    --muted-foreground:    #D9D9D9;
+
+    --accent:              #FF5E8B;
+    --accent-foreground:   #1A1A1A;
+
+    --destructive:         #FF4D6D;
+    --destructive-foreground: #1A1A1A;
+
+    --border:             #3D3D3D;
+    --input:             #3D3D3D;
+    --ring:              #FF7B4D;
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
+  * { 
+    @apply border-border; 
   }
-  body {
+  body { 
     @apply bg-background text-foreground;
-    font-family: 'Quicksand', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    font-display: swap;
+      font-family: 'Quicksand', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-display: swap; 
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+  h1,h2,
+  h3,h4,
+  h5,h6 { 
     font-family: 'Comfortaa', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     font-display: swap;
   }
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    display: block;
+body { 
+  margin: 0; 
+  padding: 0; 
+  display: block;
 }

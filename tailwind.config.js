@@ -58,17 +58,20 @@ export default {
                     '4': 'var(--chart-4)',
                     '5': 'var(--chart-5)'
                 },
-                'custom': {
-                    'primary-100': '#009995',
-                    'primary-200': '#67E8CB', 
-                    'primary-300': '#E0E2E5',
-                    'accent-100': '#FF6F75',
-                    'accent-200': '#FAE3D9',
-                    'bg-100': '#F9F1F5',
-                    'bg-200': '#ffffff',
-                    'bg-300': '#FAD9E6',
-                }
-            }
+            },
+            opacity: {
+                '0': '0',
+                '10': '0.1',
+                '20': '0.2',
+                '30': '0.3',
+                '40': '0.4',
+                '50': '0.5',
+                '60': '0.6',
+                '70': '0.7',
+                '80': '0.8',
+                '90': '0.9',
+                '100': '1',
+            },
         }
     },
     plugins: [require("tailwindcss-animate")],
