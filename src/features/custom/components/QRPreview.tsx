@@ -87,8 +87,9 @@ const QRPreview = () => {
                     qrRef={qrRef}
                     onSave={handleSaveQRCode}
                     onDownload={handleDownload}
-                    qrConfig={qrConfig}
+                    qrConfig={isTransitioning ? prevConfigRef.current : displayConfig}
                     title={title}
+                    isTransitioning={isTransitioning}
                 />
             )}
         </>

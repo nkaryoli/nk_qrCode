@@ -1,4 +1,5 @@
 import QRDisplay, { type QRDisplayRef } from '@/components/qrCode/QRDisplay';
+import { QRPreviewLoader } from '@/components/qrCode/QRPreviewLoader';
 import { Button } from '@/components/ui/button';
 import {
     Dialog,
@@ -17,6 +18,7 @@ interface QRPreviewProps {
     onDownload: (qrRef: React.RefObject<QRDisplayRef | null>) => void;
     qrConfig: QRConfig;
     title: string;
+    isTransitioning?: boolean;
 }
 
 const QRPreviewModal: React.FC<QRPreviewProps> = ({
@@ -25,6 +27,7 @@ const QRPreviewModal: React.FC<QRPreviewProps> = ({
     onDownload,
     qrConfig,
     title,
+    isTransitioning = false,
 }) => {
     const handleSave = () => {
         onSave(title, qrConfig.data, qrConfig);
@@ -33,7 +36,14 @@ const QRPreviewModal: React.FC<QRPreviewProps> = ({
     return (
         <Dialog>
             <DialogTrigger className="fixed top-[30vh] -right-20 md:-right-10 -scale-[0.3] md:-scale-50 p-1 border border-withe bg-primary">
-                <QRDisplay ref={qrRef} config={qrConfig} />
+                    <div className='relative flex items-center justify-center'>
+                        <div className={`transition-opacity duration-250 ${
+                            isTransitioning ? 'opacity-10' : 'animate-fade-in'
+                        }`}>
+                            <QRDisplay ref={qrRef} config={qrConfig} />
+                        </div>
+                        {isTransitioning && <QRPreviewLoader />}
+                    </div>
             </DialogTrigger>
             <DialogContent className="w-fit p-10 lg:p-20" aria-describedby="qr-preview">
                 <DialogTitle className="hidden" />
