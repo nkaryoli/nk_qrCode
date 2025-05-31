@@ -4,11 +4,11 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from '@/components/ui/accordion';
-import BackgroundOptions from './BackgroundOptions';
-import DotsOptionsForm from './DotsOptions';
-import CornersSquareOptions from './CornerSquareOptions';
-import CornersDotOptions from './CornersDotOptions';
-import ImageOptions from './ImageOptions';
+import BackgroundOptions from './background/BackgroundOptions';
+import DotsOptionsForm from './qrPattern/DotsOptions';
+import CornersSquareOptions from './qrEye/CornerSquareOptions';
+import CornersDotOptions from './qrDotEye/CornersDotOptions';
+import ImageOptions from './logo/ImageOptions';
 import { memo, useCallback } from 'react';
 import { useQR } from '@/hooks/QRContext';
 import type { QRConfig } from '@/types';
