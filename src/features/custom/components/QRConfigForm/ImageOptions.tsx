@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useRef, type ChangeEvent, memo } from 'react';
+import { useRef, type ChangeEvent, memo, useCallback } from 'react';
 import type { QRConfig, ImageOptionsType } from '@/types';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -14,48 +14,45 @@ interface ImageOptionsProps {
 
 const ImageOptions = ({ config, onChange, onImageChange }: ImageOptionsProps) => {
     const fileInputRef = useRef<HTMLInputElement>(null);
-    const [previewImage, setPreviewImage] = useState(config.image || '');
 
-    const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
+    const handleImageUpload = useCallback((e: ChangeEvent<HTMLInputElement>) => {        const file = e.target.files?.[0];
         if (!file) return;
 
         const reader = new FileReader();
         reader.onload = (event) => {
             const imageData = event.target?.result as string;
-            setPreviewImage(imageData);
-            onImageChange(imageData);
+            if (imageData !== config.image) {
+                onImageChange(imageData);
+            }
         };
         reader.readAsDataURL(file);
-    };
+    }, [onImageChange, config.image]);
 
-    const handleRemoveImage = () => {
-        setPreviewImage('');
+    const handleRemoveImage = useCallback(() => {
         onImageChange('');
-    };
+    }, [onImageChange]);
 
-    const handleImageOptionChange = (key: keyof ImageOptionsType, value: any) => {
+    const handleImageOptionChange = useCallback((key: keyof ImageOptionsType, value: any) => {
         onChange({
             ...config.imageOptions,
             [key]: value,
         });
-    };
+    }, [config.imageOptions, onChange]);
 
     return (
         <div className="p-6 space-y-4">
             <div className="flex flex-col items-center gap-4">
-                {previewImage ? (
+                {config.image ? (
                     <>
                         <div className="relative">
                             <img
-                                src={previewImage}
+                                src={config.image}
                                 alt="QR Center Preview"
                                 className="w-32 h-32 object-contain border rounded-md"
                             />
                             <Button
                                 variant="destructive"
-                                size="sm"
-                                className="absolute -top-2 -right-2"
+                                className="absolute -top-2 -right-2 w-5 h-5 p-0 rounded-sm"
                                 onClick={handleRemoveImage}
                             >
                                 ×
@@ -82,7 +79,7 @@ const ImageOptions = ({ config, onChange, onImageChange }: ImageOptionsProps) =>
                 )}
             </div>
 
-            {previewImage && (
+            {config.image && (
                 <div className="space-y-4 pt-4">
                     <div className="space-y-2">
                         <Label>
@@ -130,4 +127,11 @@ const ImageOptions = ({ config, onChange, onImageChange }: ImageOptionsProps) =>
     );
 };
 
-export default memo(ImageOptions);
+const arePropsEqual = (prevProps: ImageOptionsProps, nextProps: ImageOptionsProps) => {
+    return (
+        prevProps.config.image === nextProps.config.image &&
+        JSON.stringify(prevProps.config.imageOptions) === JSON.stringify(nextProps.config.imageOptions)
+    );
+};
+
+export default memo(ImageOptions, arePropsEqual);
