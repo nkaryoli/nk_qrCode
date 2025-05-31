@@ -2,21 +2,31 @@ import { memo } from 'react';
 import type { QRConfig } from '@/types';
 import ColorPicker from '@/components/ColorPiker';
 import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
 import type { CornerSquareType } from 'qr-code-styling';
 import { useCornerSquareOptions } from '@/hooks/useCornerSquareOptions';
 import StyleSelector from '../StyleSelector';
 import CornerSquareGradient from './CornerSquareGradient';
+import ColorTypeToggle from '../ColorTypeToggle';
 interface CornersSquareOptionsProps {
     config: QRConfig;
     onChange: (options: NonNullable<QRConfig['cornersSquareOptions']>) => void;
-    onChangeHelper: (helper: NonNullable<QRConfig['cornersSquareOptionsHelper']>) => void;
+    onChangeHelper: (
+        helper: NonNullable<QRConfig['cornersSquareOptionsHelper']>
+    ) => void;
 }
 
-const cornerSquareTypes: CornerSquareType[] = ['square', 'dot', 'extra-rounded'];
+const cornerSquareTypes: CornerSquareType[] = [
+    'square',
+    'dot',
+    'extra-rounded',
+];
 
-const CornersSquareOptions = ({ config, onChange, onChangeHelper }: CornersSquareOptionsProps) => {
-        const {
+const CornersSquareOptions = ({
+    config,
+    onChange,
+    onChangeHelper,
+}: CornersSquareOptionsProps) => {
+    const {
         localOptions,
         localHelper,
         handleColorTypeChange,
@@ -34,19 +44,10 @@ const CornersSquareOptions = ({ config, onChange, onChangeHelper }: CornersSquar
                 placeholder="Select corner type"
                 onChange={handleTypeChange}
             />
-
-            <div className="flex items-center justify-between">
-                <Label>Color Type</Label>
-                <div className="flex items-center gap-2">
-                    <span className="text-sm">Solid</span>
-                    <Switch
-                        checked={localHelper.colorType.gradient}
-                        onCheckedChange={handleColorTypeChange}
-                    />
-                    <span className="text-sm">Gradient</span>
-                </div>
-            </div>
-
+            <ColorTypeToggle
+                showGradient={localHelper.colorType.gradient}
+                handleColorTypeChange={handleColorTypeChange}
+            />
             {localHelper.colorType.gradient ? (
                 <CornerSquareGradient
                     helper={localHelper}
