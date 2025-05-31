@@ -5,6 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
 import { Button } from '@/components/ui/button';
+import SelectOptionBtns from './SelectOptionsBtns';
 
 interface ImageOptionsProps {
     config: QRConfig;
@@ -75,6 +76,9 @@ const ImageOptions = ({ config, onChange, onImageChange }: ImageOptionsProps) =>
                         <span className="text-sm text-muted-foreground">
                             Recommended: 300x300px transparent PNG
                         </span>
+                        <div className="grid grid-cols-5 gap-4 h-fit">
+                            <SelectOptionBtns onChange={onImageChange}/>
+                        </div>
                     </>
                 )}
             </div>
@@ -109,18 +113,6 @@ const ImageOptions = ({ config, onChange, onImageChange }: ImageOptionsProps) =>
                         />
                     </div>
 
-                    <div className="space-y-2">
-                        <Label>Image Margin (px)</Label>
-                        <Input
-                            type="number"
-                            min="0"
-                            max="20"
-                            value={config.imageOptions?.margin || 0}
-                            onChange={(e) =>
-                                handleImageOptionChange('margin', parseInt(e.target.value))
-                            }
-                        />
-                    </div>
                 </div>
             )}
         </div>
