@@ -3,17 +3,37 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { DownloadIcon, HeartPlus } from 'lucide-react';
-import { memo } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { useQR } from '@/hooks/QRContext';
 import { useQRManager } from '@/hooks/useQRManager';
 import QRPreviewModal from './QRPreviewModal';
 import QREmptyState from './QREmptyState';
+import { QRPreviewLoader } from '@/components/qrCode/QRPreviewLoader';
 
 const QRPreview = () => {
     const { isSaving, handleDownload, handleSaveQRCode } = useQRManager();
     const { title, qrRef, qrConfig } = useQR();
     const isMobile = useIsMobile(976);
+    const [displayConfig, setDisplayConfig] = useState(qrConfig);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+    const prevConfigRef = useRef(qrConfig);
 
+    useEffect(() => {
+        if (qrConfig.data === '' || JSON.stringify(qrConfig) === JSON.stringify(prevConfigRef.current)) {
+            return;
+        }
+
+        setIsTransitioning(true);
+        prevConfigRef.current = displayConfig;
+
+        const timer = setTimeout(() => {
+            setDisplayConfig(qrConfig);
+            setIsTransitioning(false);
+        }, 250);
+
+        return () => clearTimeout(timer);
+    }, [displayConfig, qrConfig]);
+    
     return (
         <>
             {!isMobile ? (
@@ -26,7 +46,17 @@ const QRPreview = () => {
                                 <CardTitle className="text-foreground text-xl">Preview</CardTitle>
                             </CardHeader>
                             <CardContent className="space-y-6">
-                                <QRDisplay ref={qrRef} config={qrConfig} />
+                                <div className='relative flex items-center justify-center'>
+                                    <div className={`transition-opacity duration-250 ${
+                                        isTransitioning ? 'opacity-10' : 'animate-fade-in'
+                                    }`}>
+                                        <QRDisplay 
+                                            ref={qrRef} 
+                                            config={isTransitioning ? prevConfigRef.current : displayConfig}
+                                        />
+                                    </div>
+                                    {isTransitioning && <QRPreviewLoader />}
+                                </div>
                                 <div className="text-sm text-foreground text-center">
                                     <p>Scan your QR Code to test it</p>
                                 </div>
