@@ -48,7 +48,7 @@ const BurgerMenu:React.FC<BurgerMenuProps> = ({ isMobile, onClick }) => {
                 className="w-[280px] z-[99999]"
             >
                 <SheetTitle className="hidden">Side Menu</SheetTitle>
-                <SheetDescription >
+                <SheetDescription asChild>
                     <ul className="text-center w-full h-full pt-9">{menuLinks}</ul>
                 </SheetDescription>
                 <SheetFooter>
