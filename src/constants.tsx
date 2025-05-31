@@ -68,3 +68,9 @@ export const defaultQRConfig: QRConfig = {
         margin: 0,
     },
 };
+
+export const logos = Array.from({ length: 15 }, (_, i) => ({
+    id: `logo${i + 1}`,
+    label: `logo ${i + 1}`,
+    image: `/logo${i + 1}.svg`
+}));
