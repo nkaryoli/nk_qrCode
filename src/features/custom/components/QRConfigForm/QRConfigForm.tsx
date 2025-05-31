@@ -9,11 +9,20 @@ import DotsOptionsForm from './DotsOptions';
 import CornersSquareOptions from './CornerSquareOptions';
 import CornersDotOptions from './CornersDotOptions';
 import ImageOptions from './ImageOptions';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { useQR } from '@/hooks/QRContext';
+import type { QRConfig } from '@/types';
 
 const QRConfigForm = () => {
     const { qrConfig: config, handleChange } = useQR();
+
+    const handleImageOptionsChange = useCallback((options: QRConfig['imageOptions']) => {
+        handleChange('imageOptions', options);
+    },[handleChange]);
+
+    const handleImageChange = useCallback((image: string) => {
+        handleChange('image', image);
+    },[handleChange]);
 
     return (
         <div className="space-y-1 w-full text-foreground">
@@ -85,8 +94,8 @@ const QRConfigForm = () => {
                     <AccordionContent asChild>
                         <ImageOptions
                             config={config}
-                            onChange={(options) => handleChange('imageOptions', options)}
-                            onImageChange={(image) => handleChange('image', image)}
+                            onChange={handleImageOptionsChange}
+                            onImageChange={handleImageChange}
                         />
                     </AccordionContent>
                 </AccordionItem>
