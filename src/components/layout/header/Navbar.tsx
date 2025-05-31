@@ -15,7 +15,7 @@ const Navbar = () => {
       <NavigationMenuList className='space-x-6'>
         {navigationLinks.map(({ to, label }) => (
           <NavigationMenuItem key={to}>
-            <NavigationMenuLink>
+            <NavigationMenuLink asChild>
                 <NavLink to={to} 
                   className={({isActive}) => 
                     `${isActive 
