@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import { useQR } from '@/hooks/QRContext';
 import ColorPicker from '@/components/ColorPiker';
 import { Label } from '@/components/ui/label';
@@ -11,6 +11,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
+import { useDotsOptions } from '@/hooks/useDotsOptions';
 
 const dotTypes = [
     'square',
@@ -22,81 +23,15 @@ const dotTypes = [
 ] as const;
 
 const DotsOptionsForm = memo(() => {
-    const { qrConfig, handleChange } = useQR();
-
-    const defaultDotsOptions = {
-        type: 'rounded' as const,
-        color: '#ff0000',
-    };
-
-    const defaultDotsOptionsHelper = {
-        colorType: { single: true, gradient: false },
-        gradient: {
-            linear: true,
-            radial: false,
-            color1: '#000000',
-            color2: '#000000',
-            rotation: 0,
-        },
-    };
-
-    const dotsOptions = qrConfig.dotsOptions ?? defaultDotsOptions;
-    const dotsOptionsHelper = qrConfig.dotsOptionsHelper ?? defaultDotsOptionsHelper;
-
-    const [showGradient, setShowGradient] = useState(dotsOptionsHelper.colorType.gradient);
-
-    const handleColorTypeChange = (isGradient: boolean) => {
-        setShowGradient(isGradient);
-        handleChange('dotsOptionsHelper', {
-            ...dotsOptionsHelper,
-            colorType: {
-                single: !isGradient,
-                gradient: isGradient,
-            },
-        });
-
-        if (!isGradient) {
-            handleChange('dotsOptions', {
-                ...dotsOptions,
-                gradient: undefined,
-            });
-        }
-    };
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const handleGradientChange = (key: keyof typeof dotsOptionsHelper.gradient, value: any) => {
-        const updatedHelper = {
-            ...dotsOptionsHelper,
-            gradient: {
-                ...dotsOptionsHelper.gradient,
-                [key]: key === 'rotation' ? Number(value) : value,
-            },
-        };
-
-        handleChange('dotsOptionsHelper', updatedHelper);
-
-        if (showGradient) {
-            handleChange('dotsOptions', {
-                ...dotsOptions,
-                gradient: {
-                    type: updatedHelper.gradient.linear ? 'linear' : 'radial',
-                    rotation: updatedHelper.gradient.rotation,
-                    colorStops: [
-                        { offset: 0, color: updatedHelper.gradient.color1 },
-                        { offset: 1, color: updatedHelper.gradient.color2 },
-                    ],
-                },
-            });
-        }
-    };
-
-    const handleSolidColorChange = (color: string) => {
-        handleChange('dotsOptions', {
-            ...dotsOptions,
-            color,
-            gradient: undefined,
-        });
-    };
+    const {  handleChange } = useQR();
+    const {
+        dotsOptions,
+        dotsOptionsHelper,
+        showGradient,
+        handleColorTypeChange,
+        handleGradientChange,
+        handleSolidColorChange,
+    } = useDotsOptions();
 
     return (
         <div className="p-6 space-y-4">
