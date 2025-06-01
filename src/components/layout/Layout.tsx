@@ -2,6 +2,7 @@ import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { Outlet } from 'react-router-dom';
 import { ThemeProvider } from '../../hooks/theme-provider';
 import Header from './header/Header';
+import Footer from './Footer';
 
 const Layout = () => {
     useScrollToTop();
@@ -12,6 +13,7 @@ const Layout = () => {
                 <Header />
                 <Outlet />
             </main>
+            <Footer />
         </ThemeProvider>
     );
 };
