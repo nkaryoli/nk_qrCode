@@ -32,6 +32,7 @@ const ImageOptions = ({ config, onChange, onImageChange }: ImageOptionsProps) =>
                     <>
                         <Button
                             variant="outline"
+                            size={'sm'}
                             onClick={() => fileInputRef.current?.click()}
                         >
                             Upload Image
@@ -46,7 +47,7 @@ const ImageOptions = ({ config, onChange, onImageChange }: ImageOptionsProps) =>
                         <span className="text-sm text-muted-foreground">
                             Recommended: 300x300px transparent PNG
                         </span>
-                        <div className="grid grid-cols-5 gap-4 h-fit">
+                        <div className="grid grid-cols-5 gap-6 h-fit">
                             <SelectOptionBtns onChange={onImageChange} />
                         </div>
                     </>
