@@ -13,8 +13,8 @@ const QRCustomizer = () => {
                 <CardTitle className="text-xl text-foreground">Customize Options</CardTitle>
             </CardHeader>
             <CardContent>
-                <div className="space-y-2">
-                    <Label htmlFor="title" className="text-foreground">
+                <div>
+                    <Label htmlFor="title" className="pl-1 text-foreground text-md">
                         Title
                     </Label>
                     <Input
@@ -27,8 +27,8 @@ const QRCustomizer = () => {
                     />
                 </div>
 
-                <div className="space-y-2 my-5">
-                    <Label htmlFor="content" className="text-foreground">
+                <div className="my-2">
+                    <Label htmlFor="content" className="pl-1 text-foreground text-md">
                         Content
                     </Label>
                     <Input
@@ -39,7 +39,6 @@ const QRCustomizer = () => {
                         className='placeholder:text-foreground/50 placeholder:text-sm text-sm'
                     />
                 </div>
-
                 <QRConfigForm />
             </CardContent>
         </Card>
