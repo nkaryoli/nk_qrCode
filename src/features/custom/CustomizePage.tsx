@@ -13,7 +13,7 @@ const CustomizePage = () => {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="flex flex-col lg:flex-row items-center lg:items-start justify-center w-full gap-8"
+                    className="flex flex-col lg:flex-row items-center lg:items-start justify-center w-full gap-3"
                 >
                     <motion.div
                         initial={{ x: -20 }}
