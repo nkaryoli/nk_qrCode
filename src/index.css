@@ -102,3 +102,9 @@ body {
 .animate-fade-in {
   animation: fadeIn 0.65s ease-out;
 }
+
+.background-hero {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+}
