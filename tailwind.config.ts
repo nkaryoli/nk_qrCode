@@ -13,30 +13,30 @@ const config: Config = {
             lg: '976px',
             xl: '1300px',
         },
-		fontFamily: {
-			header: [
-				'Comfortaa',
-				'system-ui',
-				'-apple-system',
-				'BlinkMacSystemFont',
-				'sans-serif'
-			],
-			subtitle: [
-				'Nunito',
-				'system-ui',
-				'-apple-system',
-				'BlinkMacSystemFont',
-				'sans-serif'
-			],
-			body: [
-				'Quicksand',
-				'system-ui',
-				'-apple-system',
-				'BlinkMacSystemFont',
-				'sans-serif'
-			]
-		},
 		extend: {
+			fontFamily: {
+				header: [
+					'Comfortaa',
+					'system-ui',
+					'-apple-system',
+					'BlinkMacSystemFont',
+					'sans-serif'
+				],
+				subtitle: [
+					'Nunito',
+					'system-ui',
+					'-apple-system',
+					'BlinkMacSystemFont',
+					'sans-serif'
+				],
+				body: [
+					'Quicksand',
+					'system-ui',
+					'-apple-system',
+					'BlinkMacSystemFont',
+					'sans-serif'
+				]
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
