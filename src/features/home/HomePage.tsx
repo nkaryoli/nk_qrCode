@@ -1,6 +1,7 @@
 import { useTheme } from "@/hooks/theme-provider";
 import HeroSection from "./components/HeroSection"
 import HowItWorks from "./components/HowItWorks";
+import WhyNK from "./components/WhyNKCode";
 
 const HomePage = () => {
 	const { theme } = useTheme();
@@ -11,6 +12,7 @@ const HomePage = () => {
 			}>
 				<HeroSection />
 			</section>
+			<WhyNK/>
 			<HowItWorks />
 		</div>
 	)
