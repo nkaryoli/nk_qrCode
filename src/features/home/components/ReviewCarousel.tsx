@@ -17,7 +17,7 @@ const ReviewCarousel = () => {
     };
 
     return (
-        <div className="w-full max-w-[1400px] mx-auto relative px-4 md:px-9 lg:px-16 my-32">
+        <div className="w-full max-w-[1400px] mx-auto relative px-4 md:px-9 lg:px-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">What our users say about us</h2>
             <div className="overflow-hidden relative">
                 <motion.div

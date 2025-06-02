@@ -10,7 +10,7 @@ const WhyNK = () => {
     ]
 
     return (
-        <div className="w-full py-32 flex flex-col justify-center items-center gap-6 md:gap-9 text-center">
+        <div className="w-full flex flex-col justify-center items-center gap-6 md:gap-9 text-center">
             <h2 className="text-3xl md:text-4xl font-bold">
                 Why our users preffer 
                 <strong className="bg-gradient-to-r from-primary via-accent to-primary text-transparent bg-clip-text font-extrabold"> NK QR-Code</strong>
