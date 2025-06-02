@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import { Button } from '@/components/ui/button';
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from '@/components/ui/navigation-menu';
 import { navigationLinks } from '@/constants';
@@ -13,6 +14,17 @@ const Navbar = () => {
   return (
     <NavigationMenu className="flex items-center opac">      
       <NavigationMenuList className='space-x-6'>
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild>
+            <HashLink
+              smooth
+              to="/#qr-reader"
+              className="hover:text-primary transition-colors duration-200"
+            >
+              QR Reader
+            </HashLink>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
         {navigationLinks.map(({ to, label }) => (
           <NavigationMenuItem key={to}>
             <NavigationMenuLink asChild>
