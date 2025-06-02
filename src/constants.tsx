@@ -106,3 +106,21 @@ export const reviews = [
         rating: 5,
     },
 ];
+
+
+export const faqs = [
+    {
+        question: "How do I create a QR code?",
+        answer:
+        "To create a QR code, simply enter the desired URL or content, customize it, and click 'Generate QR Code'.",
+    },
+    {
+        question: "Can I customize the colors?",
+        answer:
+        "Yes, you can customize the colors of the QR code, including the foreground and background colors.",
+    },
+    {
+        question: "Is it free to use?",
+        answer: "Absolutely! NK-Code is free to use for all users, with no hidden charges.",
+    },
+];
