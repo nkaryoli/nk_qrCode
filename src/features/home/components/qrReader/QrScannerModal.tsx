@@ -60,14 +60,18 @@ const QrScannerModal = () => {
                     </DialogTrigger>
                     <DialogContent>
                         <DialogHeader>
-                            <DialogTitle>Scan your QR Code</DialogTitle>
-                            <DialogDescription className='flex items-center justify-center py-11'>
-                                <Scanner
-                                    isActive={scannerActive && isDialogOpen}
-                                    onResult={handleScanResult}
-                                />
-                            </DialogDescription>
+                            <DialogTitle className='text-foreground'>Scan your QR Code</DialogTitle>
+                            <DialogDescription></DialogDescription>
                         </DialogHeader>
+                        <DialogContent className='flex items-center justify-center py-11'>
+                            <div className='flex items-center justify-center py-11'>
+
+                            <Scanner
+                                isActive={scannerActive && isDialogOpen}
+                                onResult={handleScanResult}
+                            />
+                            </div>
+                        </DialogContent>
                     </DialogContent>
                 </Dialog>
             )}
