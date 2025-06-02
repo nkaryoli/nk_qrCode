@@ -2,7 +2,7 @@ import QrScannerModal from '@/features/home/components/qrReader/QrScannerModal'
 
 const QRReader = () => {
 	return (
-		<section className="w-full max-w-[1100px] m-auto md:flex md:justify-between md:items-center gap-10 ">
+		<section className="w-full max-w-[1100px] m-auto flex flex-col lg:flex-row md:justify-between md:items-center gap-10 px-9">
 			<div className="max-w-md space-y-6 drop-shadow-[0_0_3px_var(--background)]" >
 				<h1 className="text-3xl md:text-4xl font-bold tracking-wide">
 					Scan & Discover with our <span className='text-primary'>QR Reader!!</span>
@@ -13,7 +13,7 @@ const QRReader = () => {
 				</p>
 				<QrScannerModal />
 			</div>
-			<div className='p-9 pr-11 bg-card rounded-ss-[150px] rounded-ee-[150px] rounded-3xl'>
+			<div className='p-9 pr-11 bg-card w-fit rounded-ss-[150px] rounded-ee-[150px] rounded-3xl'>
 				<img src='/reader-img1.svg' className='w-72'/>
 			</div>
 		</section>

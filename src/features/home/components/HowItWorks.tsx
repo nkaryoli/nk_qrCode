@@ -19,7 +19,7 @@ const HowItWorks = () => {
                 </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid lg:grid-cols-3 gap-8">
                 <Card className='rounded-ss-[70px] rounded-ee-[70px] p-4'>
                     <CardHeader className='flex items-center gap-3 text-center'>
                         <CardTitle>
