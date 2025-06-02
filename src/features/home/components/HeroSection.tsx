@@ -34,7 +34,7 @@ const HeroSection = () => {
             >
                 Get Started
             </Button>
-            {isMobile && theme === 'dark' ? <img src="/hero-movil-dark.svg" /> : <img src="/hero-movil-light.svg" />}
+            {isMobile && (theme === 'dark' ? <img src="/hero-movil-dark.svg" /> : <img src="/hero-movil-light.svg" />)}
         </div>
     )
 };
