@@ -47,7 +47,7 @@ const QrScannerModal = () => {
                 </div>
             ) : (
                 <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                    <DialogTrigger>
+                    <DialogTrigger asChild>
                         <Button
                             onClick={() => {
                                 setScannerActive(true);
