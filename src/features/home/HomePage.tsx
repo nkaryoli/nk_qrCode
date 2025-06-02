@@ -9,7 +9,7 @@ const HomePage = () => {
 	const { theme } = useTheme();
 	return (
 		<div className="w-full space-y-40">
-			<section className={`w-full background-hero h-screen relative 
+			<section className={`w-full background-hero h-full min-h-screen relative
 				${theme === "dark" ? "bg-[url('/hero-dark.svg')]" : "bg-[url('/hero-light.svg')]"}`
 			}>
 				<HeroSection />
