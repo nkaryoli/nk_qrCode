@@ -152,3 +152,9 @@ body {
     width: 150px;
     opacity: 0.3 !important;
 }
+
+@media (max-width: 978px) {
+  .background-hero{
+    background: none;
+  }  
+}
