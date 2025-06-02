@@ -14,17 +14,7 @@ const Navbar = () => {
   return (
     <NavigationMenu className="flex items-center opac">      
       <NavigationMenuList className='space-x-6'>
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild>
-            <HashLink
-              smooth
-              to="/#qr-reader"
-              className="hover:text-primary transition-colors duration-200"
-            >
-              QR Reader
-            </HashLink>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
+        
         {navigationLinks.map(({ to, label }) => (
           <NavigationMenuItem key={to}>
             <NavigationMenuLink asChild>
@@ -40,7 +30,17 @@ const Navbar = () => {
               </NavigationMenuLink>
           </NavigationMenuItem>
         ))}
-        
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild>
+            <HashLink
+              smooth
+              to="/#qr-reader"
+              className="hover:text-primary transition-colors duration-200"
+            >
+              QR Reader
+            </HashLink>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
         <Button 
           variant={"sunset"}
           onClick={handleClick}
