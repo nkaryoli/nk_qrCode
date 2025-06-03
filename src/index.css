@@ -77,6 +77,9 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
 body { 
   margin: 0; 
   padding: 0; 
@@ -158,7 +161,6 @@ body {
     opacity: 0.3 !important;
 }
 
-.cl-footer,
 .cl-internal-1dauvpw,
 .cl-internal-13u79ez {
     display: none;
@@ -171,6 +173,10 @@ body {
 .cl-internal-2iusy0 {
   font-weight: bold;
   font-size: 16px;
+}
+
+.cl-card {
+  border-radius: 0;
 }
 
 @media (max-width: 978px) {
