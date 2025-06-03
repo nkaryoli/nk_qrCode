@@ -1,14 +1,7 @@
 import { useTheme } from '@/hooks/theme-provider';
-import { ClerkLoaded, SignIn } from '@clerk/clerk-react';
-import { ClerkLoading } from '@clerk/clerk-react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { SignIn } from '@clerk/clerk-react';
+import { motion } from 'framer-motion';
 
-declare global {
-    interface Window {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        Clerk: any;
-    }
-}
 export function SignInPage() {
     const { theme } = useTheme();
     return (
@@ -33,62 +26,48 @@ export function SignInPage() {
                     className="absolute top-2 left-2 w-full h-full bg-gradient-to-br from-primary via-accent to-secondary rounded-2xl z-0"
                 />
                 <div className="relative rounded-2xl overflow-hidden z-10 ">
-                    <AnimatePresence mode="wait">
-                        <ClerkLoading>
-							<motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.2 }}
-                            >
-                                {/* <SignInSkeleton /> */}
-                            </motion.div>
-                        </ClerkLoading>
-                        <ClerkLoaded>
-                            <motion.div
-								initial={{ opacity: 0, x: -20, y: -20 }}
-                                animate={{ opacity: 1, x: 0, y: 0 }}
-                                transition={{
-                                    duration: 0.5,
-                                    ease: "easeOut", 
-									delay: 0.5
-                                }}
-							>
-                                <SignIn
-                                    appearance={{
-                                        variables: {
-                                            colorPrimary: '#FF5E1F',
-                                            colorBackground: '#ffffff',
-                                            colorTextOnPrimaryBackground:
-                                                '#ffffff',
-                                            borderRadius: '8px',
-                                            colorText: '#2A2A2A',
-                                        },
-                                        elements: {
-                                            formButtonPrimary: {
-                                                height: '40px',
-                                            },
-                                            socialButtonsIconButton: {
-                                                backgroundColor: '#FFEEDD',
-                                                borderColor: '#FF5E1F',
-                                                outlineColor: '#FF5E1F',
-                                            },
-                                            dividerLine: {
-                                                color: '#FFEEDD',
-                                            },
-                                            headerTitle: {
-                                                textDecorationColor: '#FF5E1F',
-                                                fontSize: '24px',
-                                            },
-                                            headerSubtitle: {
-                                                display: 'none',
-                                            },
-                                        },
-                                    }}
-                                />
-                            </motion.div>
-                        </ClerkLoaded>
-                    </AnimatePresence>
+					<motion.div
+						initial={{ opacity: 0, x: -20, y: -20 }}
+						animate={{ opacity: 1, x: 0, y: 0 }}
+						transition={{
+							duration: 0.5,
+							ease: "easeOut", 
+							delay: 0.5
+						}}
+					>
+						<SignIn
+							appearance={{
+								variables: {
+									colorPrimary: '#FF5E1F',
+									colorBackground: '#ffffff',
+									colorTextOnPrimaryBackground:
+										'#ffffff',
+									borderRadius: '8px',
+									colorText: '#2A2A2A',
+								},
+								elements: {
+									formButtonPrimary: {
+										height: '40px',
+									},
+									socialButtonsIconButton: {
+										backgroundColor: '#FFEEDD',
+										borderColor: '#FF5E1F',
+										outlineColor: '#FF5E1F',
+									},
+									dividerLine: {
+										color: '#FFEEDD',
+									},
+									headerTitle: {
+										textDecorationColor: '#FF5E1F',
+										fontSize: '24px',
+									},
+									headerSubtitle: {
+										display: 'none',
+									},
+								},
+							}}
+						/>
+					</motion.div>
                 </div>
             </div>
         </section>
