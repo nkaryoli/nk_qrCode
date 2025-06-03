@@ -18,7 +18,7 @@ export function SignInPage() {
                 Welcome Back!
             </motion.h1>
 
-            <div className="relative inline-block w-[450px] h-[390px]">
+            <div className="relative inline-block md:w-[450px] md:h-[447px]">
                 <motion.div
                     initial={{ opacity: 0, x: -10, y: -10 }}
                     animate={{ opacity: 1, x: 0, y: 0 }}
@@ -36,6 +36,7 @@ export function SignInPage() {
 						}}
 					>
 						<SignIn
+							signUpUrl='/sign-up'
 							appearance={{
 								variables: {
 									colorPrimary: '#FF5E1F',
@@ -50,7 +51,7 @@ export function SignInPage() {
 										height: '40px',
 									},
 									socialButtonsIconButton: {
-										backgroundColor: '#FFEEDD',
+										backgroundColor: '#FFF9F5',
 										borderColor: '#FF5E1F',
 										outlineColor: '#FF5E1F',
 									},
@@ -64,6 +65,12 @@ export function SignInPage() {
 									headerSubtitle: {
 										display: 'none',
 									},
+									footer: {
+										background:'#ffffff',
+									},
+									card: {
+										borderBottom: 'none',
+									}
 								},
 							}}
 						/>
