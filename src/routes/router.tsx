@@ -5,6 +5,7 @@ import FAQPage from "@/features/faq/FAQPage";
 import HomePage from "@/features/home/HomePage";
 import ReaderPage from "@/features/reader/ReaderPage";
 import { SignInPage } from "@/features/signIn/SignInPage";
+import SignUpPage from "@/features/signUp/SignUpPage";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -18,6 +19,10 @@ export const router = createBrowserRouter([
 			{
 				path: "/sign-in",
 				element: <SignInPage />,
+			},
+			{
+				path: "/sign-up",
+				element: <SignUpPage />,
 			},
 			{
 				path: "/customize-qr",
