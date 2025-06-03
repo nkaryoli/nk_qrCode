@@ -4,7 +4,7 @@ import CustomizePage from "@/features/custom/CustomizePage";
 import FAQPage from "@/features/faq/FAQPage";
 import HomePage from "@/features/home/HomePage";
 import ReaderPage from "@/features/reader/ReaderPage";
-import { SignInPage } from "@/features/SignInPage";
+import { SignInPage } from "@/features/signIn/SignInPage";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
