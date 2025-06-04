@@ -1,18 +1,16 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { Button } from '@/components/ui/button';
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from '@/components/ui/navigation-menu';
 import { navigationLinks } from '@/constants';
 
-const Navbar = () => {
-  const navigate = useNavigate();
+interface NavbarProps {
+  handleClick: () => void;
+}
 
-  const handleClick = () => {
-      navigate('/customize-qr');
-  }
-  
+const Navbar: React.FC<NavbarProps> = ({ handleClick }) => {
   return (
-    <NavigationMenu className="flex items-center opac">      
+    <NavigationMenu className="flex items-center font-semibold">      
       <NavigationMenuList className='space-x-6'>
         
         {navigationLinks.map(({ to, label }) => (
