@@ -1,6 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import AboutPage from "@/features/about/AboutPage";
 import CustomizePage from "@/features/custom/CustomizePage";
+import DashboardPage from "@/features/dashboard/DashboardPage";
 import FAQPage from "@/features/faq/FAQPage";
 import HomePage from "@/features/home/HomePage";
 import ReaderPage from "@/features/reader/ReaderPage";
@@ -39,7 +40,11 @@ export const router = createBrowserRouter([
 			{
 				path: "/custom-qr",
 				element: <AboutPage />,
-			}
+			},
+			{
+				path: "/dashboard",
+				element: <DashboardPage />,
+			},
 		]
 	}
 ])
