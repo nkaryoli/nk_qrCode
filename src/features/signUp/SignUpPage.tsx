@@ -1,99 +1,91 @@
-import { ClerkLoaded, ClerkLoading, SignUp } from '@clerk/clerk-react';
+import { ClerkLoading, SignUp } from '@clerk/clerk-react';
 import { motion } from 'framer-motion';
-import { useTheme } from '@/hooks/theme-provider';
 import { CircleLoader } from 'react-spinners';
+import { QrCode } from 'lucide-react';
 
 const SignUpPage = () => {
-    const { theme } = useTheme();
+
 
     return (
-        <section
-            className={`w-full h-full min-h-screen flex flex-col items-center justify-center pt-32 pb-36 md:pb-52 lg:pb-11 gap-9 background-signIn
-				${theme === 'dark' ? "bg-[url('/bg-signUp.svg')]" : "bg-[url('/bg-signUp.svg')]"}`}
-        >
-            <div className="space-y-4">
-                <motion.h1
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="text-4xl md:text-5xl font-extrabold font-subtitle text-center text-balance"
-                >
-                    Welcome to NK-QRCode!
-                </motion.h1>
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.5 }}
-                    className="text-center text-lg"
-                >
-                    Please enter your details.
-                </motion.p>
-            </div>
-            <div className="relative inline-block h-[627px] md:w-[450px] sm:h-[538px]">
-                <ClerkLoading>
-                    <CircleLoader
-                        className="absolute -right-1/2 top-[20vh]"
-                        color="#FF5E1F"
+        <section className="w-full min-h-screen flex items-center justify-center bg-background py-24 px-3">
+            <div className="flex flex-col lg:flex-row-reverse w-full max-w-xl lg:max-w-6xl mx-auto lg:shadow-xl rounded-xl lg:overflow-hidden">
+                <div className="w-full lg:max-w-[55%] flex flex-col items-center lg:items-start lg:pt-24 py-11 p-3 lg:p-16 relative">
+                    <div className="w-full text-center mb-6">
+                        <h1 className="text-4xl md:text-5xl font-extrabold font-subtitle mb-6 text-primary">
+                            Hello friend!
+                        </h1>
+                        <p>We are glad you are joining us.</p>
+                        <p>
+                            Please provide the information to register<br/> your {' '}
+                            <strong className="text-primary text-lg ">
+                                NK-QRcode
+                            </strong>{' '}
+                            account.
+                        </p>
+                    </div>
+                    <div className="relative w-full flex justify-center">
+
+                        <img src="/blob.svg" className="w-[400px]" />
+                    </div>
+                    <QrCode
+                        size={'35%'}
+                        className="-rotate-45 absolute -right-20 -top-11 text-chart-2"
                     />
-                </ClerkLoading>
-                <ClerkLoaded>
+                </div>
+
+                <div className="flex items-center justify-center w-full lg:w-[45%] lg:min-w-[400px] lg:bg-chart-2 lg:px-24 relative overflow-hidden">
+                    <ClerkLoading>
+                        <CircleLoader className="" color="#ffffff" />
+                    </ClerkLoading>
+                    <QrCode
+                        size={'32%'}
+                        className="-rotate-12 absolute -left-14 -bottom-14 text-white/50"
+                    />
                     <motion.div
-                        initial={{ opacity: 0, x: -10, y: -10 }}
-                        animate={{ opacity: 1, x: 0, y: 0 }}
-                        transition={{ duration: 0.5, delay: 1.5 }}
-                        className="absolute top-2 left-2 w-full h-full bg-gradient-to-br from-primary via-accent to-secondary rounded-2xl z-0"
-                    />
-                    <div className="relative rounded-2xl overflow-hidden z-10 ">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20, y: -20 }}
-                            animate={{ opacity: 1, x: 0, y: 0 }}
-                            transition={{
-                                duration: 0.5,
-                                ease: 'easeOut',
-                                delay: 0.5,
-                            }}
-                        >
+                        className="w-fit h-[687px] sm:h-[600px] lg:h-fit bg-chart-2 rounded-xl"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                            duration: 0.5,
+                            ease: 'easeOut',
+                            delay: 0.5,
+                        }}
+                    >
                             <SignUp
                                 signInUrl="/sign-in"
                                 appearance={{
                                     variables: {
-                                        colorPrimary: '#FF5E1F',
-                                        colorBackground: '#ffffff',
-                                        colorTextOnPrimaryBackground: '#ffffff',
-                                        borderRadius: '8px',
-                                        colorText: '#2A2A2A',
+                                        colorPrimary: '#ffffff',
+                                        colorBackground: '#FF5E1F00',
+                                        colorTextOnPrimaryBackground: '#FF5E1F',
+                                        colorText: '#ffffff',
+                                        fontFamily: 'nunito',
+                                        fontSize: '16px',
                                     },
                                     elements: {
-                                        formButtonPrimary: {
-                                            height: '40px',
-                                        },
-                                        socialButtonsIconButton: {
-                                            backgroundColor: '#FFF9F5',
-                                            borderColor: '#FF5E1F',
-                                            outlineColor: '#FF5E1F',
-                                        },
-                                        dividerLine: {
-                                            color: '#FFEEDD',
-                                        },
-                                        headerTitle: {
-                                            textDecorationColor: '#FF5E1F',
-                                            fontSize: '24px',
-                                        },
-                                        headerSubtitle: {
-                                            display: 'none',
-                                        },
-                                        footer: {
-                                            background: '#ffffff',
-                                        },
-                                        card: {
-                                            borderBottom: 'none',
-                                        },
+                                    cardBox: 'shadow-none w-[100]',
+                                    formButtonPrimary: { height: '40px' },
+                                    socialButtonsIconButton:
+                                        'bg-white/10 border-primary',
+                                    headerTitle:
+                                        "text-[0px] before:content-['Create_account'] before:text-4xl before:text-white ",
+                                    headerSubtitle: 'hidden',
+                                    footer: 'bg-none',
+                                    card: {
+                                        borderBottom: 'none',
+                                        boxShadow: 'none',
                                     },
+                                    footerActionText: 'text-white',
+                                    formFieldInput:
+                                        'bg-white/90 text-foreground placeholder:text-gray-400',
+                                    formFieldLabel: '',
+                                    footerActionLink:
+                                        'text-secondary font-bold ',
+                                },
                                 }}
                             />
                         </motion.div>
-                    </div>
-                </ClerkLoaded>
+                </div>
             </div>
         </section>
     );
