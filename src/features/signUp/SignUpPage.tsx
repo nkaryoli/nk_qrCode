@@ -8,7 +8,7 @@ const SignUpPage = () => {
 
     return (
         <section
-            className={`w-full h-full min-h-screen flex flex-col items-center justify-center pt-32 pb-32 md:pb-11 gap-9 background-signIn
+            className={`w-full h-full min-h-screen flex flex-col items-center justify-center pt-32 pb-36 md:pb-52 lg:pb-11 gap-9 background-signIn
 				${theme === 'dark' ? "bg-[url('/bg-signUp.svg')]" : "bg-[url('/bg-signUp.svg')]"}`}
         >
             <div className="space-y-4">
