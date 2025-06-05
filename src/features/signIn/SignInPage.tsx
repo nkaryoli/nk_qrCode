@@ -1,89 +1,92 @@
-import { useTheme } from '@/hooks/theme-provider';
-import { ClerkLoaded, ClerkLoading, SignIn } from '@clerk/clerk-react';
+import { ClerkLoading, SignIn } from '@clerk/clerk-react';
 import { motion } from 'framer-motion';
+import { QrCode } from 'lucide-react';
 import { CircleLoader } from 'react-spinners';
 
 export function SignInPage() {
-    const { theme } = useTheme();
     return (
-        <section
-            className={`w-full h-full min-h-screen flex flex-col items-center justify-center pt-32 pb-40 sm:pb-48 md:pb-64 lg:pb-32 gap-9 background-signIn relative
-				${theme === 'dark' ? "bg-[url('/bg-signIn.svg')]" : "bg-[url('/bg-signIn.svg')]"}`}
-        >
-            <motion.h1
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-4xl md:text-5xl font-extrabold font-subtitle"
-            >
-                Welcome Back!
-            </motion.h1>
-
-            <div className="relative inline-block h-[537px] md:w-[450px] sm:h-[447px]">
-                <ClerkLoading>
-                    <CircleLoader
-                        className="absolute -right-1/2 top-[20vh]"
-                        color="#FF5E1F"
-                    />
-                </ClerkLoading>
-                <ClerkLoaded>
-                    <motion.div
-                        initial={{ opacity: 0, x: -10, y: -10 }}
-                        animate={{ opacity: 1, x: 0, y: 0 }}
-                        transition={{ duration: 0.5, delay: 1.5 }}
-                        className="absolute top-2 left-2 w-full h-full bg-gradient-to-br from-primary via-accent to-secondary rounded-2xl z-0"
-                    />
-                    <div className="relative rounded-2xl overflow-hidden z-10 ">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20, y: -20 }}
-                            animate={{ opacity: 1, x: 0, y: 0 }}
-                            transition={{
-                                duration: 0.5,
-                                ease: 'easeOut',
-                                delay: 0.5,
-                            }}
-                        >
-                            <SignIn
-                                signUpUrl="/sign-up"
-                                appearance={{
-                                    variables: {
-                                        colorPrimary: '#FF5E1F',
-                                        colorBackground: '#ffffff',
-                                        colorTextOnPrimaryBackground: '#ffffff',
-                                        borderRadius: '8px',
-                                        colorText: '#2A2A2A',
-                                    },
-                                    elements: {
-                                        formButtonPrimary: {
-                                            height: '40px',
-                                        },
-                                        socialButtonsIconButton: {
-                                            backgroundColor: '#FFF9F5',
-                                            borderColor: '#FF5E1F',
-                                            outlineColor: '#FF5E1F',
-                                        },
-                                        dividerLine: {
-                                            color: '#FFEEDD',
-                                        },
-                                        headerTitle: {
-                                            textDecorationColor: '#FF5E1F',
-                                            fontSize: '24px',
-                                        },
-                                        headerSubtitle: {
-                                            display: 'none',
-                                        },
-                                        footer: {
-                                            background: '#ffffff',
-                                        },
-                                        card: {
-                                            borderBottom: 'none',
-                                        },
-                                    },
-                                }}
-                            />
-                        </motion.div>
+        <section className="w-full min-h-screen flex items-center justify-center bg-background py-24 px-3">
+            <div className="flex flex-col lg:flex-row w-full max-w-xl lg:max-w-6xl mx-auto lg:shadow-xl rounded-xl lg:overflow-hidden">
+                <div className="w-full lg:max-w-[55%] flex flex-col items-center lg:items-start lg:pt-24 py-11 p-3 lg:p-16 relative">
+                    <div className="w-full text-center">
+                        <h1 className="text-4xl md:text-5xl font-extrabold font-subtitle mb-6 text-primary">
+                            Welcome Back!
+                        </h1>
+                        <p>We are very excited to see you.</p>
+                        <p>
+                            Please Sign into your{' '}
+                            <strong className="text-primary text-lg ">
+                                NK-QRcode
+                            </strong>{' '}
+                            account
+                        </p>
                     </div>
-                </ClerkLoaded>
+                    <div className="relative w-fit">
+                        <img
+                            src="/qrCode.png"
+                            className="rounded-xl w-[25%] mt-6 block m-auto absolute left-[55%]"
+                        />
+                        <img src="/abstract.svg" className="w-[400px]" />
+                    </div>
+                    <QrCode
+                        size={'35%'}
+                        className="-rotate-45 absolute -left-20 -top-11 text-chart-5"
+                    />
+                </div>
+
+                <div className="flex items-center justify-center w-full lg:w-[45%] lg:min-w-[400px] lg:bg-chart-5 lg:px-24 relative overflow-hidden">
+                    <ClerkLoading>
+                        <CircleLoader className="" color="#ffffff" />
+                    </ClerkLoading>
+                    <QrCode
+                        size={'32%'}
+                        className="-rotate-12 absolute -right-14 -bottom-14 text-white/50"
+                    />
+                    <motion.div
+                        className="w-fit h-[537px] lg:h-fit bg-chart-5 rounded-xl"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                            duration: 0.5,
+                            ease: 'easeOut',
+                            delay: 0.5,
+                        }}
+                    >
+                        <SignIn
+                            signUpUrl="/sign-up"
+                            appearance={{
+                                variables: {
+                                    colorPrimary: '#ffffff',
+                                    colorBackground: '#FF5E1F00',
+                                    colorTextOnPrimaryBackground: '#FF5E1F',
+                                    colorText: '#ffffff',
+                                    fontFamily: 'nunito',
+                                    fontSize: '16px',
+                                },
+                                elements: {
+                                    cardBox: 'shadow-none w-[100]',
+                                    formButtonPrimary: { height: '40px' },
+                                    socialButtonsIconButton:
+                                        'bg-white/10 border-primary',
+                                    headerTitle:
+                                        "text-[0px] before:content-['Sign_in'] before:text-4xl before:text-white ",
+                                    headerSubtitle: 'hidden',
+                                    footer: 'bg-none',
+                                    card: {
+                                        borderBottom: 'none',
+                                        boxShadow: 'none',
+                                    },
+                                    footerActionText: 'text-white',
+                                    formFieldInput:
+                                        'bg-white/90 text-foreground placeholder:text-gray-400',
+                                    formFieldLabel: '',
+                                    footerActionLink:
+                                        'text-secondary font-bold ',
+                                },
+                            }}
+                        />
+                    </motion.div>
+                </div>
             </div>
         </section>
     );

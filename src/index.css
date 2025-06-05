@@ -167,7 +167,7 @@ body {
 }
 
 .cl-dividerLine {
-  color: '#FFEEDD' !important;
+  background-color: rgba(250, 250, 250, 0.5) !important;
 }
 
 .cl-internal-2iusy0 {
@@ -177,6 +177,48 @@ body {
 
 .cl-card {
   border-radius: 0;
+}
+
+.cl-formButtonPrimary {
+  background-image: linear-gradient(to right, #FF5E1F, #FF2E63, #FFD700);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.cl-socialButtonsIconButton {
+  border: 1px solid white !important;
+  height: 40px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: none !important;
+}
+.cl-socialButtonsIconButton:hover {
+  background-color: #fff9f586;
+  transform: scale(1.07);
+}
+
+#identifier-field{
+  box-shadow: none;
+  border: 1px solid white !important;
+  height: 40px;
+}
+
+.cl-formButtonPrimary:hover {
+  background-image: linear-gradient(to right, #FF2E63,  #FFD700, #FF5E1F); 
+  transform: scale(1.02);
+  color: black;
+}
+
+.cl-internal-6wf04v[data-variant="solid"][data-color="primary"] {
+    box-shadow: rgb(255, 255, 255, 0) 0px 0px 0px 1px, rgba(255, 255, 255, 0) 0px 0px 0px 0px inset, rgba(34, 42, 53, 0.2) 0px 2px 3px 0px, rgba(0, 0, 0, 0.24) 0px 1px 1px 0px;
+}
+.cl-dividerText{
+  color: white !important;
+  font-size: 16px;
+}
+
+
+.icon-bg {
+  transform: rotate(25deg);
 }
 
 @media (max-width: 978px) {
