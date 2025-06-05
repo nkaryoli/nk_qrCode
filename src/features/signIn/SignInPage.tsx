@@ -7,7 +7,7 @@ export function SignInPage() {
     const { theme } = useTheme();
     return (
         <section
-            className={`w-full h-full min-h-screen flex flex-col items-center justify-center py-32 gap-9 background-signIn relative
+            className={`w-full h-full min-h-screen flex flex-col items-center justify-center pt-32 pb-40 sm:pb-48 md:pb-64 lg:pb-32 gap-9 background-signIn relative
 				${theme === 'dark' ? "bg-[url('/bg-signIn.svg')]" : "bg-[url('/bg-signIn.svg')]"}`}
         >
             <motion.h1
