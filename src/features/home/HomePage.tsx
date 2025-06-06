@@ -1,4 +1,3 @@
-import { useTheme } from "@/hooks/theme-provider";
 import HeroSection from "./components/HeroSection"
 import HowItWorks from "./components/HowItWorks";
 import WhyNK from "./components/WhyNKCode";
@@ -6,14 +5,11 @@ import ReviewCarousel from "./components/ReviewCarousel";
 import QRReader from "./components/qrReader/QRReader";
 
 const HomePage = () => {
-	const { theme } = useTheme();
 	return (
 		<div className="w-full space-y-40">
-			<section className={`w-full background-hero h-full min-h-screen relative
-				${theme === "dark" ? "bg-[url('/hero-dark.svg')]" : "bg-[url('/hero-light.svg')]"}`
-			}>
-				<HeroSection />
-			</section>
+
+			<HeroSection />
+
 			<WhyNK/>
 			<HowItWorks />
 			<ReviewCarousel/>

@@ -22,7 +22,7 @@
     --muted:               #FFEEDD; /* melocotón claro */
     --muted-foreground:    #6D6D6D;
 
-    --accent:              #FF2E63; /* rosa intenso */
+    --accent:              rgb(255, 46, 99); /* rosa intenso */
     --accent-foreground:   #FFFFFF;
 
     --destructive:         #E63946;
@@ -32,13 +32,13 @@
     --input:             #FFD4B8;
     --ring:              #FF5E1F;
 
-    --chart-1: #FF5E1F;
+    --chart-1: #fc4700;
     --chart-2: #fc4c78;
     --chart-3: #ff7b9c;
-    --chart-4: #A162FF;
-    --chart-5: #b483ff;
+    --chart-4: #a162ff;
+    --chart-5: rgb(180, 131, 255);
 
-    --radius: 0.6rem;
+    --radius: 1.3rem;
   }
 
   .dark {
@@ -225,4 +225,82 @@ body {
   .background-hero{
     background: none;
   }  
+}
+
+.background-grid{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background:
+    linear-gradient(to right, rgb(180, 131, 255, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(180, 131, 255, 0.3) 1px, transparent 1px);
+  background-size: 350px 350px;
+  background-position: center top;
+  z-index: -2;
+}
+
+.background-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #FFF9F5 40%, #fff9f500);
+  pointer-events: none;
+  z-index: -2;
+}
+
+.background-grid:before {
+  content: '';
+  position: absolute;
+  top: 300px;
+  left: -30%;
+  width: 130%;
+  height: 130%;
+  background: radial-gradient(circle, rgba(255, 94, 31, 0.7), transparent, transparent, transparent);
+}
+
+.background-grid:after {
+  content: '';
+  position: absolute;
+  top: 300px;
+  left: 0%;
+  width: 130%;
+  height: 130%;
+  background: radial-gradient(circle, rgba(161, 98, 255, 0.7), transparent, transparent, transparent);
+}
+
+.background-blur {
+  position: absolute;
+  top: 300px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle, rgba(255, 255, 255), transparent, transparent, transparent, transparent);
+}
+
+.background-blur::before {
+  content: '';
+  width: 100%;
+  height: 1150px;
+  border: 1px solid #a162ff4b;
+  position: absolute;
+  top: 230px;
+  left: 60vw;
+  border-radius: 180px;
+}
+
+.background-blur::after {
+  content: '';
+  width: 100%;
+  height: 1150px;
+  border: 1px solid #a162ff4b;
+  position: absolute;
+  top: 230px;
+  right: 60vw;
+  border-radius: 180px;
 }
