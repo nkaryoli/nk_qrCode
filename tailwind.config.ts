@@ -17,14 +17,7 @@ const config: Config = {
 		extend: {
 			fontFamily: {
 				header: [
-					'Comfortaa',
-					'system-ui',
-					'-apple-system',
-					'BlinkMacSystemFont',
-					'sans-serif'
-				],
-				subtitle: [
-					'Nunito',
+					'Work Sans',
 					'system-ui',
 					'-apple-system',
 					'BlinkMacSystemFont',
@@ -32,10 +25,7 @@ const config: Config = {
 				],
 				body: [
 					'Quicksand',
-					'system-ui',
-					'-apple-system',
-					'BlinkMacSystemFont',
-					'sans-serif'
+				
 				]
 			},
 			borderRadius: {
