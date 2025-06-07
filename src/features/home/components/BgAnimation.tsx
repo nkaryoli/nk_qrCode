@@ -18,67 +18,60 @@ const BgAnimation = ({ targetRef }: BgAnimationProps) => {
         offset: ['start end', 'end start'],
     });
 
-    const scale = useTransform(scrollYProgress, [0, 1], [1.4, 0]);
+    const scale = useTransform(scrollYProgress, [0, 0.6], [1.4, 0]);
+    const opacity = useTransform(scrollYProgress, [0.3, 0.35], [1, 0]);
 
-    const opacity = useTransform(scrollYProgress, [0, 0.4, 0.7], [1, 1, 0]);
     const icon1X = useTransform(
         scrollYProgress,
-        [0, 0.4, 1],
-        [-1000, window.innerWidth / 3, window.innerWidth]
+        [0, 0.2, 1],
+        [-1100, window.innerWidth / 3, window.innerWidth]
     );
     const icon1Y = useTransform(
         scrollYProgress,
         [0, 1],
-        [-32, window.innerHeight - 180]
+        [-0, window.innerHeight - 180]
     );
 
     const icon2X = useTransform(
         scrollYProgress,
         [0, 0.4, 1],
-        [-500, (window.innerWidth * 2) / 5, (window.innerWidth * 3) / 5]
+        [-520, window.innerWidth, (window.innerWidth * 3) / 5]
     );
     const icon2Y = useTransform(
         scrollYProgress,
         [0, 1],
-        [600, window.innerHeight / 5]
+        [400, window.innerHeight / 5]
     );
 
     const icon3X = useTransform(
         scrollYProgress,
-        [0, 0.5, 1],
-        [-600, window.innerWidth / 3, window.innerWidth]
+        [0, 0.3, 1],
+        [-450, window.innerWidth, window.innerWidth * 2]
     );
     const icon3Y = useTransform(
         scrollYProgress,
         [0, 1],
-        [600, window.innerHeight - 700]
+        [550, window.innerHeight - 700]
     );
 
-    const icon4X = useTransform(
-        scrollYProgress,
-        [0, 0.4, 1],
-        [-1400, 500, 1000]
-    );
-    const icon4Y = useTransform(scrollYProgress, [0, 1], [-322, 1000]);
+    const icon4X = useTransform(scrollYProgress, [0, 0.3, 1], [-700, 700, 800]);
+    const icon4Y = useTransform(scrollYProgress, [0, 1], [-72, 0]);
 
-    const icon5X = useTransform(
-        scrollYProgress,
-        [0, 0.5, 1],
-        [-100, 700, 1200]
-    );
-    const icon5Y = useTransform(scrollYProgress, [0, 1], [-62, 500]);
+    const icon5X = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1100, 1300]);
+    const icon5Y = useTransform(scrollYProgress, [0, 1], [-22, 500]);
 
     const icon6X = useTransform(
         scrollYProgress,
-        [0, 0.4, 1],
-        [-1000, 500, 800]
+        [0, 0.3, 1],
+        [-800, 1100, 1300]
     );
     const icon6Y = useTransform(scrollYProgress, [0, 1], [-82, 500]);
 
     const classIcon =
         'fixed bg-white/80 p-2 shadow-xl shadow-gray-200 rounded-sm text-chart-5 hidden lg:block';
+
     return (
-        <div>
+        <>
             <motion.div
                 style={{
                     position: 'fixed',
@@ -91,7 +84,7 @@ const BgAnimation = ({ targetRef }: BgAnimationProps) => {
                 <QrCode
                     size={90}
                     strokeWidth={1.1}
-                    className={`${classIcon} -rotate-[23deg]`}
+                    className={`${classIcon} -rotate-[23deg] -left-16`}
                 />
             </motion.div>
             <motion.div
@@ -106,7 +99,7 @@ const BgAnimation = ({ targetRef }: BgAnimationProps) => {
                 <ScanHeart
                     strokeWidth={1.2}
                     size={70}
-                    className={`${classIcon} -rotate-[20deg]`}
+                    className={`${classIcon} -rotate-[20deg] -left-64`}
                 />
             </motion.div>
             <motion.div
@@ -121,7 +114,7 @@ const BgAnimation = ({ targetRef }: BgAnimationProps) => {
                 <Sparkles
                     strokeWidth={1}
                     size={80}
-                    className={`${classIcon} -rotate-[12deg]`}
+                    className={`${classIcon} -rotate-[12deg] -left-80`}
                 />
             </motion.div>
             <motion.div
@@ -150,8 +143,8 @@ const BgAnimation = ({ targetRef }: BgAnimationProps) => {
             >
                 <Wand
                     strokeWidth={1}
-                    size={65}
-                    className={`${classIcon} rotate-12 -right-20 -top-0`}
+                    size={75}
+                    className={`${classIcon} rotate-12 -right-0 top-6`}
                 />
             </motion.div>
             <motion.div
@@ -165,11 +158,11 @@ const BgAnimation = ({ targetRef }: BgAnimationProps) => {
             >
                 <ScanLine
                     strokeWidth={1.3}
-                    size={70}
-                    className={`${classIcon} rotate-12 right-56 top-96 text-chart-5`}
+                    size={83}
+                    className={`${classIcon} rotate-12 right-6 top-96 text-chart-5`}
                 />
             </motion.div>
-        </div>
+        </>
     );
 };
 
