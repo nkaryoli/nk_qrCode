@@ -5,7 +5,7 @@
 @layer base {
   :root {
     --background:          #FFF9F5;
-    --foreground:          #2A2A2A;
+    --foreground:          #4b4b4b;
 
     --card:                #FFFFFF;
     --card-foreground:     #2A2A2A;
@@ -227,80 +227,62 @@ body {
   }  
 }
 
-.background-grid{
+.bg_grid{
   position: absolute;
-  top: 0;
+  top: 130px;
   width: 100%;
   height: 100%;
   pointer-events: none;
   background:
-    linear-gradient(to right, rgb(180, 131, 255, 0.4) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(180, 131, 255, 0.3) 1px, transparent 1px);
-  background-size: 350px 350px;
+    linear-gradient(to right, rgb(180, 131, 255, 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(180, 131, 255, 0.5) 1px, transparent 1px);
+  background-size: 300px 300px;
   background-position: center top;
   z-index: -2;
 }
 
-.background-filter {
+.bg_grid:before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, #FFF9F5 40%, #fff9f500);
+  background: linear-gradient(to bottom, #FFF9F5 40%, #fcfcfc00);
   pointer-events: none;
   z-index: -2;
 }
 
-.background-grid:before {
-  content: '';
+.bg_geometric {
   position: absolute;
-  top: 300px;
-  left: -30%;
-  width: 130%;
-  height: 130%;
-  background: radial-gradient(circle, rgba(255, 94, 31, 0.7), transparent, transparent, transparent);
-}
-
-.background-grid:after {
-  content: '';
-  position: absolute;
-  top: 300px;
-  left: 0%;
-  width: 130%;
-  height: 130%;
-  background: radial-gradient(circle, rgba(161, 98, 255, 0.7), transparent, transparent, transparent);
-}
-
-.background-blur {
-  position: absolute;
-  top: 300px;
+  top: 450px;
   left: 0%;
   width: 100%;
   height: 100%;
   pointer-events: none;
   z-index: -1;
-  background: radial-gradient(circle, rgba(255, 255, 255), transparent, transparent, transparent, transparent);
+  background: radial-gradient(circle, #FFF9F5, transparent, transparent);
+  overflow: hidden;
 }
 
-.background-blur::before {
+.bg_geometric::before {
   content: '';
   width: 100%;
-  height: 1150px;
+  height: 900px;
   border: 1px solid #a162ff4b;
   position: absolute;
-  top: 230px;
+  top: 200px;
   left: 60vw;
   border-radius: 180px;
 }
 
-.background-blur::after {
+.bg_geometric::after {
   content: '';
   width: 100%;
-  height: 1150px;
+  height: 900px;
   border: 1px solid #a162ff4b;
   position: absolute;
-  top: 230px;
+  top: 200px;
   right: 60vw;
   border-radius: 180px;
-}
+} 
