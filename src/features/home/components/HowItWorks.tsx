@@ -1,83 +1,28 @@
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import StepsCard from './StepsCard';
 
 const HowItWorks = () => {
-    const navigate = useNavigate();
-
-    const handleGetStarted = () => {
-        navigate('/customize-qr');
-    };
-
     return (
-        <section className="px-[10vw]">
-            <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
-                <p className="text-lg text-muted-foreground max-w-[800px] mx-auto">
-                    Get started in minutes with three simple steps process.
-                </p>
-            </div>
-
-            <div className="grid lg:grid-cols-3 gap-8">
-                <Card className='rounded-ss-[70px] rounded-ee-[70px] p-4'>
-                    <CardHeader className='flex items-center gap-3 text-center'>
-                        <CardTitle>
-                            <span className="text-primary w-16 h-16  flex items-center justify-center text-4xl font-bold ">1</span>
-                        </CardTitle>
-                        <CardDescription>
-                            <h3 className="text-xl font-bold mb-2">Lorem ipsum dolor sit amet</h3>
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <p className='text-center'>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        </p>
-                    </CardContent>
-                </Card>
-
-                <Card className='rounded-ss-[70px] rounded-ee-[70px] p-4'>
-                    <CardHeader className='flex items-center gap-3 text-center'>
-                        <CardTitle>
-                            <span className="text-primary w-16 h-16  flex items-center justify-center text-4xl font-bold ">2</span>
-                        </CardTitle>
-                        <CardDescription>
-                            <h3 className="text-xl font-bold mb-2">Lorem ipsum dolor sit amet</h3>
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <p className='text-center'>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                    </CardContent>
-                </Card>
-                
-                <Card className='rounded-ss-[70px] rounded-ee-[70px] p-4'>
-                    <CardHeader className='flex items-center gap-3 text-center'>
-                        <CardTitle>
-                            <span className="text-primary w-16 h-16  flex items-center justify-center text-4xl font-bold ">2</span>
-                        </CardTitle>
-                        <CardDescription>
-                            <h3 className="text-xl font-bold mb-2">Lorem ipsum dolor sit amet</h3>
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <p className='text-center'>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        </p>
-                    </CardContent>
-                </Card>
-            </div>
-
-            <div className="mt-12 text-center">
-                <Button
-                    size="lg"
-                    className="bg-primary text-primary-foreground hover:bg-primary/90"
-                    onClick={handleGetStarted}
-                >
-                    Get Started Now
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+        <section className="w-full flex flex-col justify-center items-center py-24 backdrop-blur-sm bg-white space-y-4">
+            <h2 className="text-3xl md:text-5xl font-semibold">How It Works</h2>
+            <p className="text-lg max-w-[800px] mx-auto tracking-wid">
+                Get started in minutes with three simple steps process.
+            </p>
+            <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-3 gap-14 m-auto pt-9">
+                <StepsCard
+                    number={1}
+                    img={<img src="/step1.svg" className="w-64" />}
+                    text="Type the content you want as a QR-Code."
+                />
+                <StepsCard
+                    number={2}
+                    img={<img src="/step2.svg" className="w-60 mt-4" />}
+                    text="Customize it to your liking."
+                />
+                <StepsCard
+                    number={3}
+                    img={<img src="/step3.svg" className="w-60 mt-4" />}
+                    text="Download it or Save it for future use."
+                />
             </div>
         </section>
     );
