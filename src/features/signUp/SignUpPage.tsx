@@ -11,7 +11,7 @@ const SignUpPage = () => {
             <div className="flex flex-col lg:flex-row-reverse w-full max-w-xl lg:max-w-6xl mx-auto lg:shadow-xl rounded-xl lg:overflow-hidden">
                 <div className="w-full lg:max-w-[55%] flex flex-col items-center lg:items-start lg:pt-24 py-11 p-3 lg:p-16 relative">
                     <div className="w-full text-center mb-6">
-                        <h1 className="text-4xl md:text-5xl font-extrabold font-subtitle mb-6 text-primary">
+                        <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-primary">
                             Hello friend!
                         </h1>
                         <p>We are glad you are joining us.</p>
@@ -29,11 +29,11 @@ const SignUpPage = () => {
                     </div>
                     <QrCode
                         size={'35%'}
-                        className="-rotate-45 absolute -right-20 -top-11 text-chart-2"
+                        className="-rotate-45 absolute -right-20 -top-11 text-chart-5"
                     />
                 </div>
 
-                <div className="flex items-center justify-center w-full lg:w-[45%] lg:min-w-[400px] lg:bg-chart-2 lg:px-24 relative overflow-hidden">
+                <div className="flex items-center justify-center w-full lg:w-[45%] lg:min-w-[400px] lg:bg-chart-5 lg:px-24 relative overflow-hidden">
                     <ClerkLoading>
                         <CircleLoader className="" color="#ffffff" />
                     </ClerkLoading>
@@ -42,7 +42,7 @@ const SignUpPage = () => {
                         className="-rotate-12 absolute -left-14 -bottom-14 text-white/50"
                     />
                     <motion.div
-                        className="w-fit h-[687px] sm:h-[600px] lg:h-fit bg-chart-2 rounded-xl"
+                        className="w-fit h-[687px] sm:h-[600px] lg:h-fit bg-chart-5 rounded-xl"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{
@@ -59,16 +59,16 @@ const SignUpPage = () => {
                                         colorBackground: '#FF5E1F00',
                                         colorTextOnPrimaryBackground: '#FF5E1F',
                                         colorText: '#ffffff',
-                                        fontFamily: 'nunito',
+                                        fontFamily: 'Quicksand',
                                         fontSize: '16px',
                                     },
                                     elements: {
                                     cardBox: 'shadow-none w-[100]',
-                                    formButtonPrimary: { height: '40px' },
+                                    formButtonPrimary: { height: '40px'},
                                     socialButtonsIconButton:
                                         'bg-white/10 border-primary',
                                     headerTitle:
-                                        "text-[0px] before:content-['Create_account'] before:text-4xl before:text-white ",
+                                        "text-[0px] before:content-['Create_account'] before:text-4xl before:text-white font-header",
                                     headerSubtitle: 'hidden',
                                     footer: 'bg-none',
                                     card: {

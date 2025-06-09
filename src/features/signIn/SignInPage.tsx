@@ -9,7 +9,7 @@ export function SignInPage() {
             <div className="flex flex-col lg:flex-row w-full max-w-xl lg:max-w-6xl mx-auto lg:shadow-xl rounded-xl lg:overflow-hidden">
                 <div className="w-full lg:max-w-[55%] flex flex-col items-center lg:items-start lg:pt-24 py-11 p-3 lg:p-16 relative">
                     <div className="w-full text-center">
-                        <h1 className="text-4xl md:text-5xl font-extrabold font-subtitle mb-6 text-primary">
+                        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
                             Welcome Back!
                         </h1>
                         <p>We are very excited to see you.</p>
@@ -21,7 +21,7 @@ export function SignInPage() {
                             account
                         </p>
                     </div>
-                    <div className="relative w-fit">
+                    <div className="relative w-fit m-auto mt-6">
                         <img
                             src="/qrCode.png"
                             className="rounded-xl w-[25%] mt-6 block m-auto absolute left-[55%]"
@@ -60,7 +60,7 @@ export function SignInPage() {
                                     colorBackground: '#FF5E1F00',
                                     colorTextOnPrimaryBackground: '#FF5E1F',
                                     colorText: '#ffffff',
-                                    fontFamily: 'nunito',
+                                    fontFamily: 'Quicksand',
                                     fontSize: '16px',
                                 },
                                 elements: {
@@ -69,7 +69,7 @@ export function SignInPage() {
                                     socialButtonsIconButton:
                                         'bg-white/10 border-primary',
                                     headerTitle:
-                                        "text-[0px] before:content-['Sign_in'] before:text-4xl before:text-white ",
+                                        "text-[0px] before:content-['Sign_in'] before:text-4xl before:text-white font-header",
                                     headerSubtitle: 'hidden',
                                     footer: 'bg-none',
                                     card: {
