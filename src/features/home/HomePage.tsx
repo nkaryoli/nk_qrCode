@@ -1,20 +1,14 @@
-import HeroSection from "./components/HeroSection"
-
-import WhyNK from "./components/WhyNKCode";
-import ReviewCarousel from "./components/ReviewCarousel";
-import QRReader from "./components/qrReader/QRReader";
+import { QRProvider } from '@/hooks/QRContext';
+import Hero from './components/heroSection/HeroSection';
 
 const HomePage = () => {
-	return (
-		<div className="w-full space-y-40">
-			<HeroSection />
-			<WhyNK/>
-			<ReviewCarousel/>
-			<div id="qr-reader" className="w-full m-auto bg-gradient-to-br from-input via via-chart-5 to-input py-20">
-				<QRReader />
-			</div>
-		</div>
-	)
-}
+    return (
+        <QRProvider>
+            <div className="w-full">
+                <Hero />
+            </div>
+        </QRProvider>
+    );
+};
 
-export default HomePage
+export default HomePage;
