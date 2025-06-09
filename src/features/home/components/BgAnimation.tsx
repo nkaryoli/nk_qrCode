@@ -24,7 +24,7 @@ const BgAnimation = ({ targetRef }: BgAnimationProps) => {
     const icon1X = useTransform(
         scrollYProgress,
         [0, 0.2, 1],
-        [-1100, window.innerWidth / 3, window.innerWidth]
+        [-1000, 800, 1000]
     );
     const icon1Y = useTransform(
         scrollYProgress,
@@ -34,8 +34,8 @@ const BgAnimation = ({ targetRef }: BgAnimationProps) => {
 
     const icon2X = useTransform(
         scrollYProgress,
-        [0, 0.4, 1],
-        [-520, window.innerWidth, (window.innerWidth * 3) / 5]
+        [0, 0.35, 1],
+        [0, 1100, 1300]
     );
     const icon2Y = useTransform(
         scrollYProgress,
@@ -46,7 +46,7 @@ const BgAnimation = ({ targetRef }: BgAnimationProps) => {
     const icon3X = useTransform(
         scrollYProgress,
         [0, 0.3, 1],
-        [-450, window.innerWidth, window.innerWidth * 2]
+        [-800, 1100, 1300]
     );
     const icon3Y = useTransform(
         scrollYProgress,
@@ -68,7 +68,7 @@ const BgAnimation = ({ targetRef }: BgAnimationProps) => {
     const icon6Y = useTransform(scrollYProgress, [0, 1], [-82, 500]);
 
     const classIcon =
-        'fixed bg-white/80 p-2 shadow-xl shadow-gray-200 rounded-sm text-chart-5 hidden lg:block';
+        'fixed bg-white/80 p-2 shadow-xl shadow-gray-200 rounded-md text-chart-5 hidden lg:block';
 
     return (
         <>
@@ -84,7 +84,7 @@ const BgAnimation = ({ targetRef }: BgAnimationProps) => {
                 <QrCode
                     size={90}
                     strokeWidth={1.1}
-                    className={`${classIcon} -rotate-[23deg] -left-16`}
+                    className={`${classIcon} -rotate-[23deg] -left-72`}
                 />
             </motion.div>
             <motion.div
@@ -99,7 +99,7 @@ const BgAnimation = ({ targetRef }: BgAnimationProps) => {
                 <ScanHeart
                     strokeWidth={1.2}
                     size={70}
-                    className={`${classIcon} -rotate-[20deg] -left-64`}
+                    className={`${classIcon} -rotate-[20deg] -left-96`}
                 />
             </motion.div>
             <motion.div
@@ -114,7 +114,7 @@ const BgAnimation = ({ targetRef }: BgAnimationProps) => {
                 <Sparkles
                     strokeWidth={1}
                     size={80}
-                    className={`${classIcon} -rotate-[12deg] -left-80`}
+                    className={`${classIcon} -rotate-[12deg] top-9 left-32`}
                 />
             </motion.div>
             <motion.div
@@ -129,7 +129,7 @@ const BgAnimation = ({ targetRef }: BgAnimationProps) => {
                 <ScanQrCode
                     strokeWidth={1.1}
                     size={85}
-                    className={`${classIcon} rotate-12 right-6 top-52`}
+                    className={`${classIcon} rotate-45 right-6 top-52`}
                 />
             </motion.div>
             <motion.div
