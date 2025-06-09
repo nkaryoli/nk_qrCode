@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium hover:scale-[1.02] transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow-[rgba(255,255,255,0)_0px_0px_0px_1px,rgba(255,255,255,0)_0px_0px_0px_0px_inset,rgba(34,42,53,0.2)_0px_2px_3px_0px,rgba(0,0,0,0.24)_0px_1px_1px_0px] ",
   {
     variants: {
       variant: {
@@ -16,17 +16,17 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         sunset:
-          "bg-gradient-to-r from-primary via-accent to-secondary text-white font-bold shadow-sm hover:shadow-[0_0_8px_var(--primary)]  [&>svg]:text-white/90",
+          "bg-gradient-to-r from-primary via-accent to-secondary text-white font-bold shadow-md hover:from-accent hover:via-secondary hover:to-primary transition-bg [&>svg]:text-white/90",
         neon:
           "bg-background text-primary border border-primary shadow-md hover:shadow-[0_0_12px_var(--primary)]",
         glow:
-          "bg-primary text-primary-foreground shadow-lg hover:shadow-[0_0_6px_var(--primary)] font-bold",
+          "bg-primary text-primary-foreground shadow-lg hover:scale-[1.03] hover:bg-chart-1 font-bold",
       },
       size: {
         default: "h-10 px-6 py-2",
-        sm: "h-8 rounded-md px-4 text-xs",
-        lg: "h-12 rounded-md px-8 text-xl",
-        icon: "h-10 w-10",
+        sm: "h-8 px-4 text-xs rounded-sm",
+        lg: "h-12 px-8 text-xl",
+        icon: "h-10 w-10 rounded-md",
         rounded: "h-10 w-10 rounded-full",
       },
     },
