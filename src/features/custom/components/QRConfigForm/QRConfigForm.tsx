@@ -25,13 +25,13 @@ const QRConfigForm = () => {
     },[handleChange]);
 
     return (
-        <div className="space-y-1 w-full text-foreground">
+        <div className="space-y-1 ">
             <Accordion type="single" collapsible className="space-y-1">
                 <AccordionItem
                     value="background-options"
-                    className="border border-muted/70 bg-background/40 rounded-xl"
+                    className="border rounded-md"
                 >
-                    <AccordionTrigger className="bg-muted/70 p-2">
+                    <AccordionTrigger>
                         Background Options
                     </AccordionTrigger>
                     <AccordionContent asChild>
@@ -44,9 +44,9 @@ const QRConfigForm = () => {
 
                 <AccordionItem
                     value="dots-options"
-                    className="border border-muted/70 bg-background/40 rounded-xl"
+                    className="border rounded-md"
                 >
-                    <AccordionTrigger className="bg-muted/70 p-2">Dots Options</AccordionTrigger>
+                    <AccordionTrigger>Dots Options</AccordionTrigger>
                     <AccordionContent asChild>
                         <DotsOptionsForm />
                     </AccordionContent>
@@ -54,9 +54,9 @@ const QRConfigForm = () => {
 
                 <AccordionItem
                     value="corner-square-options"
-                    className="border border-muted/70 bg-background/40 rounded-xl"
+                    className="border rounded-md"
                 >
-                    <AccordionTrigger className="bg-muted/70 p-2">
+                    <AccordionTrigger>
                         Corner Squre Options
                     </AccordionTrigger>
                     <AccordionContent asChild>
@@ -71,9 +71,9 @@ const QRConfigForm = () => {
                 </AccordionItem>
                 <AccordionItem
                     value="dots-square-options"
-                    className="border border-muted/70 bg-background/40 rounded-xl"
+                    className="border rounded-md"
                 >
-                    <AccordionTrigger className="bg-muted/70 p-2">
+                    <AccordionTrigger>
                         Dots Squre Options
                     </AccordionTrigger>
                     <AccordionContent asChild>
@@ -88,9 +88,9 @@ const QRConfigForm = () => {
                 </AccordionItem>
                 <AccordionItem
                     value="image-options"
-                    className="border border-muted/70 bg-background/40 rounded-xl"
+                    className="border rounded-md"
                 >
-                    <AccordionTrigger className="bg-muted/70 p-2">Logo Options</AccordionTrigger>
+                    <AccordionTrigger>Logo Options</AccordionTrigger>
                     <AccordionContent asChild>
                         <ImageOptions
                             config={config}
