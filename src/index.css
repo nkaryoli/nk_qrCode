@@ -13,7 +13,7 @@
     --popover:             #FFFFFF;
     --popover-foreground:  #2A2A2A;
 
-    --primary:             #fe6528; /* naranja fuego */
+    --primary:             #fc4700; /* naranja fuego */
     --primary-foreground:  #FFFFFF;
 
     --secondary:           #FFD700; /* dorado brillante */
@@ -30,9 +30,9 @@
 
     --border:             #FFD4B8;
     --input:             #FFD4B8;
-    --ring:              #FF5E1F;
+    --ring:              #e34203;
 
-    --chart-1: #fc4700;
+    --chart-1: #e34203;
     --chart-2: #fc4c78;
     --chart-3: #ff7b9c;
     --chart-4: #a162ff;
@@ -74,6 +74,12 @@
   h5,h6 { 
     font-family: 'Work Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     font-display: swap;
+    margin: 0 !important;
+    line-height: 1.1 !important;
+  }
+  p {
+    font-size: 14px;
+    line-height: 1.4 !important;
   }
 }
 
@@ -89,6 +95,10 @@ body {
 @keyframes fadeIn {
   from { opacity: 0.7; }
   to { opacity: 1; }
+}
+
+.bg_gradient_white{
+  background: linear-gradient(to right, #ffffff, transparent 20% 80%, #ffffff )
 }
 .animate-fade-in {
   animation: fadeIn 0.65s ease-out;

@@ -10,17 +10,19 @@ const buttonVariants = cva(
     variants: {
       variant: {
         destructive:
-          "bg-destructive text-destructive-foreground shadow-sm hover:bg-input font-bold",
+          "bg-destructive text-destructive-foreground shadow-md hover:bg-input font-bold",
+        secondary:
+          "bg-input text-foreground hover:font-bold hover:border hover:border-primary hover:text-primary ",
         outline:
-          "border border-ring bg-background shadow-sm hover:bg-input hover:text-secondary-foreground hover:border-none",
+          "border border-ring  shadow-sm hover:bg-input hover:text-secondary-foreground hover:border-none",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         sunset:
-          "bg-gradient-to-r from-primary via-accent to-secondary text-white font-bold shadow-md hover:from-accent hover:via-secondary hover:to-primary transition-bg [&>svg]:text-white/90",
+          "bg-gradient-to-r from-primary via-accent to-secondary text-white font-bold hover:from-accent hover:via-secondary hover:to-primary transition-bg [&>svg]:text-white/90",
         neon:
-          "bg-background text-primary border border-primary shadow-md hover:shadow-[0_0_12px_var(--primary)]",
+          "bg-background text-primary border border-primary hover:shadow-[0_0_12px_var(--primary)]",
         glow:
-          "bg-primary text-primary-foreground shadow-lg hover:scale-[1.03] hover:bg-chart-1 font-bold",
+          "bg-primary text-primary-foreground hover:scale-[1.03] hover:bg-chart-1 font-bold",
       },
       size: {
         default: "h-10 px-6 py-2",
