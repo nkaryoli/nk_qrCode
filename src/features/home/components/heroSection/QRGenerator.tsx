@@ -8,7 +8,7 @@ const QRGenerator = () => {
     const { qrConfig, handleContentChange } = useQR();
 
     return (
-        <div className="w-full max-w-md lg:max-w-3xl grid grid-cols-5 gap-2 bg-purple-300/20 backdrop-blur-xl p-2 rounded-xl z-10">
+        <div className="w-full max-w-md lg:max-w-4xl grid grid-cols-5 gap-2 bg-purple-300/20 backdrop-blur-xl p-2 rounded-xl z-10">
             <div className="col-span-5">
                 <GridItem number={1} title="Type the content for your QR Code">
                     <Input
