@@ -1,4 +1,4 @@
-import StepsCard from './StepsCard';
+import StepsCard from "./StepsCard";
 
 const HowItWorks = () => {
     return (

@@ -5,9 +5,10 @@ import {
     type CarouselApi,
 } from '@/components/ui/carousel';
 import { reviews } from '@/constants';
-import ReviewCard from './ReviewCard';
+
 import React, { useEffect } from 'react';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import ReviewCard from './ReviewCard';
 
 const TestimonialsSection = () => {
     const [api, setApi] = React.useState<CarouselApi | null>(null);
