@@ -8,6 +8,8 @@ import TestimonialsSection from './components/testimonials/TestimonialsSection';
 import QRReader from './components/qrReader/QRReader';
 import HowItWorks from './components/howItWorks/HowItWorks';
 
+import FaqSection from './components/faqs/FaqSection';
+
 const HomePage = () => {
     return (
         <QRProvider>
@@ -18,13 +20,14 @@ const HomePage = () => {
             <CustomizeSection />
             <ExploreSection />
             <AccountSection />
-            <QRReader />
-            <HowItWorks />
-            <div className="w-full h-72 relative bg-purple-300 mb-40">
-                <div className="absolute top-0 w-full">
+            <div className="w-full bg-gradient-to-b from-white via-purple-100 to-purple-300 pb-64 relative mb-32">
+                <QRReader />
+                <HowItWorks />
+                <div className="absolute -bottom-44 w-full">
                     <TestimonialsSection />
                 </div>
             </div>
+            <FaqSection />
         </QRProvider>
     );
 };
