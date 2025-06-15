@@ -52,10 +52,10 @@ const TestimonialsSection = () => {
     return (
         <section className="w-full py-9 lg:py-20">
             <div className="w-full space-y-4 m-auto">
-                <h2 className="text-2xl font-medium text-center">
+                <h2 className="text-2xl font-medium text-center text-purple-950">
                     NK QR-Code Reviews
                 </h2>
-                <p className="text-center pb-3">
+                <p className="text-center pb-6 text-lg">
                     Discover what our customers say about their encounters with
                     our versatile and user-friendly platform.
                 </p>
