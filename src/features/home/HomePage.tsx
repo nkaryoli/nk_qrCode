@@ -9,6 +9,7 @@ import QRReader from './components/qrReader/QRReader';
 import HowItWorks from './components/howItWorks/HowItWorks';
 
 import FaqSection from './components/faqs/FaqSection';
+import CTASection from './components/CTASection';
 
 const HomePage = () => {
     return (
@@ -28,6 +29,7 @@ const HomePage = () => {
                 </div>
             </div>
             <FaqSection />
+            <CTASection/>
         </QRProvider>
     );
 };
