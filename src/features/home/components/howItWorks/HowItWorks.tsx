@@ -2,9 +2,9 @@ import StepsCard from "./StepsCard";
 
 const HowItWorks = () => {
     return (
-        <section className="w-full p-6 lg:p-20 lg:pt-0">
+        <section className="w-full p-6 lg:pb-20 ">
             <div className="max-w-4xl flex flex-col justify-center items-center space-y-9 m-auto">
-                <h2 className="text-2xl font-medium">How It Works</h2>
+                <h2 className="text-2xl font-medium text-purple-950">How It Works</h2>
                 <div className="w-full flex flex-col items-center gap-6 lg:flex-row lg:justify-around ">
                     <StepsCard
                         number={1}
