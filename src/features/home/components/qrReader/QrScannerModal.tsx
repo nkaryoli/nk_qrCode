@@ -23,7 +23,7 @@ const QrScannerModal = () => {
     };
 
     return (
-        <div className="max-w-[450px]">
+        <div className="max-w-[450px] m-auto lg:m-0">
             {scanResult ? (
                 <div className="flex flex-col justify-center w-[310px] sm:w-[350px] h-fit gap-4 text-text-200 overflow-hidden">
                     <span>Reading successful!!</span>
