@@ -24,7 +24,7 @@ const Header = () => {
                     to="/"
                     className="flex items-center justify-center bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-2xl md:text-3xl font-header font-bold text-transparent"
                 >
-                    <img src="/img-logo2.svg" className="w-6 md:w-8 mr-1" />
+                    <img src="/img-logo.svg" className="w-6 md:w-8 mr-1" />
                     NK-QRCode
                 </NavLink>
                 {!isMobile && <Navbar />}
