@@ -10,7 +10,6 @@ import {
     SheetTrigger,
 } from '../../ui/sheet';
 import { LogOut, Menu } from 'lucide-react';
-import { navigationLinks } from '@/constants';
 import {
     ClerkLoading,
     SignedIn,
@@ -19,39 +18,22 @@ import {
     UserButton,
 } from '@clerk/clerk-react';
 import { Button } from '@/components/ui/button';
-import { HashLink } from 'react-router-hash-link';
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import { Skeleton } from '@/components/ui/skeleton';
 
 interface BurgerMenuProps {
-    onClick?: () => void;
-    handleClick: () => void;
+    handleLogIn?: () => void;
+    handleSignUp: () => void;
     isMobile: boolean;
 }
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({
     isMobile,
-    onClick,
-    handleClick,
+    handleLogIn,
+    handleSignUp,
 }) => {
     const { signOut } = useClerk();
-
-    const menuLinks = navigationLinks.map(({ to, label }) => {
-        const isActive = location.pathname === to;
-        const className = `w-full flex justify-center gap-3 text-center py-4 border-b transition-colors duration-200 rounded-md
-		${isActive ? 'text-primary font-bold' : 'hover:text-primary'}`;
-
-        return (
-            <li key={to}>
-                <SheetClose asChild>
-                    <a href={to} className={className}>
-                        {label}
-                    </a>
-                </SheetClose>
-            </li>
-        );
-    });
 
     if (!isMobile) return null;
 
@@ -70,42 +52,57 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
                     <SheetTitle className="hidden">Side Menu</SheetTitle>
                     <SheetDescription asChild>
                         <ul className="text-center w-full h-full pt-9">
-                            {menuLinks}
-                            <SheetClose asChild>
-                                <HashLink
-                                    smooth
-                                    to="/#qr-reader"
-                                    className="w-full flex justify-center gap-3 text-center py-4 border-b transition-colors duration-200 rounded-md hover:text-primary"
-                                >
-                                    QR Reader
-                                </HashLink>
-                            </SheetClose>
-                            <ClerkLoading>
-                                <Skeleton className="h-9 w-24 mr-3" /> 
-                            </ClerkLoading>
-                            <SignedIn>
+                            <li>
                                 <SheetClose asChild>
                                     <NavLink
-                                        to={'/dashboard'}
-                                        className={({
-                                            isActive,
-                                        }) => `w-full flex justify-center gap-3 text-center py-4 border-b transition-colors duration-200 rounded-md
-                                            ${isActive ? 'text-primary font-bold' : 'hover:text-primary'}
-                                        `}
+                                        to="/#qr-reader"
+                                        className={({ isActive }) =>
+                                            `${
+                                                isActive
+                                                    ? 'text-primary font-bold'
+                                                    : 'w-full flex justify-center gap-3 text-center py-4 border-b hover:text-primary transition-colors duration-200'
+                                            }`
+                                        }
                                     >
-                                        My QR Codes
+                                        QR Reader
                                     </NavLink>
                                 </SheetClose>
-                            </SignedIn>
-                            <SheetClose asChild>
-                                <Button
-                                    variant={'sunset'}
-                                    onClick={handleClick}
-                                    className="mt-6 w-full"
-                                >
-                                    Create QR
-                                </Button>
-                            </SheetClose>
+                            </li>
+                            <li>
+                                <SheetClose asChild>
+                                    <NavLink
+                                        to="/#faq"
+                                        className={({ isActive }) =>
+                                            `${
+                                                isActive
+                                                    ? 'text-primary font-bold'
+                                                    : 'w-full flex justify-center gap-3 text-center py-4 border-b hover:text-primary transition-colors duration-200'
+                                            }`
+                                        }
+                                    >
+                                        FAQs
+                                    </NavLink>
+                                </SheetClose>
+                            </li>
+                            <li>
+                                <ClerkLoading>
+                                    <Skeleton className="h-9 w-24 mr-3" />
+                                </ClerkLoading>
+                                <SignedIn>
+                                    <SheetClose asChild>
+                                        <NavLink
+                                            to={'/dashboard'}
+                                            className={({
+                                                isActive,
+                                            }) => `w-full flex justify-center gap-3 text-center py-4 border-b transition-colors duration-200 rounded-md
+                                            ${isActive ? 'text-primary font-bold' : 'hover:text-primary'}
+                                        `}
+                                        >
+                                            My QR Codes
+                                        </NavLink>
+                                    </SheetClose>
+                                </SignedIn>
+                            </li>
                         </ul>
                     </SheetDescription>
                 </SheetHeader>
@@ -114,10 +111,19 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
                         <SheetClose asChild>
                             <Button
                                 variant={'glow'}
-                                onClick={onClick}
+                                onClick={handleSignUp}
                                 className="mt-6 w-full"
                             >
-                                Sing In
+                                Sing Up
+                            </Button>
+                        </SheetClose>
+                        <SheetClose asChild>
+                            <Button
+                                variant={'neon'}
+                                onClick={handleLogIn}
+                                className="mt-6 w-full"
+                            >
+                                Log In
                             </Button>
                         </SheetClose>
                     </SignedOut>
