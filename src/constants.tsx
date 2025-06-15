@@ -1,10 +1,5 @@
 import type { QRConfig } from './types';
 
-export const navigationLinks = [
-	{ to: '/', label: 'Home' },
-	{ to: '/faq', label: 'FAQ' },
-]
-
 export const defaultQRConfig: QRConfig = {
     width: 250,
     height: 250,
