@@ -12,8 +12,8 @@ const Faqs = () => {
             <Accordion type="single" collapsible className="space-y-1">
                 {faqs.map((faq, index) => (
                     <AccordionItem value={faq.question} key={index}>
-                        <AccordionTrigger>{faq.question}</AccordionTrigger>
-                        <AccordionContent>{faq.answer}</AccordionContent>
+                        <AccordionTrigger><h1 className='text-[18px] font-normal'>{faq.question}</h1></AccordionTrigger>
+                        <AccordionContent><p className='pl-2'>{faq.answer}</p></AccordionContent>
                     </AccordionItem>
                 ))}
             </Accordion>
