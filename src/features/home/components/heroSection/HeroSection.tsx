@@ -4,7 +4,7 @@ const Hero = () => {
     return (
         <section className="flex flex-col items-center justify-center pt-32 overflow-hidden">
             <div className="space-y-6 text-center max-w-5xl">
-                <h1 className="text-5xl max-w-4xl text-balance font-semibold">
+                <h1 className="text-5xl text-purple-950 max-w-4xl text-balance font-semibold">
                     Unleash Your Creativity with {' '}
                     <span className="bg-gradient-to-r from-accent via-secondary to-primary bg-clip-text text-transparent">
                         NK QR-Code

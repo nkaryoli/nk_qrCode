@@ -12,7 +12,7 @@ const CTASection: React.FC<CTASectionProps> = ({ handleSigIn, isSignedIn }) => {
         <section className="w-full py-16 lg:py-20 px-9 lg:p-20 mt-20 bg-gradient-to-b from-input via-input to-transparent">
             <div className="max-w-4xl flex flex-col items-center lg:flex-row gap-9 m-auto rounded-lg">
                 <div className="space-y-6 w-full p-3 text-center lg:text-start">
-                    <h1 className="text-2xl font-medium">
+                    <h1 className="text-2xl text-purple-950 font-medium">
                         Create your QR Code today!
                     </h1>
                     <p className="max-w-lg m-auto lg:m-0">

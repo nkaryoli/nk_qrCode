@@ -28,8 +28,8 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
                     <div className="flex flex-col lg:flex-row justify-center w-full max-w-lg lg:max-w-4xl gap-6 m-auto py-4">
                         <div className="w-full flex rounded-xl overflow-hidden">
                             <div className="w-full flex flex-col rounded-l-xl items-center lg:items-start p-6 space-y-3 border border-r-0">
-                                <PaintBucket size={45} />
-                                <h3 className="font-medium pt-4">
+                                <PaintBucket size={45} color='#3b0764'/>
+                                <h3 className="text-purple-950 font-medium pt-4">
                                     Color Options
                                 </h3>
                                 <p className="">
@@ -50,8 +50,8 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
                         </div>
                         <div className="w-full bg-gradient-to-b from-purple-950 via-accent to-secondary pr-9 rounded-l-2xl rounded-r-xl">
                             <div className="h-full flex flex-col items-center lg:items-start space-y-3 bg-white p-6 rounded-l-xl border">
-                                <img src="/icon-gradient.svg" />
-                                <h3 className="font-medium pt-4">
+                                <img src="/icon-gradient.svg" className='drop-shadow-[1px_1px_0_#86198f]'/>
+                                <h3 className="text-purple-950 font-medium pt-4">
                                     Gradient Styles
                                 </h3>
                                 <p className="">
@@ -75,7 +75,7 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
                                         className="h-9 lg:hidden xl:block"
                                     />
                                 </div>
-                                <h3 className="font-medium pt-4">Logos</h3>
+                                <h3 className="text-purple-950 font-medium pt-4">Logos</h3>
                                 <p className="">
                                     Personalize it even furtther. Add theme logo
                                     of your brand.
