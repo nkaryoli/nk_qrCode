@@ -1,6 +1,14 @@
 import { Button } from '@/components/ui/button';
 
-const AccountSection = () => {
+interface AccountSectionProps {
+    handleSigIn: () => void;
+    isSignedIn: boolean | undefined;
+}
+
+const AccountSection: React.FC<AccountSectionProps> = ({
+    handleSigIn,
+    isSignedIn,
+}) => {
     return (
         <section className="w-full bg-gradient-to-b from-purple-950 to-purple-800  px-6 py-14 lg:p-20">
             <div className="max-w-4xl flex flex-col items-center lg:flex-row gap-6 lg:gap-14 m-auto">
@@ -17,7 +25,14 @@ const AccountSection = () => {
                         your QR codes for future use. Reuse them anytime,
                         ensuring you never lose your valuable creations.
                     </p>
-                    <Button  className="w-36">Sign Up</Button>
+                    {!isSignedIn && (
+                        <Button
+                            className="w-40"
+                            onClick={handleSigIn}
+                        >
+                            Sign Up
+                        </Button>
+                    )}
                 </div>
             </div>
         </section>
