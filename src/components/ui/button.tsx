@@ -14,18 +14,18 @@ const buttonVariants = cva(
         secondary:
           "bg-input text-foreground hover:font-bold hover:border hover:border-primary hover:text-primary ",
         outline:
-          "border border-ring  shadow-sm hover:bg-input hover:text-secondary-foreground hover:border-none",
+          "border border-primary text-primary shadow-sm hover:bg-chart-1 hover:text-white font-bold hover:border-none",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         sunset:
           "bg-gradient-to-r from-primary via-accent to-secondary text-white font-bold hover:from-accent hover:via-secondary hover:to-primary transition-bg [&>svg]:text-white/90",
         neon:
-          "bg-background text-primary border border-primary hover:shadow-[0_0_12px_var(--primary)]",
+          "bg-background text-primary border border-primary ",
         glow:
           "bg-primary text-primary-foreground hover:scale-[1.03] hover:bg-chart-1 font-bold",
       },
       size: {
-        default: "h-10 px-6 py-2",
+        default: "h-10 px-6",
         sm: "h-8 px-4 text-xs rounded-sm",
         lg: "h-12 px-8 text-xl",
         icon: "h-10 w-10 rounded-md",
