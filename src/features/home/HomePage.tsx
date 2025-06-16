@@ -10,17 +10,26 @@ import HowItWorks from './components/howItWorks/HowItWorks';
 
 import FaqSection from './components/faqs/FaqSection';
 import CTASection from './components/CTASection';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '@clerk/clerk-react';
 
 const HomePage = () => {
+    const navigate = useNavigate();
+    const { isSignedIn } = useUser();
+
+    const handleSignIn = () => {
+        navigate('/sign-in');
+    }
+
     return (
         <QRProvider>
-            <div className="w-full px-6 bg_gradient_white">
+            <div id='home' className="w-full px-6 bg_gradient_white">
                 <Hero />
             </div>
-            <Description />
-            <CustomizeSection />
+            <Description isSignedIn={isSignedIn} />
+            <CustomizeSection handleSigIn={handleSignIn} isSignedIn={isSignedIn} />
             <ExploreSection />
-            <AccountSection />
+            <AccountSection handleSigIn={handleSignIn} isSignedIn={isSignedIn}/>
             <div className="w-full bg-gradient-to-b from-white via-purple-100 to-purple-300 pb-64 relative mb-32">
                 <QRReader />
                 <HowItWorks />
@@ -29,7 +38,7 @@ const HomePage = () => {
                 </div>
             </div>
             <FaqSection />
-            <CTASection/>
+            <CTASection handleSigIn={handleSignIn} isSignedIn={isSignedIn}/>
         </QRProvider>
     );
 };
