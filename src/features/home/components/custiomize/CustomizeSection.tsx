@@ -99,7 +99,7 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
                         {!isSignedIn && (
                             <Button
                                 variant={'outline'}
-                                className="ml-3 bg-transparent w-40 text-primary"
+                                className="ml-3 w-40"
                                 onClick={handleSigIn}
                             >
                                 Sign Up
