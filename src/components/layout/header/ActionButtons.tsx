@@ -34,7 +34,7 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({
                         }}
                     >
                         <Button
-                            variant={'neon'}
+                            variant={'outline'}
                             onClick={handleLogIn}
                             className="w-24 mr-3"
                         >
