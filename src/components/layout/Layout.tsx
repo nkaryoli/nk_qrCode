@@ -8,9 +8,8 @@ const Layout = () => {
     useScrollToTop();
     return (
         <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-            <div className="grid-background"></div>
-            <main className="min-h-screen flex flex-col items-center justify-between">
-                <Header />
+            <Header />
+            <main className="flex flex-col items-center justify-between">
                 <Outlet />
             </main>
             <Footer />
