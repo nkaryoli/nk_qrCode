@@ -4,10 +4,20 @@ import { ModeToggle } from '@/components/ModeToggle';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import BurgerMenu from './BurgerMenu';
 import ActionButtons from './ActionButtons';
+import { useEffect, useState } from 'react';
 
 const Header = () => {
     const isMobile = useIsMobile(900);
     const navigate = useNavigate();
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const onScroll = () => {
+            setScrolled(window.scrollY > 10);
+        };
+        window.addEventListener('scroll', onScroll);
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
 
     const handleLogIn = () => {
         navigate('/sign-in');
@@ -18,7 +28,15 @@ const Header = () => {
     };
 
     return (
-        <header className="fixed top-0 left-0 right-0 flex justify-between items-center w-screen py-3 px-6 md:px-20 backdrop-blur-sm bg-white/70 dark:bg-black/10 z-50">
+        <header
+            className={`fixed top-0 left-0 right-0 flex justify-between items-center h-16 w-screen backdrop-blur-sm py-3 px-6 md:px-20 z-50 transition-colors duration-300
+                ${
+                    scrolled
+                        ? 'bg-white/50 dark:bg-black/10'
+                        : 'bg-transparent'
+                }`}
+        >
+            {' '}
             <div className="flex gap-6 items-center">
                 <NavLink
                     to="/"
@@ -39,7 +57,10 @@ const Header = () => {
                     />
                 </div>
             ) : (
-                <ActionButtons handleLogIn={handleLogIn} handleSignUp={handleSignUp} />
+                <ActionButtons
+                    handleLogIn={handleLogIn}
+                    handleSignUp={handleSignUp}
+                />
             )}
         </header>
     );
