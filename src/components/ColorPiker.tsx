@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { HexColorPicker, HexColorInput,  } from 'react-colorful';
-import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 interface ColorPickerProps {
@@ -14,15 +13,14 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChange }) => {
     return (
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
-                <Button
-                    variant="outline"
-                    className="w-full justify-start"
+                <button
+                    className="w-full hover:scale-1 text-black h-8 rounded-sm"
                     style={{ backgroundColor: color }}
                 >
-                    <div className="w-full flex items-center gap-2">
+                    <div className="w-full flex items-center justify-center">
                         <span className="truncate">{color}</span>
                     </div>
-                </Button>
+                </button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-2 space-y-2">
                 <HexColorInput 
