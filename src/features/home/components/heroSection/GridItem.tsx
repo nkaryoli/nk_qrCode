@@ -7,11 +7,11 @@ interface GridItemProps {
 const GridItem: React.FC<GridItemProps> = ({ number, title, children }) => {
 	return (
 		<div className="w-full bg-white/90 rounded-md space-y-3 p-6">
-			<div className="w-full  flex items-center gap-4">
-				<span className="bg-muted text-xl text-primary font-bold w-9 aspect-square flex items-center justify-center rounded-full">
+			<div className="w-full flex items-center gap-2">
+				<span className="bg-muted  text-primary font-bold w-6 aspect-square flex items-center justify-center rounded-sm">
 					{number}
 				</span>
-				<p className="flex text-lg lg:text-lg font-semibold">{title}</p>
+				<span className="flex text-md text-purple-950 font-bold">{title}</span>
 			</div>
 			{children}
 		</div>
