@@ -16,7 +16,7 @@
     --primary:             #fc4700;
     --primary-foreground:  #FFFFFF;
 
-    --secondary:           #FFD700;
+    --secondary:           rgb(255, 215, 0);
     --secondary-foreground: #2A2A2A;
 
     --muted:               #FFEEDD;
@@ -28,15 +28,15 @@
     --destructive:         #E63946;
     --destructive-foreground: #FFFFFF;
 
-    --border:             #FFD4B8;
-    --input:             #FFD4B8;
-    --ring:              #e34203;
+    --border:             #efdcfd;
+    --input:             #efdcfd;
+    --ring:              #e2c0fc;
 
     --chart-1: #e34203;
-    --chart-2: #fc4c78;
+    --chart-2: rgb(252, 76, 120);
     --chart-3: #ff7b9c;
     --chart-4: #a162ff;
-    --chart-5: rgb(180, 131, 255);
+    --chart-5: #b483ff;
 
     --radius: 0.7rem;
   }
@@ -189,13 +189,13 @@ body {
 }
 
 .cl-socialButtonsIconButton {
-  border: 1px solid white !important;
+
   height: 40px !important;
   transition: all 0.3s ease !important;
   box-shadow: none !important;
 }
 .cl-socialButtonsIconButton:hover {
-  background-color: #fff9f586;
+  background-color: #a240ee;
   transform: scale(1.07);
 }
 
@@ -362,3 +362,72 @@ body {
 .bg_lines7:after{
   top: -640px;
 }
+
+#home {
+  background: -moz-linear-gradient(45deg, #b583ff90 39%, #ff82a187 46%, #FFD4B8 100%);
+  background: -webkit-linear-gradient(45deg, #b583ff90 39%, #ff82a187 46%,#FFD4B8 100%);
+  background: linear-gradient(70deg, #ff82ff58 25%, #ff82ff41 30%, #FFD4B8 77%, #fc470094 100%);
+  background-size: 200% 300%;
+  -webkit-animation: Gradient 20s ease infinite;
+	-moz-animation: Gradient 20s ease infinite;
+	animation: Gradient 20s ease infinite;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: space-evenly;
+	overflow: hidden;
+	position: relative; 
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0 50%
+	}
+}
+
+.st0{display:none;}
+.st1{display:inline;}
+.st2{opacity:0.29;}
+.st3{fill:#b483ff;}
+.st4{clip-path:url(#SVGID_2_);fill:#b483ff;}
+.st5{clip-path:url(#SVGID_4_);}
+.st6{clip-path:url(#SVGID_6_);}
+.st7{clip-path:url(#SVGID_8_);}
+.st8{clip-path:url(#SVGID_10_);}
+.st9{fill:none;}
+.st10{clip-path:url(#SVGID_12_);}
+.st11{opacity:0.7;}
+.st12{clip-path:url(#SVGID_14_);}
+.st13{opacity:0.2;}
+.st14{clip-path:url(#SVGID_16_);}
+.st15{opacity:0.3;fill:#b483ff;enable-background:new;}

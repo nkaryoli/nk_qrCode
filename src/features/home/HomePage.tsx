@@ -1,6 +1,5 @@
 import { QRProvider } from '@/hooks/QRContext';
 import Hero from './components/heroSection/HeroSection';
-import Description from './components/Description';
 import ExploreSection from './components/innovate/ExploreSection';
 import AccountSection from './components/save/AccountSection';
 import CustomizeSection from './components/custiomize/CustomizeSection';
@@ -12,6 +11,7 @@ import FaqSection from './components/faqs/FaqSection';
 import CTASection from './components/CTASection';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '@clerk/clerk-react';
+import AnimatedBG from '@/components/AnimatedBG';
 
 const HomePage = () => {
     const navigate = useNavigate();
@@ -24,9 +24,12 @@ const HomePage = () => {
     return (
         <QRProvider>
             <div id='home' className="w-full px-6 bg_gradient_white">
+                <div className='absolute inset-0'>
+                    <AnimatedBG/>
+                </div>
                 <Hero />
             </div>
-            <Description isSignedIn={isSignedIn} />
+            {/* <Description isSignedIn={isSignedIn} /> */}
             <CustomizeSection handleSigIn={handleSignIn} isSignedIn={isSignedIn} />
             <ExploreSection />
             <AccountSection handleSigIn={handleSignIn} isSignedIn={isSignedIn}/>
