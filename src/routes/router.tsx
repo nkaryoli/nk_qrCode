@@ -26,10 +26,10 @@ export const router = createBrowserRouter([
 				path: "/customize-qr",
 				element: <CustomizePage />,
 			},
-			{
-				path: "/dashboard",
-				element: <DashboardPage />,
-			},
 		]
+	},
+	{
+		element: <DashboardPage/>,
+		path: '/dashboard'
 	}
 ])
