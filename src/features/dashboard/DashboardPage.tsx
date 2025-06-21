@@ -3,7 +3,11 @@ import MySidebar from './components/MySidebar';
 import MyQRs from './components/userQRs/MyQRs';
 import MyTemplates from './components/userTemplates/MyTemplates';
 import UserSettings from './components/settings/UserSettings';
-import NewQR from './components/newQR/NewQR';
+import NewQRSection from './components/newQR/NewQRSection';
+import { QRProvider } from '@/hooks/QRContext';
+import { useIsMobile } from '@/hooks/useIsMobile';
+import { NavLink } from 'react-router-dom';
+import DashboardBurgerMenu from './components/DashboardBurgerMenu';
 
 type DashboardComponent = {
     component: React.ComponentType<Record<string, unknown>>;
@@ -11,9 +15,9 @@ type DashboardComponent = {
 };
 
 const DashboardPage = () => {
-    const [active, setActive] = useState<string>('saved-qr');
+    const [active, setActive] = useState<string>('new-qr');
     const [isOpen, setIsOpen] = useState<boolean>(true);
-
+    const isMobile = useIsMobile(900);
     const handleSidebarSelect = (id: string) => {
         setActive(id);
     };
@@ -22,27 +26,46 @@ const DashboardPage = () => {
         'saved-qr': { component: MyQRs },
         'my-templates': { component: MyTemplates },
         'user-settings': { component: UserSettings },
-        'new-qr': { component: NewQR },
+        'new-qr': { component: NewQRSection },
     };
 
-    const { component: ActiveComponent, props } = components[active] || components['saved-qr'];
+    const { component: ActiveComponent, props } =
+        components[active] || components['saved-qr'];
 
     return (
-        <section className="w-full flex justify-center py-32 gap-9">
-            <aside
-                className={`transition-all duration-500 ${isOpen ? 'w-64' : 'w-16'}`}
-            >
-                <MySidebar
-                    onSelect={handleSidebarSelect}
-                    active={active}
-                    isOpen={isOpen}
-                    setIsOpen={setIsOpen}
-                />
-            </aside>
-            <div className="w-full flex-1">
-                <ActiveComponent {...props} />
-            </div>
-        </section>
+        <QRProvider>
+            <section className="w-full flex flex-col lg:flex-row justify-center p-6 lg:p-0">
+                {isMobile ? (
+                    <div className="flex items-center justify-between mb-4">
+                        <NavLink
+                            to="/"
+                            className="flex items-center justify-center bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-2xl md:text-3xl font-header font-bold text-transparent"
+                        >
+                            <img
+                                src="/img-logo.svg"
+                                className="w-6 md:w-8 mr-1"
+                            />
+                            NK-QRCode
+                        </NavLink>
+                        <DashboardBurgerMenu onSelect={handleSidebarSelect} active={active} />
+                    </div>
+                ) : (
+                    <aside
+                        className={`transition-all duration-500 ${isOpen ? 'w-72' : 'w-16'}`}
+                    >
+                        <MySidebar
+                            onSelect={handleSidebarSelect}
+                            active={active}
+                            isOpen={isOpen}
+                            setIsOpen={setIsOpen}
+                        />
+                    </aside>
+                )}
+                <div className="w-full flex-1 py-6 lg:p-6">
+                    <ActiveComponent {...props} />
+                </div>
+            </section>
+        </QRProvider>
     );
 };
 
