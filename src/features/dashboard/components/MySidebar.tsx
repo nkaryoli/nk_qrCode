@@ -5,6 +5,7 @@ import {
     SheetHeader,
     SheetTitle,
 } from '@/components/ui/sheet';
+import { useIsMobile } from '@/hooks/useIsMobile';
 import {
     CirclePlus,
     PanelLeft,
@@ -15,14 +16,14 @@ import {
 
 import { NavLink } from 'react-router-dom';
 
-const items = [
+export const items = [
     { title: 'New QR', id: 'new-qr', icon: CirclePlus },
     { title: 'My QR Codes', id: 'saved-qr', icon: ScanQrCode },
     { title: 'Templates', id: 'my-templates', icon: SwatchBook },
     { title: 'Settings', id: 'user-settings', icon: Settings },
 ];
 
-type SectionKey = 'new-qr' |'saved-qr' | 'my-templates' | 'user-settings' ;
+export type SectionKey = 'new-qr' | 'saved-qr' | 'my-templates' | 'user-settings';
 
 interface MySidebarProps {
     onSelect: (id: SectionKey) => void;
@@ -37,6 +38,12 @@ const MySidebar: React.FC<MySidebarProps> = ({
     isOpen,
     setIsOpen,
 }) => {
+    const isMobile = useIsMobile(1000);
+
+    if (isMobile) {
+        setIsOpen(false);
+    }
+    
     return (
         <>
             <Sheet modal={false} open>
@@ -46,8 +53,8 @@ const MySidebar: React.FC<MySidebarProps> = ({
                     data-sidebar="sidebar"
                     data-mobile="true"
                     className={`
-                        transition-all duration-300 px-2 bg-gradient-to-b from-white to-muted
-                        ${isOpen ? 'w-64' : 'w-16'} 
+                        transition-all duration-300 px-2 bg-gradient-to-b from-white via-purple-50 to-purple-700/50
+                        ${isOpen ? 'w-72' : 'w-16'} 
                     `}
                 >
                     <SheetHeader>
@@ -58,17 +65,18 @@ const MySidebar: React.FC<MySidebarProps> = ({
                                     bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text 
                                     text-2xl font-header font-bold text-transparent 
                                     transition-opacity duration-500 delay-300
-                                    ${isOpen ? 'w-fit opacity-100 ml-3' : 'w-0 opacity-0 pointer-events-none'}
+                                    ${isOpen ? 'w-fit opacity-100 ml-4' : 'w-0 opacity-0 pointer-events-none'}
                                 `}
                             >
                                 <img src="/img-logo.svg" className="w-7 mr-1" />
                                 NK-QRCode
                             </NavLink>
                             <button
+                                disabled={isMobile}
                                 onClick={() => setIsOpen((prev) => !prev)}
                                 aria-label="Cerrar sidebar"
                                 className={`
-                                    absolute z-50 bg-white rounded-sm shadow p-1 border border-muted  hover:bg-muted
+                                    absolute z-50 bg-white rounded-sm shadow p-1 border border-muted  hover:bg-purple-600/5
                                     transition-all duration-500
                                     ${isOpen ? 'right-3' : 'right-4'}
                                 `}
@@ -89,8 +97,9 @@ const MySidebar: React.FC<MySidebarProps> = ({
                                                 onSelect(item.id as SectionKey);
                                             }}
                                             className={`
-                                                h-9 px-3 hover:bg-muted w-full rounded-sm flex items-center gap-1 overflow-hidden
-												${active === item.id ? 'bg-muted text-primary font-bold' : ''}
+                                                h-11 hover:bg-purple-600/5 w-full rounded-sm flex items-center overflow-hidden transition-all duration-500
+                                                ${isOpen ? 'px-6 gap-5' : 'px-3'}
+												${active === item.id ? 'bg-purple-600/5 text-primary font-bold' : 'font-medium'}
 											`}
                                         >
                                             <item.icon
