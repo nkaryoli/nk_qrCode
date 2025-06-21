@@ -77,7 +77,7 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({
                                 userButtonPopoverActionButton__manageAccount:
                                     'hidden',
                                 userButtonPopoverCard:
-                                    'w-72 !bg-gradient-to-b !from-transparent !via-purple-50 !to-white rounded-b-lg rounded-t-[0px] mt-2.5 shadow-md',
+                                    'w-72 !bg-gradient-to-b !from-transparent !via-white/70 !to-white rounded-b-lg rounded-t-[0px] mt-2.5 shadow-md',
                                 userPreviewMainIdentifierText__userButton:
                                     'text-primary text-[16px] font-bold',
                                 userButtonPopoverMain:
