@@ -47,7 +47,7 @@ const ImageOptions = ({ config, onChange, onImageChange }: ImageOptionsProps) =>
                         <span className="text-sm text-muted-foreground">
                             Recommended: 300x300px transparent PNG
                         </span>
-                        <div className="grid grid-cols-4 gap-6 h-fit">
+                        <div className="flex flex-wrap justify-center gap-6 h-fit">
                             <SelectOptionBtns onChange={onImageChange} />
                         </div>
                     </>
