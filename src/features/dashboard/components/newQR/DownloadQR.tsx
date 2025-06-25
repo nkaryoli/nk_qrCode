@@ -14,7 +14,7 @@ const DownloadQR: React.FC<DownloadProps> = ({
 }) => {
     return (
         <div className="w-full h-full flex flex-col gap-4">
-            <div className='w-full flex flex-col gap-6 px-6 py-14 items-center bg-white rounded-md'>
+            <div className='w-full flex flex-col gap-6 px-6 py-14 items-center bg-white rounded-md shadow-lg shadow-purple-700/10'>
                 <h2 className="text-lg font-medium text-purple-950 text-center">
                     Download Your QR Code
                 </h2>

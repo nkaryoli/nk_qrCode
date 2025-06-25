@@ -10,7 +10,7 @@ interface CustomizeProps {
 const CustomizeQR: React.FC<CustomizeProps> = ({ setActive }) => {
     return (
         <div className="w-full h-full flex flex-col gap-6">
-            <Card className="border-none lg:pt-4 lg:pb-6 lg:px-3">
+            <Card className="border-none lg:pt-4 lg:pb-6 lg:px-3 shadow-lg shadow-purple-700/10">
                 <CardHeader>
                     <h2 className="text-lg font-medium text-purple-950">
                         Customize your QR Code
