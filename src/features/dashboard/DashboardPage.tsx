@@ -34,9 +34,9 @@ const DashboardPage = () => {
 
     return (
         <QRProvider>
-            <section className="w-full flex flex-col lg:flex-row justify-center p-6 lg:p-0">
+            <section className="w-full flex flex-col lg:flex-row justify-center">
                 {isMobile ? (
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center justify-between p-6 pb-0">
                         <NavLink
                             to="/"
                             className="flex items-center justify-center bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-2xl md:text-3xl font-header font-bold text-transparent"
@@ -61,7 +61,7 @@ const DashboardPage = () => {
                         />
                     </aside>
                 )}
-                <div className="w-full flex-1 py-6 lg:p-6">
+                <div className="w-full h-full flex-1 pt-6 lg:p-6">
                     <ActiveComponent {...props} />
                 </div>
             </section>

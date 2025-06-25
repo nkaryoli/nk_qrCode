@@ -53,8 +53,8 @@ const NewQRSection = () => {
         components[active] || components['content'];
 
     return (
-        <section className="w-full space-y-6 h-full min-h-[calc(100vh-120px)]">
-            <div className='flex items-center justify-between'>
+        <section className="w-full h-full space-y-6">
+            <div className='flex items-center justify-between px-6'>
                 <CreateBreadcrumb isActive={active} />
                 {isMobile && (
                     <QRPreviewMobile
@@ -63,11 +63,11 @@ const NewQRSection = () => {
                     />
                 )}
             </div>
-            <div className="h-full flex lg:gap-6 bg-purple-600/5 p-4 lg:p-9 rounded-md">
+            <div className="w-full h-full min-h-[calc(100vh-120px)] flex-1 flex justify-between lg:gap-9 xl:gap-11 bg-purple-600/5 p-6 lg:p-9 lg:rounded-md">
                 <div className="w-full h-full rounded-md">
                     <ActiveComponent {...props} />
                 </div>
-                <aside className="lg:w-[350px] xl:w-[500px]">
+                <aside className="lg:w-[300px] xl:w-[350px] flex-none hidden lg:block">
                     <PreviewQR />
                 </aside>
             </div>

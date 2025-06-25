@@ -38,7 +38,7 @@ const MySidebar: React.FC<MySidebarProps> = ({
     isOpen,
     setIsOpen,
 }) => {
-    const isMobile = useIsMobile(1000);
+    const isMobile = useIsMobile(1200);
 
     if (isMobile) {
         setIsOpen(false);
