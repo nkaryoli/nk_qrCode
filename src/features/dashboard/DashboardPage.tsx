@@ -61,7 +61,7 @@ const DashboardPage = () => {
                         />
                     </aside>
                 )}
-                <div className="w-full h-full flex-1 pt-6 lg:p-6">
+                <div className="w-full h-full flex-1 pt-6 lg:pt-0">
                     <ActiveComponent {...props} />
                 </div>
             </section>

@@ -53,7 +53,7 @@ const NewQRSection = () => {
         components[active] || components['content'];
 
     return (
-        <section className="w-full h-full space-y-6">
+        <section className="w-full h-full space-y-6 lg:p-9">
             <div className='flex items-center justify-between px-6'>
                 <CreateBreadcrumb isActive={active} />
                 {isMobile && (
