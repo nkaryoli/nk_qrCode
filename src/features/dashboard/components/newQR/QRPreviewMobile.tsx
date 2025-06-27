@@ -1,5 +1,4 @@
 import QRDisplay, { type QRDisplayRef } from '@/components/qrCode/QRDisplay';
-import { Button } from '@/components/ui/button';
 import {
     Dialog,
     DialogContent,
@@ -20,12 +19,13 @@ const QRPreviewMobile: React.FC<QRPreviewProps> = ({ qrRef, qrConfig }) => {
     return (
         <Dialog>
             <DialogTrigger
-                className={`${qrConfig.data ? '' : 'pointer-events-none'}`}
+                className={`
+                    flex items-center justify-center gap-2 rounded-sm h-8 px-4 text-sm font-semibold text-purple-900 border border-purple-900 shadow-md shadow-purple-200/50
+                    transition-transform duration-300 hover:scale-[1.02] hover:bg-purple-950 hover:text-white hover:border-none 
+                    ${qrConfig.data ? '' : 'pointer-events-none opacity-50'}`}
             >
-                <Button size={'sm'} variant="neon" disabled={!qrConfig.data}>
-                    Preview
-                    <QrCode />
-                </Button>
+                Preview
+                <QrCode />
             </DialogTrigger>
             <DialogContent
                 className="w-fit p-10 lg:p-20"
