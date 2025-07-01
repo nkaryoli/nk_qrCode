@@ -10,17 +10,10 @@ import {
     SheetTrigger,
 } from '../../ui/sheet';
 import { LogOut, Menu } from 'lucide-react';
-import {
-    ClerkLoading,
-    SignedIn,
-    SignedOut,
-    useClerk,
-    UserButton,
-} from '@clerk/clerk-react';
 import { Button } from '@/components/ui/button';
-import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { Skeleton } from '@/components/ui/skeleton';
+import { useAuth } from '@/hooks/AuthContext';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 interface BurgerMenuProps {
     handleLogIn?: () => void;
@@ -33,7 +26,9 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
     handleLogIn,
     handleSignUp,
 }) => {
-    const { signOut } = useClerk();
+    const { user, signOut } = useAuth();
+
+    const displayName = user?.user_metadata.user_name || user?.email;
 
     if (!isMobile) return null;
 
@@ -84,90 +79,64 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
                                     </NavLink>
                                 </SheetClose>
                             </li>
-                            <li>
-                                <ClerkLoading>
-                                    <Skeleton className="h-9 w-24 mr-3" />
-                                </ClerkLoading>
-                                <SignedIn>
-                                    <SheetClose asChild>
-                                        <NavLink
-                                            to={'/dashboard'}
-                                            className={({
-                                                isActive,
-                                            }) => `w-full flex justify-center gap-3 text-center py-4 border-b transition-colors duration-200 rounded-md
-                                            ${isActive ? 'text-primary font-bold' : 'hover:text-primary'}
-                                        `}
-                                        >
-                                            My QR Codes
-                                        </NavLink>
-                                    </SheetClose>
-                                </SignedIn>
-                            </li>
+                            {!user && (
+                                <>
+                                    <li className="pt-5 ">
+                                        <SheetClose asChild>
+                                            <Button
+                                                variant={'outline'}
+                                                onClick={handleLogIn}
+                                                className="w-full"
+                                            >
+                                                Log In
+                                            </Button>
+                                        </SheetClose>
+                                    </li>
+                                    <li className="py-5">
+                                        <SheetClose asChild>
+                                            <Button
+                                                variant={'glow'}
+                                                onClick={handleSignUp}
+                                                className="w-full"
+                                            >
+                                                Sign Up
+                                            </Button>
+                                        </SheetClose>
+                                    </li>
+                                </>
+                            )}
                         </ul>
                     </SheetDescription>
                 </SheetHeader>
-                <SheetFooter>
-                    <SignedOut>
-                        <SheetClose asChild>
-                            <Button
-                                variant={'glow'}
-                                onClick={handleSignUp}
-                                className="mt-6 w-full"
-                            >
-                                Sing Up
-                            </Button>
-                        </SheetClose>
-                        <SheetClose asChild>
-                            <Button
-                                variant={'neon'}
-                                onClick={handleLogIn}
-                                className="mt-6 w-full"
-                            >
-                                Log In
-                            </Button>
-                        </SheetClose>
-                    </SignedOut>
-                </SheetFooter>
-                <SignedIn>
-                    <div className="absolute bottom-0 right-0 w-full flex justify-center items-center border-t px-6 py-2">
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{
-                                duration: 0.5,
-                                ease: 'easeOut',
-                            }}
-                            className="w-full h-full bg-background flex justify-between pointer-events-none"
-                        >
-                            <UserButton
-                                showName
-                                appearance={{
-                                    variables: {
-                                        fontFamily: '',
-                                    },
-                                    elements: {
-                                        userButtonBox: {
-                                            flexDirection: 'row-reverse',
-                                        },
-                                        userButtonOuterIdentifier: {
-                                            color: '#6D6D6D',
-                                            fontSize: '16px',
-                                        },
-                                    },
-                                }}
-                            />
-                        </motion.div>
-                        <SheetClose asChild>
-                            <Button
-                                variant="link"
-                                size={'icon'}
-                                onClick={() => signOut()}
-                            >
-                                <LogOut />
-                            </Button>
-                        </SheetClose>
-                    </div>
-                </SignedIn>
+                <SheetFooter></SheetFooter>
+
+                <div className="absolute bottom-0 right-0 w-full flex justify-center items-center border-t px-6 py-2">
+                    {user && (
+                        <div className="flex justify-between w-full">
+                            <div className="flex items-center gap-3">
+                                {user.user_metadata.avatar_url && (
+                                    <Avatar>
+                                        <AvatarImage
+                                            src={user.user_metadata.avatar_url}
+                                        />
+                                        <AvatarFallback>CN</AvatarFallback>
+                                    </Avatar>
+                                )}
+                                <span>{displayName}</span>
+                            </div>
+
+                            <SheetClose asChild>
+                                <Button
+                                    variant="outline"
+                                    size={'icon'}
+                                    onClick={signOut}
+                                >
+                                    <LogOut />
+                                </Button>
+                            </SheetClose>
+                        </div>
+                    )}
+                </div>
             </SheetContent>
         </Sheet>
     );

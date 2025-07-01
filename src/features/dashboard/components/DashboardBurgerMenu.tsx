@@ -1,8 +1,6 @@
 import { memo } from 'react';
 import { LogOut, Menu } from 'lucide-react';
-import { SignedIn, useClerk, UserButton } from '@clerk/clerk-react';
 import { Button } from '@/components/ui/button';
-import { motion } from 'framer-motion';
 import {
     Sheet,
     SheetClose,
@@ -14,6 +12,8 @@ import {
     SheetTrigger,
 } from '@/components/ui/sheet';
 import { items, type SectionKey } from './MySidebar';
+import { useAuth } from '@/hooks/AuthContext';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 interface DashboardBurgerMenuProps {
     onSelect: (id: SectionKey) => void;
@@ -24,7 +24,10 @@ const DashboardBurgerMenu: React.FC<DashboardBurgerMenuProps> = ({
     onSelect,
     active,
 }) => {
-    const { signOut } = useClerk();
+    const { user, signOut } = useAuth();
+
+    const displayName = user?.user_metadata.user_name || user?.email;
+
     return (
         <Sheet>
             <SheetTrigger aria-label="Open menu" asChild>
@@ -72,46 +75,32 @@ const DashboardBurgerMenu: React.FC<DashboardBurgerMenuProps> = ({
                     </SheetDescription>
                 </SheetHeader>
                 <SheetFooter></SheetFooter>
-                <SignedIn>
-                    <div className="absolute bottom-0 right-0 w-full flex justify-center items-center border-t px-6 py-2">
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{
-                                duration: 0.5,
-                                ease: 'easeOut',
-                            }}
-                            className="w-full h-full bg-background flex justify-between pointer-events-none"
-                        >
-                            <UserButton
-                                showName
-                                appearance={{
-                                    variables: {
-                                        fontFamily: '',
-                                    },
-                                    elements: {
-                                        userButtonBox: {
-                                            flexDirection: 'row-reverse',
-                                        },
-                                        userButtonOuterIdentifier: {
-                                            color: '#6D6D6D',
-                                            fontSize: '16px',
-                                        },
-                                    },
-                                }}
-                            />
-                        </motion.div>
-                        <SheetClose asChild>
-                            <Button
-                                variant="link"
-                                size={'icon'}
-                                onClick={() => signOut()}
-                            >
-                                <LogOut />
-                            </Button>
-                        </SheetClose>
-                    </div>
-                </SignedIn>
+                <div className="absolute bottom-0 right-0 w-full flex justify-between items-center border-t px-6 py-2">
+                    {user && (
+                        <div className="flex justify-between w-full">
+                            <div className="flex items-center gap-3">
+                                {user.user_metadata.avatar_url && (
+                                    <Avatar>
+                                        <AvatarImage
+                                            src={user.user_metadata.avatar_url}
+                                        />
+                                        <AvatarFallback>CN</AvatarFallback>
+                                    </Avatar>
+                                )}
+                                <span>{displayName}</span>
+                            </div>
+                            <SheetClose asChild>
+                                <Button
+                                    variant="outline"
+                                    size={'icon'}
+                                    onClick={() => signOut()}
+                                >
+                                    <LogOut />
+                                </Button>
+                            </SheetClose>
+                        </div>
+                    )}
+                </div>
             </SheetContent>
         </Sheet>
     );

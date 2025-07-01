@@ -6,33 +6,37 @@ import CustomizeSection from './components/custiomize/CustomizeSection';
 import TestimonialsSection from './components/testimonials/TestimonialsSection';
 import QRReader from './components/qrReader/QRReader';
 import HowItWorks from './components/howItWorks/HowItWorks';
-
 import FaqSection from './components/faqs/FaqSection';
 import CTASection from './components/CTASection';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '@clerk/clerk-react';
 import AnimatedBG from '@/components/AnimatedBG';
 
 const HomePage = () => {
     const navigate = useNavigate();
-    const { isSignedIn } = useUser();
+
+    const isSignedIn = true;
 
     const handleSignIn = () => {
         navigate('/sign-in');
-    }
+    };
 
     return (
         <QRProvider>
-            <div id='home' className="w-full px-6 bg_gradient_white">
-                <div className='absolute inset-0'>
-                    <AnimatedBG/>
+            <div id="home" className="w-full px-6 bg_gradient_white">
+                <div className="absolute inset-0">
+                    <AnimatedBG />
                 </div>
                 <Hero />
             </div>
-            {/* <Description isSignedIn={isSignedIn} /> */}
-            <CustomizeSection handleSigIn={handleSignIn} isSignedIn={isSignedIn} />
+            <CustomizeSection
+                handleSigIn={handleSignIn}
+                isSignedIn={isSignedIn}
+            />
             <ExploreSection />
-            <AccountSection handleSigIn={handleSignIn} isSignedIn={isSignedIn}/>
+            <AccountSection
+                handleSigIn={handleSignIn}
+                isSignedIn={isSignedIn}
+            />
             <div className="w-full bg-gradient-to-b from-white via-purple-100 to-purple-300 pb-64 relative mb-32">
                 <QRReader />
                 <HowItWorks />
@@ -41,7 +45,7 @@ const HomePage = () => {
                 </div>
             </div>
             <FaqSection />
-            <CTASection handleSigIn={handleSignIn} isSignedIn={isSignedIn}/>
+            <CTASection handleSigIn={handleSignIn} isSignedIn={isSignedIn} />
         </QRProvider>
     );
 };

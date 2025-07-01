@@ -1,6 +1,4 @@
-import { ClerkLoading, SignUp } from '@clerk/clerk-react';
 import { motion } from 'framer-motion';
-import { CircleLoader } from 'react-spinners';
 import { QrCode } from 'lucide-react';
 
 const SignUpPage = () => {
@@ -20,7 +18,6 @@ const SignUpPage = () => {
                             </strong>{' '}
                             account.
                         </p>
-                   
                     <img src="/img-signup3.svg" className="w-[160px] m-auto rounded-bl-[100px] hidden lg:block drop-shadow-[1px_2px_1px_var(--chart-4)]" style={{ transform: 'rotateY(180deg)' }} />
                     <QrCode
                         size={'35%'}
@@ -29,9 +26,7 @@ const SignUpPage = () => {
                 </div>
 
                 <div className="flex items-center justify-center w-full lg:w-[45%] lg:min-w-[400px] lg:bg-gradient-to-b from-purple-950 to-purple-600 lg:px-24 relative overflow-hidden">
-                    <ClerkLoading>
-                        <CircleLoader className="" color="#ffffff" />
-                    </ClerkLoading>
+
                     <QrCode
                         size={'32%'}
                         className="hidden lg:block -rotate-12 absolute -left-14 -bottom-14 text-purple-300"
@@ -46,38 +41,7 @@ const SignUpPage = () => {
                             delay: 0.5,
                         }}
                     >
-                        <SignUp
-                            signInUrl="/sign-in"
-                            appearance={{
-                                variables: {
-                                    colorPrimary: '#ffffff',
-                                    colorBackground: '#FF5E1F00',
-                                    colorTextOnPrimaryBackground: '#FF5E1F',
-                                    colorText: '#ffffff',
-                                    fontFamily: 'Quicksand',
-                                    fontSize: '16px',
-                                },
-                                elements: {
-                                    cardBox: 'shadow-none w-[100] py-16',
-                                    formButtonPrimary: { height: '40px' },
-                                    socialButtonsIconButton: 'bg-white/20',
-                                    headerTitle:
-                                        "text-[0px] before:content-['Create_account'] before:text-3xl before:text-white before:font-medium font-header",
-                                    headerSubtitle: 'hidden',
-                                    footer: 'bg-none',
-                                    card: {
-                                        borderBottom: 'none',
-                                        boxShadow: 'none',
-                                    },
-                                    footerActionText: 'text-white',
-                                    formFieldInput:
-                                        'bg-white/90 text-foreground placeholder:text-gray-400',
-                                    formFieldLabel: '',
-                                    footerActionLink:
-                                        'text-secondary font-bold ',
-                                },
-                            }}
-                        />
+                        {/* TODO signup logic */}
                     </motion.div>
                 </div>
             </div>

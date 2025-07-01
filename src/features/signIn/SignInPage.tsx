@@ -1,9 +1,13 @@
-import { ClerkLoading, SignIn } from '@clerk/clerk-react';
 import { motion } from 'framer-motion';
 import { QrCode } from 'lucide-react';
-import { CircleLoader } from 'react-spinners';
+import { Button } from '@/components/ui/button';
+import { useAuth } from '@/hooks/AuthContext';
 
 export function SignInPage() {
+    const { signInWhitGithub, signOut, user } = useAuth();
+
+    const displayName = user?.user_metadata.user_name || user?.email;
+
     return (
         <section className="w-full flex items-center justify-center bg-background pt-32 px-3">
             <div className="flex flex-col gap-6 lg:gap-0 lg:flex-row w-full max-w-xl lg:max-w-4xl mx-auto lg:shadow-xl rounded-xl lg:overflow-hidden">
@@ -27,9 +31,6 @@ export function SignInPage() {
                 </div>
 
                 <div className="flex items-center justify-center w-full lg:w-[45%] lg:min-w-[400px] lg:bg-gradient-to-b from-purple-950 to-purple-600 lg:px-24 relative overflow-hidden">
-                    <ClerkLoading>
-                        <CircleLoader className="" color="#ffffff" />
-                    </ClerkLoading>
                     <QrCode
                         size={'32%'}
                         className="hidden lg:block -rotate-12 absolute -right-14 -bottom-14 text-purple-300"
@@ -44,38 +45,25 @@ export function SignInPage() {
                             delay: 0.5,
                         }}
                     >
-                        <SignIn
-                            signUpUrl="/sign-up"
-                            appearance={{
-                                variables: {
-                                    colorPrimary: '#ffffff',
-                                    colorBackground: '#FF5E1F00',
-                                    colorTextOnPrimaryBackground: '#FF5E1F',
-                                    colorText: '#ffffff',
-                                    fontFamily: 'Quicksand',
-                                    fontSize: '16px',
-                                },
-                                elements: {
-                                    cardBox: 'shadow-none w-[100]',
-                                    formButtonPrimary: { height: '40px' },
-                                    socialButtonsIconButton: 'bg-white/20',
-                                    headerTitle:
-                                        "text-[0px] before:content-['Sign_in'] before:text-3xl before:text-white before:font-medium font-header",
-                                    headerSubtitle: 'hidden',
-                                    footer: 'bg-none',
-                                    card: {
-                                        borderBottom: 'none',
-                                        boxShadow: 'none',
-                                    },
-                                    footerActionText: 'text-white',
-                                    formFieldInput:
-                                        'bg-white/90 text-foreground placeholder:text-gray-400',
-                                    formFieldLabel: '',
-                                    footerActionLink:
-                                        'text-secondary font-bold ',
-                                },
-                            }}
-                        />
+                        {user ? (
+                            <div className="space-x-3  ">
+                                {user.user_metadata.avatar_url && (
+                                    <img
+                                        src={user.user_metadata.avatar_url}
+                                        alt="user avatar"
+                                        className="w-16 rounded-full inline-block"
+                                    />
+                                )}
+                                <span>{displayName}</span>
+                                <Button variant={'outline'} onClick={signOut}>
+                                    SignOut
+                                </Button>
+                            </div>
+                        ) : (
+                            <Button onClick={signInWhitGithub}>
+                                Sign in with github
+                            </Button>
+                        )}
                     </motion.div>
                 </div>
             </div>

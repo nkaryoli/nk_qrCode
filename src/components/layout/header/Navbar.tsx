@@ -4,6 +4,7 @@ import {
     NavigationMenuItem,
     NavigationMenuList,
 } from '@/components/ui/navigation-menu';
+import { ModeToggle } from '@/components/ModeToggle';
 
 const Navbar = () => {
     return (
@@ -27,6 +28,7 @@ const Navbar = () => {
                         FAQs
                     </HashLink>
                 </NavigationMenuItem>
+                <ModeToggle />
             </NavigationMenuList>
         </NavigationMenu>
     );
