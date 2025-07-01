@@ -4,13 +4,13 @@ import { ArrowLeft, DownloadIcon, HeartPlus } from 'lucide-react';
 interface DownloadProps {
     setActive: (active: string) => void;
     onDownload: () => void;
-    handleSave: () => void;
+    saveQr: () => void;
 }
 
 const DownloadQR: React.FC<DownloadProps> = ({
     setActive,
     onDownload,
-    handleSave,
+    saveQr,
 }) => {
     return (
         <div className="w-full h-full flex flex-col gap-4">
@@ -32,7 +32,7 @@ const DownloadQR: React.FC<DownloadProps> = ({
                         Download QR
                     </Button>
                     <Button 
-                        onClick={handleSave}
+                        onClick={saveQr}
                         className=" w-full sm:w-auto"
                         aria-label="Save QR"
                     >

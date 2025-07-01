@@ -9,19 +9,38 @@ import PreviewQR from './PreviewQR';
 import { useQRManager } from '@/hooks/useQRManager';
 import QRPreviewMobile from './QRPreviewMobile';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import { useMutation } from '@tanstack/react-query';
+import { createQr } from '@/api/qrApi';
+import { toast } from 'sonner';
+import { useAuth } from '@/hooks/AuthContext';
 
 type ComponentKey = 'content' | 'customize' | 'download';
 
 const NewQRSection = () => {
     const [active, setActive] = useState<ComponentKey>('content');
     const { qrRef, title, setTitle, qrConfig, handleContentChange } = useQR();
-    const { handleDownload, handleSaveQRCode } = useQRManager();
+    const { handleDownload } = useQRManager();
     const isMobile = useIsMobile(900);
+    const { user } = useAuth();
 
-    const handleSave = () => {
-        handleSaveQRCode();
-        console.log('QR Code saved successfully!');
+    const mutation = useMutation({
+        mutationFn: createQr,
+        onSuccess: () => {
+            toast.success('QR guardado correctamente');
+        },
+        onError: (error: any) => {
+            toast.error('Error al guardar el QR: ' + error.message);
+        },
+    });
+
+    const saveQr = () => {
+        const qr_data = qrConfig.data;
+        const user_id = user?.id ?? '';
+        const qr_template = qrConfig;
+
+        mutation.mutate({ title, qr_data, user_id, qr_template });
     };
+
     const onDownload = () => {
         if (qrRef.current) {
             handleDownload(qrRef);
@@ -45,7 +64,7 @@ const NewQRSection = () => {
         customize: { component: CustomizeQR, props: { setActive } },
         download: {
             component: DownloadQR,
-            props: { setActive, onDownload, handleSave },
+            props: { setActive, onDownload, saveQr },
         },
     };
 
@@ -54,13 +73,10 @@ const NewQRSection = () => {
 
     return (
         <section className="w-full h-full space-y-6 lg:p-9">
-            <div className='flex items-center justify-between px-6'>
+            <div className="flex items-center justify-between px-6">
                 <CreateBreadcrumb isActive={active} />
                 {isMobile && (
-                    <QRPreviewMobile
-                        qrRef={qrRef}
-                        qrConfig={qrConfig}
-                    />
+                    <QRPreviewMobile qrRef={qrRef} qrConfig={qrConfig} />
                 )}
             </div>
             <div className="w-full h-full min-h-[calc(100vh-120px)] flex-1 flex justify-between lg:gap-9 xl:gap-11 bg-purple-600/5 p-6 lg:p-9 lg:rounded-md">
