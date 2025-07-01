@@ -9,6 +9,7 @@ import {
     MenubarMenu,
     MenubarTrigger,
 } from '@/components/ui/menubar';
+import { NavLink } from 'react-router-dom';
 
 interface ActionButtonsProps {
     handleLogIn: () => void;
@@ -42,6 +43,12 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({
                             </div>
                         </MenubarTrigger>
                         <MenubarContent>
+                            <MenubarItem>
+                                <NavLink to={'/dashboard'}>
+                                    Dashboard
+                                </NavLink>
+                                
+                            </MenubarItem>
                             <MenubarItem>
                                 <button 
                                     className='w-full'
