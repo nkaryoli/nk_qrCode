@@ -2,15 +2,14 @@ import type { QRCode } from '@/supabase/types';
 import { PacmanLoader } from 'react-spinners';
 import { Button } from '@/components/ui/button';
 import { QrCode } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 
 interface MyQRsProps {
     qrs: QRCode[];
     isLoading?: boolean;
+    handleSidebarSelect: (id: string) => void;
 }
 
-const MyQRs: React.FC<MyQRsProps> = ({ qrs, isLoading = false }) => {
-    const navigate = useNavigate();
+const MyQRs: React.FC<MyQRsProps> = ({ qrs, isLoading = false, handleSidebarSelect }) => {
 
     if (isLoading) {
         return (
@@ -34,7 +33,7 @@ const MyQRs: React.FC<MyQRsProps> = ({ qrs, isLoading = false }) => {
                 </div>
                 <Button
                     size="lg"
-                    onClick={() => navigate('/customize')}
+                    onClick={() => handleSidebarSelect('new-qr')}
                     className="bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                     Create Your First QR

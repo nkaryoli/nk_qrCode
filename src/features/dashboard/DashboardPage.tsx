@@ -11,6 +11,7 @@ import DashboardBurgerMenu from './components/DashboardBurgerMenu';
 import type { QRCode } from '@/supabase/types';
 
 type DashboardComponent = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     component: React.ComponentType<any>;
     props?: Record<string, unknown>;
 };
@@ -30,7 +31,7 @@ const DashboardContent = () => {
     };
 
     const components: Record<string, DashboardComponent> = {
-        'saved-qr': { component: MyQRs, props: { qrs } },
+        'saved-qr': { component: MyQRs, props: { qrs, handleSidebarSelect } },
         'my-templates': { component: MyTemplates },
         'user-settings': { component: UserSettings },
         'new-qr': { component: NewQRSection },
