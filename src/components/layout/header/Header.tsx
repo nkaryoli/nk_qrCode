@@ -1,6 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
-import { ModeToggle } from '@/components/ModeToggle';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import BurgerMenu from './BurgerMenu';
 import ActionButtons from './ActionButtons';
@@ -49,7 +48,6 @@ const Header = () => {
             </div>
             {isMobile ? (
                 <div className="space-x-3 flex items-center">
-                    <ModeToggle />
                     <BurgerMenu
                         isMobile={isMobile}
                         handleLogIn={handleLogIn}
