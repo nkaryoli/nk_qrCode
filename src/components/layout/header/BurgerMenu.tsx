@@ -79,6 +79,22 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
                                     </NavLink>
                                 </SheetClose>
                             </li>
+                            <li>
+                                <SheetClose asChild>
+                                    <NavLink
+                                        to="/dashboard"
+                                        className={({ isActive }) =>
+                                            `${
+                                                isActive
+                                                    ? 'text-primary font-bold'
+                                                    : 'w-full flex justify-center gap-3 text-center py-4 border-b hover:text-primary transition-colors duration-200'
+                                            }`
+                                        }
+                                    >
+                                        My Dashboard
+                                    </NavLink>
+                                </SheetClose>
+                            </li>
                             {!user && (
                                 <>
                                     <li className="pt-5 ">

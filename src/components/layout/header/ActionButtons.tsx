@@ -10,6 +10,7 @@ import {
     MenubarTrigger,
 } from '@/components/ui/menubar';
 import { NavLink } from 'react-router-dom';
+import { LogOut } from 'lucide-react';
 
 interface ActionButtonsProps {
     handleLogIn: () => void;
@@ -42,17 +43,21 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({
                                 <span>{displayName}</span>
                             </div>
                         </MenubarTrigger>
-                        <MenubarContent>
-                            <MenubarItem>
-                                <NavLink to={'/dashboard'}>
-                                    Dashboard
+                        <MenubarContent className="w-56">
+                            <MenubarItem className="h-10 p-3">
+                                <NavLink
+                                    to={'/dashboard'}
+                                    className="flex gap-2"
+                                >
+                                    My Dashboard
                                 </NavLink>
-                                
                             </MenubarItem>
                             <MenubarItem>
-                                <button 
-                                    className='w-full'
-                                    onClick={signOut}>
+                                <button
+                                    className="w-full flex justify-start gap-3 items-center p-1 h-10 group"
+                                    onClick={signOut}
+                                >
+                                    <LogOut className="text-black/50 group-hover:text-primary w-4" />
                                     SignOut
                                 </button>
                             </MenubarItem>
@@ -95,7 +100,6 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({
                     </motion.div>
                 </>
             )}
-            
         </div>
     );
 };
