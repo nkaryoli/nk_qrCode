@@ -22,14 +22,19 @@ const NewQRSection = () => {
     const { handleDownload } = useQRManager();
     const isMobile = useIsMobile(900);
     const { user } = useAuth();
+    const [ isSaved, setIsSaved ] = useState<boolean>(false);
+    const [ isDownloaded, setIsDownloaded ] = useState<boolean>(false);
 
     const mutation = useMutation({
         mutationFn: createQr,
         onSuccess: () => {
-            toast.success('QR guardado correctamente');
+            setIsSaved(true);
+            toast('QR has been saved sucssesfully! 🎉', {
+                description: "Check 'My QR Codes' section to view it.",
+            });
         },
         onError: (error: any) => {
-            toast.error('Error al guardar el QR: ' + error.message);
+            toast('Error saving QR: ' + error.message);
         },
     });
 
@@ -44,9 +49,19 @@ const NewQRSection = () => {
     const onDownload = () => {
         if (qrRef.current) {
             handleDownload(qrRef);
-            console.log('QR Code downloaded successfully!');
+            setIsDownloaded(true);
+            toast('QR Code downloaded successfully!');
         }
     };
+
+    const onNewQR = () => {
+        setTitle('');
+        handleContentChange('');
+        setActive('content');
+        setIsSaved(false);
+        setIsDownloaded(false);
+    };
+
     const components: Record<
         ComponentKey,
         { component: React.ComponentType<any>; props?: any }
@@ -64,7 +79,7 @@ const NewQRSection = () => {
         customize: { component: CustomizeQR, props: { setActive } },
         download: {
             component: DownloadQR,
-            props: { setActive, onDownload, saveQr },
+            props: { setActive, onDownload, saveQr, isSaved, isDownloaded, onNewQR },
         },
     };
 

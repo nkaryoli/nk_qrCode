@@ -1,16 +1,22 @@
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, DownloadIcon, HeartPlus } from 'lucide-react';
+import { ArrowLeft, CirclePlus, DownloadIcon, HeartPlus } from 'lucide-react';
 
 interface DownloadProps {
     setActive: (active: string) => void;
     onDownload: () => void;
     saveQr: () => void;
+    onNewQR: () => void;
+    isSaved?: boolean;
+    isDownloaded?: boolean;
 }
 
 const DownloadQR: React.FC<DownloadProps> = ({
     setActive,
     onDownload,
     saveQr,
+    onNewQR,
+    isSaved,
+    isDownloaded
 }) => {
     return (
         <div className="w-full h-full flex flex-col gap-4">
@@ -23,6 +29,7 @@ const DownloadQR: React.FC<DownloadProps> = ({
                 </p>
                 <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
                     <Button
+                        disabled={isDownloaded}
                         variant="outline"
                         onClick={onDownload}
                         className="w-full sm:w-auto"
@@ -32,16 +39,18 @@ const DownloadQR: React.FC<DownloadProps> = ({
                         Download QR
                     </Button>
                     <Button 
+                        disabled={isSaved}
                         onClick={saveQr}
                         className=" w-full sm:w-auto"
                         aria-label="Save QR"
                     >
-                        <HeartPlus size={18} />
+                        <HeartPlus size={18} /> 
                         Save QR
                     </Button>
                 </div>
             </div>
-            <Button
+            <div className="flex items-center justify-end gap-4">
+                <Button
                 size={'sm'}
                 variant={'outline'}
                 onClick={() => setActive('customize')}
@@ -51,6 +60,15 @@ const DownloadQR: React.FC<DownloadProps> = ({
 				<ArrowLeft/>
                 Back
             </Button>
+                <Button 
+                    size={'sm'} 
+                    onClick={onNewQR}
+                >
+                    New QR
+                    <CirclePlus />
+                </Button>
+            </div>
+            
         </div>
     );
 };
