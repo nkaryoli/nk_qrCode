@@ -53,7 +53,7 @@ const TestimonialsSection = () => {
         <section className="w-full py-9 lg:py-20">
             <div className="w-full space-y-4">
                 <div className='w-full flex flex-col gap-4 items-center px-6 lg:px-20'>
-                    <h2 className="text-2xl font-medium text-center text-purple-950">
+                    <h2 className="font-medium text-center">
                         NK QR-Code Reviews
                     </h2>
                     <span className="text-center max-w-xl m-auto pb-2 text-md">

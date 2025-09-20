@@ -6,10 +6,10 @@ const QRReader = () => {
             <div className="max-w-4xl m-auto flex flex-col-reverse lg:flex-row md:justify-between items-center gap-6">
                 <div className="max-w-lg text-balance flex flex-col gap-6 items-center lg:items-start text-center lg:text-start">
                     <p className="mt-3">Scan</p>
-                    <h1 className="text-2xl font-medium text-purple-950">
+                    <h2 className="font-medium ">
                         Scan & Discover with our{' '}
                         <span className="text-primary">QR Reader!!</span>
-                    </h1>
+                    </h2>
                     <p>
                         Scan any QR code in seconds and access its content
                         instantly. It’s fast, easy, and secure!

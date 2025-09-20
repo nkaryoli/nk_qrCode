@@ -27,7 +27,7 @@ const AccountSection: React.FC<AccountSectionProps> = ({
                     </p>
                     {!isSignedIn && (
                         <Button
-                            className="w-40"
+                            className="w-48"
                             onClick={handleSigIn}
                         >
                             Sign Up

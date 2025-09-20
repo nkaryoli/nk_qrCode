@@ -16,9 +16,9 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
             <div className="flex flex-col-reverse items-center justify-center gap-6 lg:gap-9 xl:flex-row max-w-4xl m-auto">
                 <div className="w-full space-y-6">
                     <p className="mb-3 text-center">Customize</p>
-                    <h1 className="text-2xl font-medium text-center text-purple-950">
+                    <h2 className="font-medium text-center">
                         Unleash Your Creativity
-                    </h1>
+                    </h2>
                     <p className="text-center max-w-lg m-auto">
                         Transform your QR codes into unique works of art. Choose
                         from a variety of colors, gradients, logos, and
@@ -29,7 +29,7 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
                         <div className="w-full flex rounded-xl overflow-hidden">
                             <div className="w-full flex flex-col rounded-l-xl items-center lg:items-start p-6 space-y-3 border border-r-0">
                                 <PaintBucket size={45} color='#3b0764'/>
-                                <h3 className="text-purple-950 font-medium pt-4">
+                                <h3 className=" font-medium pt-4">
                                     Color Options
                                 </h3>
                                 <p className="">
@@ -51,7 +51,7 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
                         <div className="w-full bg-gradient-to-b from-purple-950 via-accent to-secondary pr-9 rounded-l-2xl rounded-r-xl">
                             <div className="h-full flex flex-col items-center lg:items-start space-y-3 bg-white p-6 rounded-l-xl border">
                                 <img src="/icon-gradient.svg" className='drop-shadow-[1px_1px_0_#86198f]'/>
-                                <h3 className="text-purple-950 font-medium pt-4">
+                                <h3 className="font-medium pt-4">
                                     Gradient Styles
                                 </h3>
                                 <p className="">
@@ -75,13 +75,13 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
                                         className="h-9 lg:hidden xl:block"
                                     />
                                 </div>
-                                <h3 className="text-purple-950 font-medium pt-4">Logos</h3>
+                                <h3 className="font-medium pt-4">Logos</h3>
                                 <p className="">
                                     Personalize it even furtther. Add theme logo
                                     of your brand.
                                 </p>
                             </div>
-                            <div className="w-10 flex flex-col justify-evenly bg-gradient-to-l from-input via-transparent to-input border border-l-0 px-1 rounded-r-xl" />
+                            <div className="w-10 flex flex-col justify-evenly bg-gradient-to-l from-ring via-transparent to-ring border border-l-0 px-1 rounded-r-xl" />
                         </div>
                     </div>
 
@@ -90,7 +90,7 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
                             <HashLink
                                 smooth
                                 to={isSignedIn ? '/dashboard' : '/#home'}
-                                className="w-40"
+                                className="w-48"
                             >
                                 <QrCode />
                                 Create QR
@@ -99,7 +99,7 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
                         {!isSignedIn && (
                             <Button
                                 variant={'outline'}
-                                className="ml-3 w-40"
+                                className="ml-3 w-48"
                                 onClick={handleSigIn}
                             >
                                 Sign Up

@@ -39,9 +39,10 @@ const QrScannerModal = () => {
                             {scanResult}
                         </p>
                     )}
-                    <Button 
-                      variant={'sunset'}
-                      onClick={() => setScanResult(null)}>
+                    <Button
+                        variant={'sunset'}
+                        onClick={() => setScanResult(null)}
+                    >
                         Scan new QR Code
                     </Button>
                 </div>
@@ -53,23 +54,24 @@ const QrScannerModal = () => {
                                 setScannerActive(true);
                                 setIsDialogOpen(true);
                             }}
-                            className='font-bold'
+                            className="font-bold w-48"
                         >
-                            Start Scan Now!
+                            Start Scan Now
                         </Button>
                     </DialogTrigger>
                     <DialogContent>
                         <DialogHeader>
-                            <DialogTitle className='text-foreground'>Scan your QR Code</DialogTitle>
+                            <DialogTitle className="text-foreground">
+                                Scan your QR Code
+                            </DialogTitle>
                             <DialogDescription></DialogDescription>
                         </DialogHeader>
-                        <DialogContent className='flex items-center justify-center py-11'>
-                            <div className='flex items-center justify-center py-11'>
-
-                            <Scanner
-                                isActive={scannerActive && isDialogOpen}
-                                onResult={handleScanResult}
-                            />
+                        <DialogContent className="flex items-center justify-center py-11">
+                            <div className="flex items-center justify-center py-11">
+                                <Scanner
+                                    isActive={scannerActive && isDialogOpen}
+                                    onResult={handleScanResult}
+                                />
                             </div>
                         </DialogContent>
                     </DialogContent>

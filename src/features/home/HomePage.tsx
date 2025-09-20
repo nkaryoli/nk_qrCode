@@ -9,12 +9,15 @@ import HowItWorks from './components/howItWorks/HowItWorks';
 import FaqSection from './components/faqs/FaqSection';
 import CTASection from './components/CTASection';
 import { useNavigate } from 'react-router-dom';
-import AnimatedBG from '@/components/AnimatedBG';
+import { useAuth } from '@/hooks/AuthContext';
+
 
 const HomePage = () => {
     const navigate = useNavigate();
-
-    const isSignedIn = true;
+    const { user } = useAuth();
+    
+    console.log(user);
+    const isSignedIn = user ? true : false;
 
     const handleSignIn = () => {
         navigate('/sign-in');
@@ -22,12 +25,7 @@ const HomePage = () => {
 
     return (
         <QRProvider>
-            <div id="home" className="w-full px-6 bg_gradient_white">
-                <div className="absolute inset-0">
-                    <AnimatedBG />
-                </div>
-                <Hero />
-            </div>
+            <Hero />
             <CustomizeSection
                 handleSigIn={handleSignIn}
                 isSignedIn={isSignedIn}
@@ -39,7 +37,7 @@ const HomePage = () => {
             />
             <div className="w-full bg-gradient-to-b from-white via-purple-100 to-purple-300 pb-64 relative mb-32">
                 <QRReader />
-                <HowItWorks />
+                <HowItWorks handleSigIn={handleSignIn} isSignedIn={isSignedIn} />
                 <div className="absolute -bottom-44 w-full">
                     <TestimonialsSection />
                 </div>

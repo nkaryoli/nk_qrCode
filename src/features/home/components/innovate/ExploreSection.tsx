@@ -11,25 +11,25 @@ const ExploreSection = () => {
         <section className="w-full px-6 py-14 md:px-20 md:mb-20">
             <div className="max-w-4xl m-auto space-y-6 text-center">
                 <p className="mb-3">Innovate</p>
-                <h1 className="text-2xl text-purple-950 text-center font-medium m-0">
+                <h2 className="text-center font-medium m-0">
                     Explore Our Exciting Features Today!
-                </h1>
+                </h2>
                 <p className="max-w-lg lg:max-w-2xl m-auto">
                     Our app is designed for Effortless QR code generation. With
                     user-friendly tools, anyone can create amzing, personalized
                     codes in minutes.
                 </p>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-14 max-w-6xl">
-                    <Card className="border-none shadow-none max-w-[300px] m-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-14 items-start max-w-6xl">
+                    <Card className="border-none shadow-none max-w-[300px] mx-auto">
                         <CardHeader className="px-0">
                             <CardTitle>
                                 <Smile
                                     size={50}
                                     className="m-auto text-primary"
                                 />
-                                <h1 className="pt-6 text-lg text-purple-950 font-normal leading-8">
+                                <h3 className="pt-6 font-normal leading-8">
                                     User-Friendly Interface for Everyone
-                                </h1>
+                                </h3>
                             </CardTitle>
                         </CardHeader>
                         <CardDescription>
@@ -38,16 +38,16 @@ const ExploreSection = () => {
                             </p>
                         </CardDescription>
                     </Card>
-                    <Card className="border-none shadow-none max-w-[300px] m-auto">
+                    <Card className="border-none shadow-none max-w-[300px] mx-auto">
                         <CardHeader>
                             <CardTitle>
                                 <QrCode
                                     size={50}
                                     className="m-auto text-primary"
                                 />
-                                <h1 className="pt-6 text-lg text-purple-950 font-normal leading-8">
+                                <h3 className="pt-6 font-normal leading-8">
                                     Hight-Quality QR Codes for ALK Uses
-                                </h1>
+                                </h3>
                             </CardTitle>
                         </CardHeader>
                         <CardDescription>
@@ -57,17 +57,17 @@ const ExploreSection = () => {
                             </p>
                         </CardDescription>
                     </Card>
-                    <Card className="border-none shadow-none max-w-[300px] m-auto">
+                    <Card className="border-none shadow-none max-w-[300px] mx-auto">
                         <CardHeader>
                             <CardTitle>
                                 <MonitorSmartphone
                                     size={50}
                                     className="m-auto text-primary"
                                 />
-                                <h1 className="pt-6 text-lg text-purple-950 font-normal leading-8">
+                                <h3 className="pt-6 font-normal leading-8">
                                     Compatible with Multiple Platforms and
                                     Devices
-                                </h1>
+                                </h3>
                             </CardTitle>
                         </CardHeader>
                         <CardDescription>
