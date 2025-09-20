@@ -96,7 +96,7 @@ const TemplateCard: React.FC<TemplateCardProps> = ({ qrTemplate, qr_id }) => {
     
     return (
         <div
-            className="w-fit shadow space-y-6 px-9  pb-9 pt-3 bg-white rounded-md relative group
+            className="w-full md:w-fit shadow space-y-6 px-9  pb-9 pt-3 bg-white rounded-md relative group
             hover:shadow-xl hover:shadow-ring transition-all duration-300 overflow-hidden
         "
         >
@@ -152,7 +152,7 @@ const TemplateCard: React.FC<TemplateCardProps> = ({ qrTemplate, qr_id }) => {
                     <span>{hasImage ? 'Yes' : 'No'}</span>
                 </div>
 
-                <div className="w-64 md:w-56 xl:w-64 flex justify-between border-t pt-4">
+                <div className="w-full md:w-56 xl:w-60 flex justify-between border-t pt-4">
                     <div className="flex flex-col items-center space-y-2">
                         <span className="font-medium">Dot color</span>
                         {renderColorSwatch({
