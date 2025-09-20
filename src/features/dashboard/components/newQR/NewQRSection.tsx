@@ -9,7 +9,7 @@ import PreviewQR from './PreviewQR';
 import { useQRManager } from '@/hooks/useQRManager';
 import QRPreviewMobile from './QRPreviewMobile';
 import { useIsMobile } from '@/hooks/useIsMobile';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createQr } from '@/api/qrApi';
 import { toast } from 'sonner';
 import { useAuth } from '@/hooks/AuthContext';
@@ -24,14 +24,17 @@ const NewQRSection = () => {
     const { user } = useAuth();
     const [ isSaved, setIsSaved ] = useState<boolean>(false);
     const [ isDownloaded, setIsDownloaded ] = useState<boolean>(false);
-
+    const queryClient = useQueryClient();
+    
     const mutation = useMutation({
         mutationFn: createQr,
-        onSuccess: () => {
+        onSuccess: async () => {
             setIsSaved(true);
             toast('QR has been saved sucssesfully! 🎉', {
                 description: "Check 'My QR Codes' section to view it.",
             });
+            queryClient.invalidateQueries();
+            await queryClient.refetchQueries();
         },
         onError: (error: any) => {
             toast('Error saving QR: ' + error.message);
