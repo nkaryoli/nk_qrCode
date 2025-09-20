@@ -13,6 +13,7 @@ import {
     Settings,
     SwatchBook,
 } from 'lucide-react';
+import { useEffect } from 'react';
 
 import { NavLink } from 'react-router-dom';
 
@@ -40,9 +41,11 @@ const MySidebar: React.FC<MySidebarProps> = ({
 }) => {
     const isMobile = useIsMobile(1200);
 
-    if (isMobile) {
-        setIsOpen(false);
-    }
+    useEffect(() => {
+        if (isMobile) {
+            setIsOpen(false);
+        }
+    }, [isMobile, setIsOpen]);
     
     return (
         <>
