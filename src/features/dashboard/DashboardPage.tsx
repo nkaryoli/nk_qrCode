@@ -9,6 +9,9 @@ import { useIsMobile } from '@/hooks/useIsMobile';
 import { NavLink } from 'react-router-dom';
 import DashboardBurgerMenu from './components/DashboardBurgerMenu';
 import type { QRCode } from '@/supabase/types';
+import { getQRs } from '@/api/qrApi';
+import { useQuery } from '@tanstack/react-query';
+import { useAuth } from '@/hooks/AuthContext';
 
 type DashboardComponent = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,18 +23,35 @@ const DashboardContent = () => {
     const [active, setActive] = useState<string>('new-qr');
     const [isOpen, setIsOpen] = useState<boolean>(true);
     const isMobile = useIsMobile(900);
+    const { user } = useAuth();
 
-    const [qrs] = useState<QRCode[]>([]);
+    const { data, isLoading, isError } = useQuery<QRCode[], Error>({
+        queryKey: ['qrCodes', user?.id],
+        queryFn: () => user ? getQRs(user.id) : Promise.resolve([]),
+        enabled: !!user,
+    });
 
-
-
+    if (isLoading) {
+        return (
+            <div className="w-full h-[50vh] flex items-center justify-center">
+                <p>Loading...</p>
+            </div>
+        );
+    }   
+    if (isError) {
+        return (
+            <div className="w-full h-[50vh] flex items-center justify-center">
+                <p>Error loading QR codes.</p>
+            </div>
+        );
+    }
 
     const handleSidebarSelect = (id: string) => {
         setActive(id);
     };
 
     const components: Record<string, DashboardComponent> = {
-        'saved-qr': { component: MyQRs, props: { qrs, handleSidebarSelect } },
+        'saved-qr': { component: MyQRs, props: { qrs: data, handleSidebarSelect } },
         'my-templates': { component: MyTemplates },
         'user-settings': { component: UserSettings },
         'new-qr': { component: NewQRSection },
