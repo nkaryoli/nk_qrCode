@@ -35,7 +35,7 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({
                                 {user.user_metadata.avatar_url && (
                                     <Avatar>
                                         <AvatarImage
-                                            src={user.user_metadata.avatar_url}
+                                            src={user.user_metadata.avatar_url || '/default-avatar.png'}
                                         />
                                         <AvatarFallback>CN</AvatarFallback>
                                     </Avatar>
