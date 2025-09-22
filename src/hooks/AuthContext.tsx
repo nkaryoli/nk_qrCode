@@ -7,13 +7,15 @@ interface AuthContextType {
     signInWithGithub: () => void;
     signInWithGoogle: () => void;
     signOut: () => void;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    signUpNewUser: (email: string, password: string) => Promise<{ success: boolean; data: any }>;
-    SignInUser: (
+    signInWithPassword: (
         email: string,
         password: string
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ) => Promise<{ success: boolean; data: any }>;
+    ) => Promise<{ success: boolean; data: unknown }>;
+    signUpNewUser: (
+        email: string,
+        password: string,
+        profileData?: { first_name: string; last_name: string }
+    ) => Promise<{ success: boolean; data: unknown }>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -37,28 +39,48 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         };
     }, []);
 
-    const SignInUser = async (email: string, password: string) => {
-        try {
-            const { data, error } = await supabase.auth.signInWithPassword({
-                email: email,
-                password: password,
-            });
-            if (error) {
-                console.log('Error signing in:', error.message);
-                return { success: false, data: null };
-            }
-            console.log('Sign-in successful:', data);
-            return { success: true, data };
-        } catch (error) {
-            console.log('Unexpected error signing in:', error);
+    const signInWithPassword = async (email: string, password: string) => {
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password,
+        });
+
+        if (error) {
+            console.log('Error sending sign-in email:', error.message);
             return { success: false, data: null };
         }
+        return { success: true, data };
     };
 
-    const signUpNewUser = async (email: string, password: string) => {
+    // const SignInUser = async (email: string, password: string) => {
+    //     try {
+    //         const { data, error } = await supabase.auth.signInWithPassword({
+    //             email: email,
+    //             password: password,
+    //         });
+    //         if (error) {
+    //             console.log('Error signing in:', error.message);
+    //             return { success: false, data: null };
+    //         }
+    //         console.log('Sign-in successful:', data);
+    //         return { success: true, data };
+    //     } catch (error) {
+    //         console.log('Unexpected error signing in:', error);
+    //         return { success: false, data: null };
+    //     }
+    // };
+
+    const signUpNewUser = async (
+        email: string,
+        password: string,
+        profileData?: { first_name: string; last_name: string }
+    ) => {
         const { data, error } = await supabase.auth.signUp({
             email: email,
             password: password,
+            options: {
+                data: profileData,
+            },
         });
         if (error) {
             console.log('Error signing up:', error.message);
@@ -83,7 +105,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         <AuthContext.Provider
             value={{
                 user,
-                SignInUser,
+                signInWithPassword,
                 signUpNewUser,
                 signInWithGoogle,
                 signInWithGithub,

@@ -10,32 +10,36 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export function SignInPage() {
-    const { signUpNewUser, signInWithGoogle, signInWithGithub, signOut, user } =
-        useAuth();
+    const {
+        signInWithPassword,
+        signInWithGoogle,
+        signInWithGithub,
+        signOut,
+        user,
+    } = useAuth();
     const [email, setEmal] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
     const [isSigningUp, setIsSigningUp] = useState(false);
     const navigate = useNavigate();
 
-
-    const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleLogIn = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsSigningUp(true);
-
         try {
-            const result = await signUpNewUser(email, password);
+            const result = await signInWithPassword(email, password);
             if (!result.success) {
-                console.log('User signed up successfully:', result.data);
+                console.log('Sign-in email sent successfully:', result.data);
                 setIsSigningUp(false);
                 return;
             }
         } catch (error) {
-            console.log('Error during sign up:', error);
-            setError('Failed to sign up. Please try again.');
+            console.log('Error during sign in:', error);
+            setError('Failed to sign in. Please try again.');
             setIsSigningUp(false);
         }
     };
+
     useEffect(() => {
         if (user && isSigningUp) {
             navigate('/dashboard');
@@ -97,12 +101,11 @@ export function SignInPage() {
                                 </Button>
                             </div>
                         ) : (
-                            <div className='w-full flex flex-col gap-4'>
+                            <div className="w-full flex flex-col gap-4">
                                 <form
-                                    onSubmit={handleSignUp}
+                                    onSubmit={handleLogIn}
                                     className="w-full flex flex-col gap-4"
                                 >
-                                    {/* <p className='text-white'>Please enter your email below to sign in</p> */}
                                     {/* Email */}
                                     <div className="flex flex-col gap-2">
                                         <Label
@@ -164,13 +167,14 @@ export function SignInPage() {
                                     </div>
 
                                     {/* Submit */}
-                                    <Button type="submit"
-                                    >
-                                        Sign In
-                                    </Button>
-                                    {error && <p className='text-red-600 text-center pt-4'>{error}</p>}
+                                    <Button type="submit">Sign In</Button>
+                                    {error && (
+                                        <p className="text-red-600 text-center pt-4">
+                                            {error}
+                                        </p>
+                                    )}
                                 </form>
-                                
+
                                 <hr />
 
                                 {/* Social login buttons */}
