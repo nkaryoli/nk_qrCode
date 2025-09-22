@@ -90,14 +90,16 @@ const NewQRSection = () => {
         components[active] || components['content'];
 
     return (
-        <section className="w-full h-full space-y-6 lg:p-9">
-            <div className="flex items-center justify-between px-6">
+        <section className="w-full h-full space-y-9 p-6 lg:px-9 lg:py-14 xl:p-14">
+            <h1 className="text-3xl font-bold mb-2">New QR Code</h1>
+
+            <div className="flex items-center justify-between">
                 <CreateBreadcrumb isActive={active} />
                 {isMobile && (
                     <QRPreviewMobile qrRef={qrRef} qrConfig={qrConfig} />
                 )}
             </div>
-            <div className="w-full h-full min-h-[calc(100vh-120px)] flex-1 flex justify-between lg:gap-9 xl:gap-11 bg-purple-600/5 p-6 lg:p-9 lg:rounded-md">
+            <div className="w-full h-full min-h-[calc(100vh-120px)] flex-1 flex justify-between lg:gap-9 xl:gap-11 bg-purple-50 p-6 lg:p-9 lg:rounded-md">
                 <div className="w-full h-full rounded-md">
                     <ActiveComponent {...props} />
                 </div>
