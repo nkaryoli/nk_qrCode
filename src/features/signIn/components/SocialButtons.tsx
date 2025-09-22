@@ -5,13 +5,16 @@ type SocialButtonsProps = {
     signInWithGithub: () => void;
 };
 
-const SocialButtons = ({ signInWithGoogle, signInWithGithub }: SocialButtonsProps) => {
+const SocialButtons = ({
+    signInWithGoogle,
+    signInWithGithub,
+}: SocialButtonsProps) => {
     return (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 z-50">
             <Button
                 onClick={signInWithGoogle}
                 variant="outline"
-                className="bg-gray-300"
+                className="bg-zinc-100 text-foreground border-none"
             >
                 <img
                     src="https://www.svgrepo.com/show/355037/google.svg"
@@ -24,8 +27,8 @@ const SocialButtons = ({ signInWithGoogle, signInWithGithub }: SocialButtonsProp
 
             <button
                 onClick={signInWithGithub}
-                className="w-full h-10 rounded-md shadow-md bg-black text-white flex items-center justify-center gap-3
-                                            hover:bg-zinc-800 hover:scale-[103%] transition"
+                className="w-full h-10 rounded-md shadow-md bg-black text-white flex items-center justify-center gap-2
+                        font-medium text-sm hover:bg-zinc-800 hover:scale-[103%] transition"
             >
                 <img
                     src="/githubIcon.svg"
