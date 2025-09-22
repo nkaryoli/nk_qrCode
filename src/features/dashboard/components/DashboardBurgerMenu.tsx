@@ -94,6 +94,8 @@ const DashboardBurgerMenu: React.FC<DashboardBurgerMenuProps> = ({
                                     variant="outline"
                                     size={'icon'}
                                     onClick={() => signOut()}
+                                    className="w-7 h-8 border-none shadow-none rounded-sm"
+                                    title="Log out"
                                 >
                                     <LogOut />
                                 </Button>

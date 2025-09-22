@@ -1,3 +1,5 @@
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
 import {
     Sheet,
     SheetContent,
@@ -5,9 +7,11 @@ import {
     SheetHeader,
     SheetTitle,
 } from '@/components/ui/sheet';
+import { useAuth } from '@/hooks/AuthContext';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import {
     CirclePlus,
+    LogOut,
     PanelLeft,
     ScanQrCode,
     Settings,
@@ -24,7 +28,11 @@ export const items = [
     { title: 'Settings', id: 'user-settings', icon: Settings },
 ];
 
-export type SectionKey = 'new-qr' | 'saved-qr' | 'my-templates' | 'user-settings';
+export type SectionKey =
+    | 'new-qr'
+    | 'saved-qr'
+    | 'my-templates'
+    | 'user-settings';
 
 interface MySidebarProps {
     onSelect: (id: SectionKey) => void;
@@ -40,13 +48,16 @@ const MySidebar: React.FC<MySidebarProps> = ({
     setIsOpen,
 }) => {
     const isMobile = useIsMobile(1200);
+    const { user, signOut } = useAuth();
 
     useEffect(() => {
         if (isMobile) {
             setIsOpen(false);
         }
     }, [isMobile, setIsOpen]);
-    
+
+    const displayName = user?.user_metadata.user_name || user?.email;
+
     return (
         <>
             <Sheet modal={false} open>
@@ -74,6 +85,7 @@ const MySidebar: React.FC<MySidebarProps> = ({
                                 <img src="/img-logo.svg" className="w-7 mr-1" />
                                 NK-QRCode
                             </NavLink>
+                            
                             <button
                                 disabled={isMobile}
                                 onClick={() => setIsOpen((prev) => !prev)}
@@ -123,6 +135,42 @@ const MySidebar: React.FC<MySidebarProps> = ({
                             </ul>
                         </SheetDescription>
                     </SheetHeader>
+                    <div className={`absolute bottom-0 right-0 w-full flex justify-between items-center border-t bg-black/5 py-2
+                        ${isOpen ? ' px-6' : 'px-4'}
+                    `}>
+                        {user && (
+                            <div className="flex justify-between w-full">
+                                <div className={`flex items-center gap-3
+                                    ${isOpen ? 'block' : 'hidden'}
+                                `}>
+                                    {user.user_metadata.avatar_url && (
+                                        <Avatar>
+                                            <AvatarImage
+                                                src={
+                                                    user.user_metadata
+                                                        .avatar_url
+                                                }
+                                            />
+                                            <AvatarFallback>CN</AvatarFallback>
+                                        </Avatar>
+                                    )}
+                                    <span className="text-black/80 font-medium">
+                                        {displayName}
+                                    </span>
+                                </div>
+
+                                <Button
+                                    variant="outline"
+                                    size={'icon'}
+                                    onClick={() => signOut()}
+                                    className="w-7 h-8 border-none shadow-none rounded-sm"
+                                    title="Log out"
+                                >
+                                    <LogOut />
+                                </Button>
+                            </div>
+                        )}
+                    </div>
                 </SheetContent>
             </Sheet>
         </>
