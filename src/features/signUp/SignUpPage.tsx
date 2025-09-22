@@ -15,15 +15,14 @@ const SignUpPage = () => {
     const [email, setEmal] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [, setError] = useState<string | null>(null);
-    const [isSigningUp, setIsSigningUp] = useState(false);
+    const [, setIsSigningUp] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (user && isSigningUp) {
-            navigate('/dashboard');
-            setIsSigningUp(false);
+        if (user) {
+            navigate('/');
         }
-    }, [user, isSigningUp, navigate]);
+    }, [user, navigate]);
 
     const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
