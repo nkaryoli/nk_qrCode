@@ -3,7 +3,7 @@ import { QrCode } from 'lucide-react';
 const WelcomeLogIn = () => {
     return (
         <div className="w-full lg:max-w-[50%] flex flex-col items-center lg:p-16 relative">
-            <h1 className="text-4xl font-medium mb-6 text-purple-950">
+            <h1 className="text-4xl font-semibold mb-6">
                 Welcome Back!
             </h1>
             <p className="mt-6">We are very excited to see you.</p>

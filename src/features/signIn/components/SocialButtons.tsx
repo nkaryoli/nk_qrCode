@@ -28,13 +28,13 @@ const SocialButtons = ({
             <button
                 onClick={signInWithGithub}
                 className="w-full h-10 rounded-md shadow-md bg-black text-white flex items-center justify-center gap-2
-                        font-medium text-sm hover:bg-zinc-800 hover:scale-[103%] transition"
+                        font-medium text-sm hover:text-bold hover:bg-zinc-800 hover:scale-[103%] transition"
             >
                 <img
                     src="/githubIcon.svg"
                     alt="GitHub"
-                    width={20}
-                    height={20}
+                    width={24}
+                    height={24}
                 />
                 Continue with GitHub
             </button>
