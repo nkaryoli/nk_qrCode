@@ -12,6 +12,7 @@ import type { QRCode } from '@/supabase/types';
 import { getQRs } from '@/api/qrApi';
 import { useQuery } from '@tanstack/react-query';
 import { useAuth } from '@/hooks/AuthContext';
+import { Loader } from 'lucide-react';
 
 type DashboardComponent = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -46,7 +47,7 @@ const DashboardContent = () => {
     if (isLoading) {
         return (
             <div className="w-full h-[50vh] flex items-center justify-center">
-                <p>Loading...</p>
+                <Loader/>
             </div>
         );
     }
