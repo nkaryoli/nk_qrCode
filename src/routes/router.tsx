@@ -1,5 +1,4 @@
 import Layout from "@/components/layout/Layout";
-import CustomizePage from "@/features/custom/CustomizePage";
 import DashboardPage from "@/features/dashboard/DashboardPage";
 import HomePage from "@/features/home/HomePage";
 import RedirectPage from "@/features/callback/AuthCallback";
@@ -16,16 +15,12 @@ export const router = createBrowserRouter([
 				element: <HomePage />,
 			},
 			{
-				path: "/sign-in",
+				path: "/auth/sign-in",
 				element: <SignInPage />,
 			},
 			{
-				path: "/sign-up",
+				path: "/auth/sign-up",
 				element: <SignUpPage />,
-			},
-			{
-				path: "/customize-qr",
-				element: <CustomizePage />,
 			},
 			{
 				path: "/auth/callback",
