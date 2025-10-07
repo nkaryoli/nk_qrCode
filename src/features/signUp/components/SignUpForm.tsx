@@ -15,7 +15,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ handleSignUp, setName, setLastn
     return (
         <form onSubmit={handleSignUp} className="w-full flex flex-col gap-4">
             <div className="flex gap-3">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 w-full">
                     <Label htmlFor="name" className="text-white">
                         First name
                     </Label>
@@ -29,7 +29,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ handleSignUp, setName, setLastn
                         />
                     </div>
                 </div>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 w-full">
                     <Label htmlFor="lastname" className="text-white">
                         Last name
                     </Label>

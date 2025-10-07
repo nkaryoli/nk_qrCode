@@ -29,27 +29,31 @@ export function SignInPage() {
             const result = await signInWithPassword(email, password);
             if (!result.success) {
                 console.log('Sign-in email sent successfully:', result.data);
-                setIsSigningUp(false);
+
                 return;
             }
         } catch (error) {
             console.log('Error during sign in:', error);
             setError('Failed to sign in. Please try again.');
+
+        } finally {
             setIsSigningUp(false);
         }
     };
 
     return (
-        <section className="w-full flex items-center justify-center bg-background pt-32 px-3">
-            <div className="flex flex-col gap-6 lg:gap-0 lg:flex-row w-full max-w-xl lg:max-w-4xl mx-auto lg:shadow-xl rounded-xl lg:overflow-hidden">
+        <section className="w-full flex items-center justify-center pt-32 px-3">
+            <div className="flex flex-col justify-center items-center gap-6 lg:gap-0 lg:flex-row w-full max-w-xl lg:max-w-4xl mx-auto lg:shadow-xl rounded-xl lg:overflow-hidden">
                 <WelcomeLogIn />
-                <div className="flex items-center justify-center w-full lg:w-[50%] lg:min-w-[400px] lg:bg-gradient-to-b from-purple-950 to-purple-600 lg:p-14 relative overflow-hidden">
+                <div className="flex items-center justify-center w-full max-w-lg p-9 lg:p-14
+                    bg-gradient-to-b from-purple-950 to-purple-600 relative overflow-hidden rounded-xl"
+                >
                     <QrCode
                         size={'32%'}
                         className="hidden lg:block -rotate-12 absolute -right-14 -bottom-14 text-purple-300"
                     />
                     <motion.div
-                        className="w-full h-[637px] sm:h-[550px] lg:h-fit bg-gradient-to-b from-purple-950 to-purple-600 lg:from-purple-950/0 lg:to-purple-800/0 rounded-xl "
+                        className="w-full space-y-3"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{
@@ -58,7 +62,7 @@ export function SignInPage() {
                             delay: 0.5,
                         }}
                     >
-                        <div className="w-full flex flex-col gap-4">
+
                             <LogInForm
                                 handleLogIn={handleLogIn}
                                 setEmail={setEmal}
@@ -78,7 +82,6 @@ export function SignInPage() {
                                     Sign Up
                                 </a>
                             </p>
-                        </div>
                     </motion.div>
                 </div>
             </div>
