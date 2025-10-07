@@ -1,7 +1,7 @@
 import QRDisplay from '@/components/qrCode/QRDisplay';
 import { QRPreviewLoader } from '@/components/qrCode/QRPreviewLoader';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import QREmptyState from '@/features/custom/components/QREmptyState';
+import QREmptyState from '@/features/dashboard/components/QREmptyState';
 import { useQR } from '@/hooks/QRContext';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { memo, useEffect, useRef, useState } from 'react';
@@ -50,11 +50,10 @@ const PreviewQR = () => {
                             <CardContent className="space-y-6">
                                 <div className="relative flex items-center justify-center">
                                     <div
-                                        className={`transition-opacity duration-250 ${
-                                            isTransitioning
+                                        className={`transition-opacity duration-250 ${isTransitioning
                                                 ? 'opacity-10'
                                                 : 'animate-fade-in'
-                                        }`}
+                                            }`}
                                     >
                                         <QRDisplay
                                             ref={qrRef}
@@ -74,7 +73,7 @@ const PreviewQR = () => {
                         </>
                     )}
                 </Card>
-            ) }
+            )}
         </>
     );
 };

@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import QRConfigForm from '@/features/custom/components/QRConfigForm/QRConfigForm';
+
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import QRConfigForm from '../QRConfigForm/QRConfigForm';
 
 interface CustomizeProps {
     setActive: (active: string) => void;

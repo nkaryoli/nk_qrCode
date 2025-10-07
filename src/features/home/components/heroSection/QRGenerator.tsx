@@ -1,8 +1,9 @@
 import { Input } from '@/components/ui/input';
-import QRConfigForm from '@/features/custom/components/QRConfigForm/QRConfigForm';
+
 import { useQR } from '@/hooks/QRContext';
 import GridItem from './GridItem';
 import HomeQRPreview from './HomeQRPreview';
+import QRConfigForm from '@/features/dashboard/components/QRConfigForm/QRConfigForm';
 
 const QRGenerator = () => {
     const { qrConfig, handleContentChange } = useQR();
