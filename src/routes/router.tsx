@@ -2,6 +2,7 @@ import Layout from "@/components/layout/Layout";
 import CustomizePage from "@/features/custom/CustomizePage";
 import DashboardPage from "@/features/dashboard/DashboardPage";
 import HomePage from "@/features/home/HomePage";
+import RedirectPage from "@/features/callback/AuthCallback";
 import { SignInPage } from "@/features/signIn/SignInPage";
 import SignUpPage from "@/features/signUp/SignUpPage";
 import { createBrowserRouter } from "react-router-dom";
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
 			{
 				path: "/customize-qr",
 				element: <CustomizePage />,
+			},
+			{
+				path: "/auth/callback",
+				element: <RedirectPage />,
 			},
 		]
 	},
