@@ -1,54 +1,97 @@
-# React + TypeScript + Vite
+# NK QR Code
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern **QR code generator and customizer** built with **React**, **TypeScript**, and **Tailwind CSS**.  
+Create beautiful and functional QR codes for links, text, contacts, or any custom data — all with live preview and export options.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Demo
 
-## Expanding the ESLint configuration
+👉 [Live Demo](https://nk-qr-code.vercel.app)  
+*(or replace this link with your actual deployed version)*
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## ✨ Features
+
+- Generate QR codes for:
+  - URLs, text, email, phone numbers, etc.
+- Full customization:
+  - Foreground and background colors.
+  - Size and margin adjustments.
+  - Rounded or square modules.
+  - Optional embedded logo or icon.
+- Download your QR in **PNG** or **SVG**.
+- Clean and responsive UI with **Tailwind CSS**.
+- Built with **Vite** for lightning-fast development.
+
+---
+
+## 🛠️ Tech Stack
+
+- **React + TypeScript** — component-based UI
+- **Tailwind CSS** — utility-first styling
+- **Shadcn** — customizable components 
+- **Vite** — fast bundling and dev server
+- **qr-code-styling** — QR code generation
+- **Supabase** — BBDD
+
+---
+
+## 📦 Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/nkaryoli/nk_qrCode.git
+
+# Navigate into the project
+cd nk_qrCode
+
+# Install dependencies (using pnpm, npm, or yarn)
+pnpm install
+
+# Start the development server
+pnpm dev
+
+Then open http://localhost:5173 in your browser.
 ```
+## 🧠 Key Concepts
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Custom QR rendering — Users can preview style changes in real time.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Type-safe logic — Written fully in TypeScript.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- Accessible and responsive — Designed for usability across devices.
+
+- Modular architecture — Organized by feature for scalability.
+
+## 📸 Screenshots
+
+### Home Page with customization Panel
+![Home Page](./public/screenshots/homeDemo.png)
+
+### Different LogIn Options
+![Customization Panel](./public/screenshots/logInDemo.png)
+
+### Download and save Options
+![Download Options](./public/screenshots/dashboardDemoNew.png)
+
+### Easy access to saved QRs
+![Download Options](./public/screenshots/misQrDemos.png)
+
+## 🧑‍💻 Author
+
+Nkaryoli
+GitHub
+ • LinkedIn [KaryoliNieves](https://www.linkedin.com/in/karyoli-nieves/)
+ • Portfolio [karyoliNieves.com](https://nkaryoli.github.io/miPortfolio/)
+
+## 🪪 License
+
+This project is licensed under the MIT License.
+
+## 📞 Contacto
+
+📧 Email: karyoli.ie@gmail.com
+
+⭐ ¿Te gusta NK-qrCode? ¡Dale una estrella en GitHub!
