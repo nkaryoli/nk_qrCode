@@ -8,14 +8,17 @@ import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { deleteQR } from '@/api/qrApi';
+import { useQR } from '@/hooks/QRContext';
 
 interface TemplateCardProps {
     qrTemplate: QRConfig;
     qr_id?: number;
+    handleSidebarSelect?: (id: string) => void;
 }
 
-const TemplateCard: React.FC<TemplateCardProps> = ({ qrTemplate, qr_id }) => {
+const TemplateCard: React.FC<TemplateCardProps> = ({ qrTemplate, qr_id, handleSidebarSelect }) => {
     const navigate = useNavigate();
+    const { setQrConfig } = useQR();
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
     const dotType = qrTemplate.dotsOptions?.type || 'square';
     const cornerType = qrTemplate.cornersSquareOptions?.type || 'square';
@@ -45,9 +48,6 @@ const TemplateCard: React.FC<TemplateCardProps> = ({ qrTemplate, qr_id }) => {
         }
     };
 
-
-
-
     const renderColorSwatch = (options: {
         color?: string;
         gradient?: Gradient;
@@ -76,8 +76,14 @@ const TemplateCard: React.FC<TemplateCardProps> = ({ qrTemplate, qr_id }) => {
         );
     };
 
-    const handleCustomQR = () => {
-        navigate('/customize', { state: { qrTemplate } });
+    const handleUseTemplate = () => {
+        setQrConfig(qrTemplate);
+        if (handleSidebarSelect) {
+            handleSidebarSelect('new-qr');
+        } else {
+            // Fallback for cases where sidebar select isn't available (e.g., from home)
+            navigate('/customize', { state: { qrTemplate } });
+        }
     };
 
     const confirmDelete = () => {
@@ -88,12 +94,6 @@ const TemplateCard: React.FC<TemplateCardProps> = ({ qrTemplate, qr_id }) => {
         setShowDeleteConfirm(false);
     };
 
-    // const handleDelete = () => {
-    //     // Implement delete logic here
-    //     setShowDeleteConfirm(false);
-    // };
-
-    
     return (
         <div
             className="w-full md:w-fit shadow space-y-6 px-9  pb-9 pt-3 bg-white rounded-md relative group
@@ -169,23 +169,23 @@ const TemplateCard: React.FC<TemplateCardProps> = ({ qrTemplate, qr_id }) => {
                     </div>
                     {(qrTemplate.cornersSquareOptions?.color ||
                         qrTemplate.cornersSquareOptions?.gradient) && (
-                        <div className="flex flex-col items-center space-y-2">
-                            <span className="text-sm font-medium">
-                                Corners color
-                            </span>
-                            {renderColorSwatch({
-                                color: qrTemplate.cornersSquareOptions?.color,
-                                gradient:
-                                    qrTemplate.cornersSquareOptions?.gradient,
-                            })}
-                        </div>
-                    )}
+                            <div className="flex flex-col items-center space-y-2">
+                                <span className="text-sm font-medium">
+                                    Corners color
+                                </span>
+                                {renderColorSwatch({
+                                    color: qrTemplate.cornersSquareOptions?.color,
+                                    gradient:
+                                        qrTemplate.cornersSquareOptions?.gradient,
+                                })}
+                            </div>
+                        )}
                 </div>
             </div>
             <Button
                 variant="outline"
                 className="w-full gap-2 border-primary hover:bg-primary text-primary"
-                onClick={handleCustomQR}
+                onClick={handleUseTemplate}
             >
                 <Copy />
                 Use this template

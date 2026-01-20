@@ -63,16 +63,17 @@ const MyQRs: React.FC<MyQRsProps> = ({
                 </Button>
             </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 relative z-10 max-w-7xl mx-auto">
-                    {qrs.map((qr) => (
-                        <TemplateCard
-                            key={qr.id}
-                            qrTemplate={qr.qr_template}
-                            qr_id={qr.id}
-                        />
-                    ))}
-                </div>
-            
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 relative z-10 max-w-7xl mx-auto">
+                {qrs.map((qr) => (
+                    <TemplateCard
+                        key={qr.id}
+                        qrTemplate={qr.qr_template}
+                        qr_id={qr.id}
+                        handleSidebarSelect={handleSidebarSelect}
+                    />
+                ))}
+            </div>
+
         </section>
     );
 };
