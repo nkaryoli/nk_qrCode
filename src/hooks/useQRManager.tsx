@@ -39,10 +39,10 @@ export const useQRManager = () => {
         qrRef.current?.download('my-qr-code', size, options.format);
     };
 
-    const handleSaveQRCode = useCallback(async (qrConfig: QRConfig, userId: string, title?: string) => {
+    const handleSaveQRCode = useCallback(async (qrConfig: QRConfig, userId: string, title?: string): Promise<boolean> => {
         if (!userId) {
             toast.error('User ID is required to save');
-            return;
+            return false;
         }
 
         try {
@@ -57,9 +57,11 @@ export const useQRManager = () => {
             });
 
             toast.success('QR Code saved successfully!');
+            return true;
         } catch (error) {
             console.error('Error saving QR code:', error);
             toast.error('Failed to save QR code');
+            return false;
         } finally {
             setIsSaving(false);
         }

@@ -22,6 +22,7 @@ const HomeQRPreview = () => {
     const { user } = useAuth();
     const [displayConfig, setDisplayConfig] = useState(qrConfig);
     const [isTransitioning, setIsTransitioning] = useState(false);
+    const [isSaved, setIsSaved] = useState(false);
     const prevConfigRef = useRef(qrConfig);
 
     useEffect(() => {
@@ -32,6 +33,7 @@ const HomeQRPreview = () => {
             return;
         }
         setIsTransitioning(true);
+        setIsSaved(false);
         prevConfigRef.current = displayConfig;
         const timer = setTimeout(() => {
             setDisplayConfig(qrConfig);
@@ -40,12 +42,15 @@ const HomeQRPreview = () => {
         return () => clearTimeout(timer);
     }, [displayConfig, qrConfig]);
 
-    const onSaveClick = () => {
+    const onSaveClick = async () => {
         if (!user) {
             toast.warning('Please log in to save your QR codes');
             return;
         }
-        handleSaveQRCode(qrConfig, user.id);
+        const success = await handleSaveQRCode(qrConfig, user.id);
+        if (success) {
+            setIsSaved(true);
+        }
     };
 
     return (
@@ -94,10 +99,10 @@ const HomeQRPreview = () => {
                             variant={'neon'}
                             className="w-full max-w-64"
                             onClick={onSaveClick}
-                            disabled={isSaving}
+                            disabled={isSaving || isSaved}
                         >
                             <HeartPlus size={4} />
-                            {isSaving ? 'Saving...' : 'Save QR'}
+                            {isSaving ? 'Saving...' : isSaved ? 'Saved' : 'Save QR'}
                         </Button>
                     </CardFooter>
                 </>
