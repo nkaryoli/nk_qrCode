@@ -36,7 +36,7 @@ export const useQRManager = () => {
         const size = getSizeInPixels(options.size, options.customSize);
         console.log('Downloading with options:', options, 'size:', size);
         // Ahora pasamos todos los parámetros
-        qrRef.current?.download('my-qr-code', size, options.format, options.quality);
+        qrRef.current?.download('my-qr-code', size, options.format);
     };
 
     const handleSaveQRCode = useCallback(async (qrConfig: QRConfig, userId: string, title?: string) => {

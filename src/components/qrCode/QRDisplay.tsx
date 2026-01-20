@@ -1,11 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { forwardRef, memo, useEffect, useImperativeHandle, useMemo, useRef } from 'react';
-import QRCodeStyling, { type Options as QRCodeOptions } from 'qr-code-styling';
+import QRCodeStyling, { type FileExtension, type Options as QRCodeOptions } from 'qr-code-styling';
 
 export interface QRDisplayRef {
-    download: (fileName?: string) => void;
+    download: (
+        fileName?: string,
+        size?: number,
+        format?: FileExtension,
+        // quality?: number
+    ) => void;
 }
-
 interface QRDisplayProps {
     config: QRCodeOptions;
     className?: string;
@@ -39,7 +43,7 @@ const QRDisplay = memo(
             JSON.stringify(config.imageOptions),
         ]);
 
-        
+
         useEffect(() => {
             if (!qrCodeRef.current) {
                 qrCodeRef.current = new QRCodeStyling(qrConfig);
@@ -50,8 +54,28 @@ const QRDisplay = memo(
         }, [qrConfig]);
 
         useImperativeHandle(ref, () => ({
-            download: (fileName = 'qr-code') => {
-                qrCodeRef.current?.download({ name: fileName, extension: 'png' });
+            download: (
+                fileName = 'qr-code',
+                size?: number,
+                format: FileExtension = 'png',
+                // quality?: number
+            ) => {
+                if (size) {
+                    // Crear configuración temporal con el tamaño especificado
+                    const tempConfig = {
+                        ...qrConfig,
+                        width: size,
+                        height: size
+                    };
+                    const tempQR = new QRCodeStyling(tempConfig);
+                    tempQR.download({ name: fileName, extension: format});
+                } else {
+                    qrCodeRef.current?.download({
+                        name: fileName,
+                        extension: format
+                    });
+                }
+                // qrCodeRef.current?.download({ name: fileName, extension: 'png' });
             },
         }));
 

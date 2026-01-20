@@ -50,8 +50,9 @@ const NewQRSection = () => {
     };
 
     const onDownload = () => {
+        console.log('onDownload called, qrRef:', qrRef.current);
         if (qrRef.current) {
-            handleDownload(qrRef);
+            handleDownload(qrRef, { format: 'svg', size: 'medium' });
             setIsDownloaded(true);
             toast('QR Code downloaded successfully!');
         }
