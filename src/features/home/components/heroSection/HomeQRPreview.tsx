@@ -13,10 +13,13 @@ import { useQR } from '@/hooks/QRContext';
 import { useQRManager } from '@/hooks/useQRManager';
 import { DownloadIcon, HeartPlus } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { useAuth } from '@/hooks/AuthContext';
+import { toast } from 'sonner';
 
 const HomeQRPreview = () => {
     const { isSaving, handleDownload, handleSaveQRCode } = useQRManager();
     const { qrRef, qrConfig } = useQR();
+    const { user } = useAuth();
     const [displayConfig, setDisplayConfig] = useState(qrConfig);
     const [isTransitioning, setIsTransitioning] = useState(false);
     const prevConfigRef = useRef(qrConfig);
@@ -37,6 +40,14 @@ const HomeQRPreview = () => {
         return () => clearTimeout(timer);
     }, [displayConfig, qrConfig]);
 
+    const onSaveClick = () => {
+        if (!user) {
+            toast.warning('Please log in to save your QR codes');
+            return;
+        }
+        handleSaveQRCode(qrConfig, user.id);
+    };
+
     return (
         <Card className="border-none shadow-none bg-transparent pt-3">
             {qrConfig.data == '' ? (
@@ -52,8 +63,8 @@ const HomeQRPreview = () => {
                         <div className="relative flex items-center justify-center">
                             <div
                                 className={`transition-opacity duration-250 ${isTransitioning
-                                        ? 'opacity-10'
-                                        : 'animate-fade-in'
+                                    ? 'opacity-10'
+                                    : 'animate-fade-in'
                                     }`}
                             >
                                 <QRDisplay
@@ -82,7 +93,7 @@ const HomeQRPreview = () => {
                         <Button
                             variant={'neon'}
                             className="w-full max-w-64"
-                            onClick={() => handleSaveQRCode()}
+                            onClick={onSaveClick}
                             disabled={isSaving}
                         >
                             <HeartPlus size={4} />
