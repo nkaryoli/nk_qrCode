@@ -2,7 +2,7 @@ import type { QRCode } from '@/supabase/types';
 import { PacmanLoader } from 'react-spinners';
 import { Button } from '@/components/ui/button';
 import { Plus, QrCode } from 'lucide-react';
-import TemplateCard from './TemplateCard';
+import QRCard from './QRCard';
 
 interface MyQRsProps {
     qrs: QRCode[];
@@ -47,7 +47,7 @@ const MyQRs: React.FC<MyQRsProps> = ({
     }
 
     return (
-        <section className="w-full min-h-screen p-6 md:p-14 flex flex-col items-center justify-center gap-0 md:gap-9">
+        <section className="w-full min-h-screen p-6 lg:p-14 lg:pt-24 flex flex-col gap-6 md:gap-20">
             <div className="w-full flex flex-col  sm:justify-start gap-6">
                 <h1 className="text-3xl font-bold mb-2">My QR Codes</h1>
                 <p className="text-lg">
@@ -63,13 +63,11 @@ const MyQRs: React.FC<MyQRsProps> = ({
                 </Button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 relative z-10 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xxl:grid-cols-4 gap-6 relative z-10 w-fit">
                 {qrs.map((qr) => (
-                    <TemplateCard
+                    <QRCard
                         key={qr.id}
-                        qrTemplate={qr.qr_template}
-                        qr_id={qr.id}
-                        handleSidebarSelect={handleSidebarSelect}
+                        qr={qr}
                     />
                 ))}
             </div>
