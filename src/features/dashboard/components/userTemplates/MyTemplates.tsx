@@ -1,7 +1,7 @@
 import type { QRCode } from '@/supabase/types';
 import { PacmanLoader } from 'react-spinners';
 import { Button } from '@/components/ui/button';
-import { Plus, QrCode } from 'lucide-react';
+import { QrCode } from 'lucide-react';
 import TemplateCard from './TemplateCard';
 
 
