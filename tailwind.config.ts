@@ -13,6 +13,7 @@ const config: Config = {
             md: '678px',
             lg: '900px',
             xl: '1300px',
+			xxl: '1600px',
         },
 		extend: {
 			fontFamily: {
