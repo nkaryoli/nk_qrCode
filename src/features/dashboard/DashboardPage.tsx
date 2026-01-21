@@ -68,7 +68,7 @@ const DashboardContent = () => {
             component: MyQRs,
             props: { qrs: data, handleSidebarSelect },
         },
-        'my-templates': { component: MyTemplates },
+        'my-templates': { component: MyTemplates, props: { qrs: data, handleSidebarSelect }, },
         'user-settings': { component: UserSettings },
         'new-qr': { component: NewQRSection },
     };
